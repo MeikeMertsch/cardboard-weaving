@@ -14,8 +14,8 @@
        (map distinct)
        (map pack-description)))
 
-(defn row-of-pattern [string]
-  (->> (partition-of string)
+(defn row-of-pattern [pattern-row]
+  (->> (partition-of pattern-row)
        card-pack-row-of))
 
 (defn instructions-for [string]
@@ -28,8 +28,6 @@
   (->> (map #(clojure.string/join " " %) instructions)
        (interpose "\n")
        clojure.string/join))
-
-(convert-instructions (instructions-for "a"))
 
 (defn save-instructions-for [string]
   (spit "instructions.txt" (convert-instructions (instructions-for string))))
