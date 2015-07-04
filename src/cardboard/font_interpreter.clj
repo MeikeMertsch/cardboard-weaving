@@ -11,8 +11,7 @@
 (defn card-pack-row-of [row-partition]
   (->> (map list (map inc (reductions + (cons 0 row-partition)))
                  (reductions + row-partition))
-       (map distinct)
-       (map pack-description)))
+       (map distinct)))
 
 (defn row-of-pattern [pattern-row]
   (->> (partition-of pattern-row)
