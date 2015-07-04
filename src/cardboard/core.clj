@@ -1,11 +1,8 @@
 (ns cardboard.core
   (:require [cardboard.default_letters :refer :all])
   (:require [cardboard.saver :refer :all])
+  (:require [cardboard.font_interpreter :refer :all])
   (:require [cardboard.font :refer :all]))
-
-(defn partition-of [pattern-row]
-  (->> (partition-by identity pattern-row)
-       (map count)))
 
 (defn pack-description [start-end-coll]
   (apply str (interpose "-" start-end-coll)))

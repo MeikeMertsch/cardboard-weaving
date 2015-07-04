@@ -2,12 +2,6 @@
   (:require [expectations :refer :all]
             [cardboard.core :refer :all]))
 
-;----- Row Partitions
-(expect [4] (partition-of "0000"))
-(expect [1 2 1] (partition-of "0110"))
-(expect [1 1 2] (partition-of "0100"))
-(expect [3 9 2] (partition-of "00011111111100"))
-
 ;----- Construct Pack Descriptions Of Partitions
 (expect "1-4" (pack-description [1 4]))
 (expect "1" (pack-description [1]))
