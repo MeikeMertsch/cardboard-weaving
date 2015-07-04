@@ -18,6 +18,3 @@
 (expect [[1] [2 3] [4]] (row-of-pattern "0110"))
 (expect [[1 3] [4 12] [13 14]] (row-of-pattern "00011111111100"))
 
-;----- Construct Pack Descriptions Of Partitions
-(expect "1-4" (pack-description [1 4]))
-(expect "1" (pack-description [1]))

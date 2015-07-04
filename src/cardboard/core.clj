@@ -3,6 +3,9 @@
   (:require [cardboard.font_interpreter :refer :all])
   (:require [cardboard.font :refer :all]))
 
+(defn pack-description [start-end-coll]
+  (apply str (interpose "-" start-end-coll)))
+
 (defn instructions-for [string]
   (->> (pattern-of string)
        clojure.string/split-lines
@@ -17,3 +20,5 @@
 
 (defn save-instructions-for [string]
   (save (convert-instructions (instructions-for string))))
+
+
