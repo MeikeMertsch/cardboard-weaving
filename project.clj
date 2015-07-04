@@ -4,4 +4,5 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [expectations "2.1.2"]])
+                 [expectations "2.1.2"]]
+  :plugins [[lein-autoexpect "1.6.0"]])
