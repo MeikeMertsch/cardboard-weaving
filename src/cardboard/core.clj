@@ -4,19 +4,6 @@
   (:require [cardboard.font_interpreter :refer :all])
   (:require [cardboard.font :refer :all]))
 
-(defn pack-description [start-end-coll]
-  (apply str (interpose "-" start-end-coll)))
-
-(defn card-pack-row-of [row-partition]
-  (->> (map list (map inc (reductions + (cons 0 row-partition)))
-                 (reductions + row-partition))
-       (map distinct)
-       (map pack-description)))
-
-(defn row-of-pattern [pattern-row]
-  (->> (partition-of pattern-row)
-       card-pack-row-of))
-
 (defn instructions-for [string]
   (->> (pattern-of string)
        clojure.string/split-lines
