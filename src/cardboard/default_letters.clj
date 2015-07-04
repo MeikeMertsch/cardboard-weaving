@@ -382,6 +382,25 @@
 000000000
 000000000")
 
+(def uc-s
+"00000000
+00000000
+00....00
+0.......
+..0000..
+..000000
+.....000
+0......0
+0000....
+000000..
+..0000..
+.......0
+00....00
+00000000
+00000000
+00000000
+00000000")
+
 (def offset
   "0
   0
@@ -401,8 +420,6 @@
   0
   0")
 
-
-
 (def mapping
   {"a" lc-a "b" lc-b
-   "A" uc-a "B" uc-b "C" uc-c "D" uc-d "E" uc-e "F" uc-f "G" uc-g "H" uc-h "I" uc-i "J" uc-j "K" uc-k "L" uc-l "M" uc-m "N" uc-n "O" uc-o "P" uc-p "Q" uc-q "R" uc-r})
+   "A" uc-a "B" uc-b "C" uc-c "D" uc-d "E" uc-e "F" uc-f "G" uc-g "H" uc-h "I" uc-i "J" uc-j "K" uc-k "L" uc-l "M" uc-m "N" uc-n "O" uc-o "P" uc-p "Q" uc-q "R" uc-r "S" uc-s})
