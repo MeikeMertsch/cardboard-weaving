@@ -32,4 +32,4 @@
        clojure.string/join))
 
 (defn save-instructions-for [string]
-  (spit "instructions.txt" (convert-instructions (instructions-for string))))
+  (save (convert-instructions (instructions-for string))))
