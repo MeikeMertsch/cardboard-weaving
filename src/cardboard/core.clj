@@ -5,8 +5,8 @@
   (->> (partition-by identity pattern-row)
        (map count)))
 
-(defn pack-description [coll]
-  (apply str (interpose "-" coll)))
+(defn pack-description [start-end-coll]
+  (apply str (interpose "-" start-end-coll)))
 
 (defn card-pack-row-of [row-partition]
   (->> (map list (map inc (reductions + (cons 0 row-partition)))
