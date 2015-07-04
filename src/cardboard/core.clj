@@ -1,5 +1,4 @@
 (ns cardboard.core
-  (:require [cardboard.default_letters :refer :all])
   (:require [cardboard.saver :refer :all])
   (:require [cardboard.font_interpreter :refer :all])
   (:require [cardboard.font :refer :all]))
