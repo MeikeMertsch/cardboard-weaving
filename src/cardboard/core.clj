@@ -8,15 +8,7 @@
   (->> (pattern-of string)
        clojure.string/split-lines
        (map clojure.string/trim)
-       (map row-of-pattern)
-       (map #(map pack-description %))))
-
-(defn convert-instructions [instructions]
-  (->> (map #(clojure.string/join " " %) instructions)
-       (interpose "\n")
-       clojure.string/join))
+       (map row-of-pattern)))
 
 (defn save-instructions-for [string]
   (save (convert-instructions (instructions-for string))))
-
-
