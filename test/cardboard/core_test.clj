@@ -2,10 +2,6 @@
   (:require [expectations :refer :all]
             [cardboard.core :refer :all]))
 
-;----- Construct Pack Descriptions Of Partitions
-(expect "1-4" (pack-description [1 4]))
-(expect "1" (pack-description [1]))
-
 ;----- Instructions For A Letters
 (def char-a-instructions
   '(("1-12" "13" "14-17")
