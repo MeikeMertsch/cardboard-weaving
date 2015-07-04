@@ -1,5 +1,6 @@
 (ns cardboard.core
-  (:require [cardboard.default_letters :refer :all]))
+  (:require [cardboard.default_letters :refer :all])
+  (:require [cardboard.font :refer :all]))
 
 (defn partition-of [pattern-row]
   (->> (partition-by identity pattern-row)

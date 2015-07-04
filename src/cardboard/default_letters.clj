@@ -32,11 +32,3 @@
 
 (def mapping
   {"a" lc-a "b" char-b "A" uc-a})
-
-(defn pattern-of [string]
-  (->> (seq string)
-       (map str)
-       (map mapping)
-       (interpose offset)
-       concat
-       (apply str)))
