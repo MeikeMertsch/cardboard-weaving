@@ -38,6 +38,4 @@
 (expect-let [placeholder (save-instructions-for "ab")] (str char-a-string "\n1-14\n" char-b-string) (slurp "instructions.txt"))
 
 ;----- Distinguish Between Uppercase Letters And Lowercase Letters
-(instructions-for "a")
-(instructions-for "A")
 (expect false? (= (instructions-for "a") (instructions-for "A")))
