@@ -43,7 +43,6 @@
 (expect (concat char-a-instructions '(("1-14")) char-b-instructions) (instructions-for "ab"))
 
 ;----- Converting Instructions To String
-
 (def char-a-string "1-12 13 14-17\n1-6 7-13 14-17\n1-5 6-12 13-17\n1-5 6-7 8 9 10-11 12-13 14-17\n1-5 6-7 8 9-10 11 12-13 14-17\n1-5 6-7 8-9 10-13 14-17\n1-6 7 8-10 11-12 13-17")
 (expect char-a-string (convert-instructions (instructions-for "a")))
 
