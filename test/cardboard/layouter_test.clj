@@ -9,3 +9,8 @@
 ;----- Converting Instructions To String
 (def char-a-string "1-12 13 14-17\n1-6 7-13 14-17")
 (expect char-a-string (convert-instructions '(((1 12) (13) (14 17)) ((1 6) (7 13) (14 17)))))
+
+;----- Finish Layout For Saving
+(def header "Pattern for\n")
+(def pattern-string "Example\n")
+(expect (str header pattern-string char-a-string) (finish-layout "Example" '(((1 12) (13) (14 17)) ((1 6) (7 13) (14 17)))))
