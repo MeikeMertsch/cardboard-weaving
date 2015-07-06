@@ -12,4 +12,10 @@
 (defn finish-layout [pattern-string instructions]
   (let [header "Pattern for"
         new-line "\n"]
-    (apply str header new-line pattern-string new-line (convert-instructions instructions))))
+    (apply str
+           header
+           new-line
+           pattern-string
+           new-line
+           new-line
+           (convert-instructions instructions))))

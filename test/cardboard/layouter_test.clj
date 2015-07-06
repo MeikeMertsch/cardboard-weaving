@@ -12,5 +12,5 @@
 
 ;----- Finish Layout For Saving
 (def header "Pattern for\n")
-(def pattern-string "Example\n")
+(def pattern-string "Example\n\n")
 (expect (str header pattern-string char-a-string) (finish-layout "Example" '(((1 12) (13) (14 17)) ((1 6) (7 13) (14 17)))))
