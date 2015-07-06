@@ -1,6 +1,7 @@
 # ReadMe
 
-Clojure project for creating lettered cardboard weaving patterns to exercise my clojure knowledge 
+Clojure project for creating double-face tablet weaving patterns to exercise my clojure knowledge.
+Here's some information about card board or tablet weaving: https://en.wikipedia.org/wiki/Tablet_weaving
 
 ## License
 
