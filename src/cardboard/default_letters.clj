@@ -1009,6 +1009,25 @@
 0
 0")
 
+(def space
+  "000
+000
+000
+000
+000
+000
+000
+000
+000
+000
+000
+000
+000
+000
+000
+000
+000")
+
 (def mapping
-  {"a" lc-a "b" lc-b "c" lc-c "d" lc-d "e" lc-e "f" lc-f "g" lc-g "h" lc-h "i" lc-i "j" lc-j "k" lc-k "l" lc-l "m" lc-m "n" lc-n "o" lc-o "p" lc-p "q" lc-q "r" lc-r "s" lc-s "t" lc-t "u" lc-u "v" lc-v "w" lc-w "x" lc-x "y" lc-y "z" lc-z
+  {"a" lc-a "b" lc-b "c" lc-c "d" lc-d "e" lc-e "f" lc-f "g" lc-g "h" lc-h "i" lc-i "j" lc-j "k" lc-k "l" lc-l "m" lc-m "n" lc-n "o" lc-o "p" lc-p "q" lc-q "r" lc-r "s" lc-s "t" lc-t "u" lc-u "v" lc-v "w" lc-w "x" lc-x "y" lc-y "z" lc-z " " space
    "A" uc-a "B" uc-b "C" uc-c "D" uc-d "E" uc-e "F" uc-f "G" uc-g "H" uc-h "I" uc-i "J" uc-j "K" uc-k "L" uc-l "M" uc-m "N" uc-n "O" uc-o "P" uc-p "Q" uc-q "R" uc-r "S" uc-s "T" uc-t "U" uc-u "V" uc-v "W" uc-w "X" uc-x "Y" uc-y "Z" uc-z})
