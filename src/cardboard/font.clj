@@ -21,5 +21,3 @@
        (map letter-patterns->matrix)
        (map turn-pattern-90-deg)
        (apply concat)))
-
-(pattern-of " ")
