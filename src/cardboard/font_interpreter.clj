@@ -1,7 +1,7 @@
 (ns cardboard.font_interpreter
   (:require [expectations :refer :all]))
 
-(defn partition-of [pattern-row]
+(defn pack-sizes [pattern-row]
   (->> (partition-by identity pattern-row)
        (map count)))
 
@@ -11,6 +11,5 @@
        (map distinct)))
 
 (defn row-of-pattern [pattern-row]
-  (->> (partition-of pattern-row)
+  (->> (pack-sizes pattern-row)
        card-pack-row-of))
-
