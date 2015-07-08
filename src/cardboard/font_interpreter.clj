@@ -1,5 +1,6 @@
 (ns cardboard.font_interpreter
-  (:require [expectations :refer :all]))
+  (:require [expectations :refer :all]
+            [cardboard.font :refer :all]))
 
 (defn pack-sizes [pattern-row]
   (->> (partition-by identity pattern-row)
@@ -13,3 +14,10 @@
 (defn row-of-pattern [pattern-row]
   (->> (pack-sizes pattern-row)
        card-pack-row-of))
+
+(defn instructions-for [string]
+  (->> (pattern-of string)
+       clojure.string/split-lines
+       (map clojure.string/trim)
+       (map row-of-pattern)))
+

@@ -22,14 +22,7 @@
     ((1 5) (6 11) (12 17))
     ((1 6) (7 10) (11 17))))
 
-(expect char-a-instructions (instructions-for "a"))
-(expect char-b-instructions (instructions-for "b"))
-(expect (concat char-a-instructions '(((1 17))) char-b-instructions) (instructions-for "ab"))
-
 ;----- Writing The Instructions To A File
 (expect-let [placeholder (save-instructions-for "a")] (finish-layout "a" char-a-instructions) (slurp "instructions.txt"))
 (expect-let [placeholder (save-instructions-for "b")] (finish-layout "b" char-b-instructions) (slurp "instructions.txt"))
 (expect-let [placeholder (save-instructions-for "ab")] (finish-layout "ab" (concat char-a-instructions '(((1 17))) char-b-instructions)) (slurp "instructions.txt"))
-
-;----- Distinguish Between Uppercase Letters And Lowercase Letters
-(expect false? (= (instructions-for "a") (instructions-for "A")))
