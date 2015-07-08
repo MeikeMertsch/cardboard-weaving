@@ -5,8 +5,8 @@
   (->> (seq string)
        (map str)))
 
-(defn letter-patterns->matrix [letters]
-  (->> (clojure.string/split-lines letters)
+(defn letter-patterns->matrix [letter]
+  (->> (clojure.string/split-lines letter)
        (map clojure.string/trim)
        (map str->chars)))
 
