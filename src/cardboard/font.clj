@@ -5,10 +5,13 @@
   (->> (seq string)
        (map str)))
 
-(defn turn-pattern-90-deg [letters]
+(defn letter-patterns->matrix [letters]
   (->> (clojure.string/split-lines letters)
        (map clojure.string/trim)
-       (map str->chars)
+       (map str->chars)))
+
+(defn turn-pattern-90-deg [letters]
+  (->> (letter-patterns->matrix letters)
        (apply map list)
        (map reverse)
        (map #(apply str %))
