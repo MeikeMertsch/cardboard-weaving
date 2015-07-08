@@ -17,7 +17,5 @@
 
 (defn instructions-for [string]
   (->> (pattern-of string)
-       clojure.string/split-lines
-       (map clojure.string/trim)
        (map row-of-pattern)))
 

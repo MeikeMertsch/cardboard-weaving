@@ -24,4 +24,7 @@
        (interpose letter-space)
        (map turn-pattern-90-deg)
        (interpose "\n")
-       (apply str)))
+       (apply str)
+       clojure.string/split-lines
+       (map clojure.string/trim)
+       (map str->chars)))
