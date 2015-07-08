@@ -10,8 +10,8 @@
        (map clojure.string/trim)
        (map str->chars)))
 
-(defn turn-pattern-90-deg [letters]
-  (->> (letter-patterns->matrix letters)
+(defn turn-pattern-90-deg [letter]
+  (->> (letter-patterns->matrix letter)
        (apply map list)
        (map reverse)
        (map #(apply str %))
