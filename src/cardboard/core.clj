@@ -11,4 +11,6 @@
        (map row-of-pattern)))
 
 (defn save-instructions-for [string]
-  (save (finish-layout string (instructions-for string))))
+  (->> (instructions-for string)
+       (finish-layout string)
+       save))
