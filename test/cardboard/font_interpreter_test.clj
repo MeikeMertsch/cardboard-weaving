@@ -5,8 +5,8 @@
 
 ;----- Row Partitions
 (expect [4] (pack-sizes (repeat 4 "0")))
-(expect [1 2 1] (pack-sizes (concat '("0") (repeat 2 "1") '("0"))))
-(expect [1 1 2] (pack-sizes (concat '("0") '("1") (repeat 2 "0"))))
+(expect [1 2 1] (pack-sizes (concat (repeat 1 "0") (repeat 2 "1") (repeat 1 "0"))))
+(expect [1 1 2] (pack-sizes (concat (repeat 1 "0") (repeat 1 "1") (repeat 2 "0"))))
 (expect [3 9 2] (pack-sizes (concat (repeat 3 "0") (repeat 9 "1") (repeat 2 "0"))))
 
 ;----- Partitions To Card Pack Rows
@@ -16,7 +16,7 @@
 
 ;----- Interprete Pattern Row
 (expect [[1 4]] (row-of-pattern (repeat 4 "0")))
-(expect [[1] [2 3] [4]] (row-of-pattern (concat '("0") (repeat 2 "1") '("0"))))
+(expect [[1] [2 3] [4]] (row-of-pattern (concat (repeat 1 "0") (repeat 2 "1") (repeat 1 "0"))))
 (expect [[1 3] [4 12] [13 14]] (row-of-pattern (concat (repeat 3 "0") (repeat 9 "1") (repeat 2 "0"))))
 
 ;----- Instructions For Letters
