@@ -1,7 +1,7 @@
 (ns cardboard.core
   (:require [cardboard.saver :refer :all])
   (:require [cardboard.font_interpreter :refer :all])
-  (:require [cardboard.font :refer :all])
+  (:require [cardboard.font :refer :all]) ;TODO: shouldn't know this
   (:require [cardboard.layouter :refer :all]))
 
 (defn instructions-for [string]
