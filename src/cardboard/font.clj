@@ -14,10 +14,13 @@
   (->> (apply map list letter)
        (map reverse)))
 
-(defn pattern-of [string]
-  (->> (str->chars string)
-       (map char->pattern)
+(defn create-the-pattern [letters]
+  (->> (map char->pattern letters)
        (interpose letter-space)
        (map letter-patterns->matrix)
-       (map turn-pattern-90-deg)
+       (map turn-pattern-90-deg)))
+
+(defn pattern-of [string]
+  (->> (str->chars string)
+       (create-the-pattern)
        (apply concat)))
