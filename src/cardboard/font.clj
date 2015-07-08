@@ -11,20 +11,15 @@
        (map str->chars)))
 
 (defn turn-pattern-90-deg [letter]
-  (->> (letter-patterns->matrix letter)
-       (apply map list)
-       (map reverse)
-       (map #(apply str %))
-       (interpose "\n")
-       (apply str)))
+  (->> (apply map list letter)
+       (map reverse)))
 
 (defn pattern-of [string]
   (->> (str->chars string)
        (map char->pattern)
        (interpose letter-space)
+       (map letter-patterns->matrix)
        (map turn-pattern-90-deg)
-       (interpose "\n")
-       (apply str)
-       clojure.string/split-lines
-       (map clojure.string/trim)
-       (map str->chars)))
+       (apply concat)))
+
+(pattern-of " ")

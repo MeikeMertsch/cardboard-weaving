@@ -16,4 +16,4 @@
 (expect (repeat 17 '("0")) (letter-patterns->matrix letter-space))
 
 ;----- Turn Letters By 90 Degrees
-(expect "00000000000000000" (turn-pattern-90-deg letter-space))
+(expect (list (repeat 17 "0")) (turn-pattern-90-deg (letter-patterns->matrix letter-space)))
