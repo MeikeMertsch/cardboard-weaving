@@ -9,6 +9,13 @@ http://www.cs.vassar.edu/~capriest/dfdt.html
 
 http://www.cs.arizona.edu/patterns/weaving/articles/hl2_tab2.pdf
 
+# Set Up 
+
+You'll now need Seesaw 1.4.5 in your classpath, so download it from here:
+
+https://github.com/daveray/seesaw/releases/tag/1.4.5
+
+Then extract the zip/tar.gz and point your classpath to it, please.
 
 ## License
 
