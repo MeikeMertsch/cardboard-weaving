@@ -10,7 +10,7 @@
        clojure.string/join))
 
 (defn finish-layout [pattern-string instructions]
-  (let [header "Pattern for"
+  (let [header "Pattern for" ;TODO: Put this string somewhere safe
         new-line "\n"]
     (apply str
            header
