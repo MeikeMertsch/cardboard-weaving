@@ -4,7 +4,6 @@
   (:require [cardboard.layouter :refer :all]))
 
 (defn save-instructions-for
-  ([string] (save-instructions-for string "instructions.txt")) ;TODO: Get rid of this logic again as not needed anymore.
   ([string file] (->> (instructions-for string)
                       (finish-layout string)
                       (save file))))
