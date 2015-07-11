@@ -1,6 +1,7 @@
 (ns cardboard.seesaw
   (:gen-class)
   (:require [seesaw.core :refer :all])
+  (:require [seesaw.chooser :refer :all])
   (:require [cardboard.core :refer :all]))
 
 (native!)
@@ -8,8 +9,9 @@
 (def input-for-string (text "What do you want to have on your belt?"))
 
 (defn send-string->core [action]
-  (save-instructions-for (value input-for-string))
-  (alert action "Thanks!\nYou'll find your pattern in \"Instructions.txt\""))
+  (->> (choose-file :type :save)
+       (save-instructions-for (value input-for-string)))
+  (alert action "Thanks!\nYou saved your pattern"))
 
 (def send-button (button :text "Generate pattern"))
 
