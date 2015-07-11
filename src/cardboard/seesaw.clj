@@ -1,21 +1,35 @@
 (ns cardboard.seesaw
   (:gen-class)
-  (:require [seesaw.core :as seesaw])
-  (:require [seesaw.font :as font])
-  (:require [cardboard.font :refer :all]))
+  (:require [seesaw.core :refer :all])
+  (:require [cardboard.core :refer :all]))
 
-(seesaw/native!)
+(native!)
 
-(def hagrid-string (apply str (interpose "\n" (concat (map #(apply str %) (pattern-of "Hagrid"))))))
+(def input-for-string (text "What do you want to have on your belt?"))
 
-(def mytext (seesaw/text :id :hagrid :text hagrid-string :multi-line? true :font (font/font "Courier")))
+(defn send-string->core [action]
+  (save-instructions-for (value input-for-string))
+  (alert action "Thanks!\nYou'll find your pattern in \"Instructions.txt\""))
 
-(def window
-  (seesaw/frame
+(def send-button (button :text "Generate pattern"))
+
+(defn keypress [e]
+  (let [k (.getKeyChar e)]
+    (if (= k \newline)
+      (send-string->core e))))
+
+(listen send-button :action send-string->core)
+(listen input-for-string :key-typed keypress)
+
+(def form-for-saving (grid-panel :columns 2
+    :items [input-for-string
+            send-button]))
+
+(def pgm-window
+  (frame
     :title "Cardboard Weaving Patterns"
-    :content mytext
-    :width 400
-    :height 600))
+    :content form-for-saving
+    :width 600))
 
-(seesaw/show! window)
+(show! pgm-window)
 
