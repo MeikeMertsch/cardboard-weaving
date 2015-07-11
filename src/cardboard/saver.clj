@@ -1,4 +1,4 @@
 (ns cardboard.saver)
 
-(defn save [instructions]
-  (spit "instructions.txt" instructions))
+(defn save [file instructions]
+  (spit file instructions))
