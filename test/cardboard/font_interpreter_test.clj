@@ -1,6 +1,7 @@
 (ns cardboard.font-interpreter-test
   (:require [expectations :refer :all]
             [cardboard.font_interpreter :refer :all]
+            [cardboard.pattern :refer :all]
             [cardboard.common-test-data :refer :all]))
 
 ;----- Row Partitions
@@ -20,9 +21,9 @@
 (expect [[1 3] [4 12] [13 14]] (row-of-pattern (concat (repeat 3 "0") (repeat 9 "1") (repeat 2 "0"))))
 
 ;----- Instructions For Letters
-(expect char-a-instructions (instructions-for "a"))
-(expect char-b-instructions (instructions-for "b"))
-(expect (concat char-a-instructions '(((1 17))) char-b-instructions) (instructions-for "ab"))
+(expect char-a-instructions (instructions-for (pattern-of "a")))
+(expect char-b-instructions (instructions-for (pattern-of "b")))
+(expect (concat char-a-instructions '(((1 17))) char-b-instructions) (instructions-for (pattern-of "ab")))
 
 ;----- Distinguish Between Uppercase Letters And Lowercase Letters
-(expect false? (= (instructions-for "a") (instructions-for "A")))
+(expect false? (= (instructions-for (pattern-of "a")) (instructions-for (pattern-of "A"))))

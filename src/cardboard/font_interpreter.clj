@@ -15,7 +15,6 @@
   (->> (pack-sizes pattern-row)
        card-pack-row-of))
 
-(defn instructions-for [string]
-  (->> (pattern-of string)
-       (map row-of-pattern)))
+(defn instructions-for [pattern]                             ;TODO: instead of the string give it the pattern
+  (map row-of-pattern pattern))
 
