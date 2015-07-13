@@ -1,4 +1,4 @@
-(ns cardboard.layouter)
+(ns cardboard.print_layouter)
 
 (defn pack-description [start-end-coll]
   (apply str (interpose "-" start-end-coll)))
