@@ -5,7 +5,7 @@
   (:require [cardboard.core :refer :all]))
 
 (native!)
-
+; TODO: Take care of strings properly
 
 ;----- Items
 (def input-for-string (text "Text to be turned into a pattern"))

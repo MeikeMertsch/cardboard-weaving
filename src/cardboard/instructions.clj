@@ -1,4 +1,5 @@
 (ns cardboard.instructions)
+;TODO: naming
 
 (defn pack-sizes [pattern-row]
   (->> (partition-by identity pattern-row)

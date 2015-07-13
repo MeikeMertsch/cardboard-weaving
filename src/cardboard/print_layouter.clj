@@ -1,7 +1,7 @@
 (ns cardboard.print_layouter
   (:require [cardboard.instructions :refer :all]))
 
-(defn pattern->instructions [pattern]
+(defn pattern->instructions [pattern] ;----- TODO: This might not be right, here
   (map row-of-pattern pattern))
 
 (defn pack-description [start-end-coll]
@@ -14,7 +14,7 @@
        clojure.string/join))
 
 (defn string-n-pattern->layout [string pattern]
-  (let [instructions (pattern->instructions pattern)
+  (let [instructions (pattern->instructions pattern) ;TODO: This feels odd
         header "Pattern for" ;TODO: Put this string somewhere safe
         new-line "\n"]
     (apply str header
