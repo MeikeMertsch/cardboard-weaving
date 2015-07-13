@@ -21,12 +21,12 @@
 (expect [[1 3] [4 12] [13 14]] (row-of-pattern (concat (repeat 3 "0") (repeat 9 "1") (repeat 2 "0"))))
 
 ;----- Instructions For Letters
-(expect char-a-instructions (pattern->instructions (pattern-of "a")))
-(expect char-b-instructions (pattern->instructions (pattern-of "b")))
-(expect (concat char-a-instructions '(((1 17))) char-b-instructions) (pattern->instructions (pattern-of "ab")))
+(expect char-a-instructions (pattern->instructions (string->pattern "a")))
+(expect char-b-instructions (pattern->instructions (string->pattern "b")))
+(expect (concat char-a-instructions '(((1 17))) char-b-instructions) (pattern->instructions (string->pattern "ab")))
 
 ;----- Distinguish Between Uppercase Letters And Lowercase Letters
-(expect false? (= (pattern->instructions (pattern-of "a")) (pattern->instructions (pattern-of "A"))))
+(expect false? (= (pattern->instructions (string->pattern "a")) (pattern->instructions (string->pattern "A"))))
 
 
 

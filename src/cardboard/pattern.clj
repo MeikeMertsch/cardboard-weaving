@@ -20,7 +20,7 @@
        (map letter-patterns->matrix)
        (map turn-pattern-90-deg)))
 
-(defn pattern-of [string]
+(defn string->pattern [string]
   (->> (str->chars string)
        (create-the-pattern)
        (apply concat)))

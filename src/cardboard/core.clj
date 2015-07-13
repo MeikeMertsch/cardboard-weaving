@@ -4,7 +4,7 @@
   (:require [cardboard.print_layouter :refer :all]))
 
 (defn save-instructions-for [string file]
-  (->> (pattern-of string)
+  (->> (string->pattern string)
        (pattern->instructions)
        (finish-layout string)
        (save file)))

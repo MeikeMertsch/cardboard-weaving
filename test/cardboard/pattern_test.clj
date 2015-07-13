@@ -9,7 +9,7 @@
 (expect '(" ") (str->chars " "))
 
 ;----- Pattern Of A String
-(expect (repeat 3 (repeat 17 "0")) (pattern-of " "))
+(expect (repeat 3 (repeat 17 "0")) (string->pattern " "))
 
 ;----- Turn The Pattern Into A Matrix
 (expect (repeat 17 '("0" "0" "0")) (letter-patterns->matrix space))
