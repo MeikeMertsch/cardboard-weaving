@@ -5,9 +5,9 @@
   (->> (partition-by identity pattern-row)
        (map count)))
 
-(defn card-pack-row-of [row-partition]
-  (->> (map list (map inc (reductions + (cons 0 row-partition)))
-            (reductions + row-partition))
+(defn card-pack-row-of [pack-sizes-for-row]
+  (->> (map list (map inc (reductions + (cons 0 pack-sizes-for-row)))
+            (reductions + pack-sizes-for-row))
        (map distinct)))
 
 (defn row-of-pattern [pattern-row]
