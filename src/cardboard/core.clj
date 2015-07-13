@@ -6,6 +6,6 @@
 (defn save-instructions-for [string file-path]
   (->> (string->pattern string)
        (pattern->instructions)
-       (string-n-instructions->layout string)
+       (string-n-pattern->layout string)
        (save file-path)))
 
