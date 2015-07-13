@@ -9,11 +9,9 @@
 (expect '(" ") (str->chars " "))
 
 ;----- Pattern Of A String
-(expect (repeat 3 (repeat 17 "0")) (string->pattern " "))
+(expect (list (repeat 17 (repeat 3 "0"))) (string->pattern " "))
+(expect (list (repeat 17 (repeat 3 "0")) (repeat 17 (repeat 1 "0")) (repeat 17 (repeat 3 "0"))) (string->pattern "  "))
 
 ;----- Turn The Pattern Into A Matrix
 (expect (repeat 17 '("0" "0" "0")) (letter-patterns->matrix space))
 (expect (repeat 17 '("0")) (letter-patterns->matrix letter-space))
-
-;----- Turn Letters By 90 Degrees
-(expect (list (repeat 17 "0")) (turn-pattern-90-deg (letter-patterns->matrix letter-space)))

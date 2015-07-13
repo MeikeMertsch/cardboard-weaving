@@ -10,17 +10,11 @@
        (map clojure.string/trim)
        (map str->chars)))
 
-(defn turn-pattern-90-deg [letter] ;TODO: This goes in the layouter
-  (->> (apply map list letter)
-       (map reverse)))
-
 (defn create-the-pattern [letters]
   (->> (map char->pattern letters)
        (interpose letter-space)
-       (map letter-patterns->matrix)
-       (map turn-pattern-90-deg))) ;TODO: Pull this out
+       (map letter-patterns->matrix)))
 
 (defn string->pattern [string]
   (->> (str->chars string)
-       (create-the-pattern)
-       (apply concat)))
+       (create-the-pattern)))
