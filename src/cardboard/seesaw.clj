@@ -6,22 +6,10 @@
 
 (native!)
 
+
+;----- Items
 (def input-for-string (text "Text to be turned into a pattern"))
-
-(defn send-string->core [action]
-  (->> (choose-file :type :save)
-       (save-instructions-for (value input-for-string)))
-  (alert action "Thanks!\nYou saved your pattern"))
-
 (def send-button (button :text "Generate pattern"))
-
-(defn keypress [e]
-  (let [k (.getKeyChar e)]
-    (if (= k \newline)
-      (send-string->core e))))
-
-(listen send-button :action send-string->core)
-(listen input-for-string :key-typed keypress)
 
 (def form-for-saving (grid-panel :columns 2
     :items [input-for-string
@@ -33,5 +21,23 @@
     :content form-for-saving
     :width 600))
 
+
+;----- Actions
+(defn send-string->core [action]
+  (->> (choose-file :type :save)
+       (save-instructions-for (value input-for-string)))
+  (alert action "Thanks!\nYou saved your pattern"))
+
+(defn keypress [e]
+  (let [k (.getKeyChar e)]
+    (if (= k \newline)
+      (send-string->core e))))
+
+
+(listen send-button :action send-string->core)
+(listen input-for-string :key-typed keypress)
+
+
+;----- Showing The UI
 (show! pgm-window)
 
