@@ -6,7 +6,7 @@
 
 (native!)
 
-(def input-for-string (text "What do you want to have on your belt?"))
+(def input-for-string (text "Text to be turned into a pattern"))
 
 (defn send-string->core [action]
   (->> (choose-file :type :save)
