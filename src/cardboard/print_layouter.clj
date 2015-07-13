@@ -13,13 +13,13 @@
        (interpose "\n")
        clojure.string/join))
 
-(defn string-n-pattern->layout [pattern-string pattern]
+(defn string-n-pattern->layout [string pattern]
   (let [instructions (pattern->instructions pattern)
         header "Pattern for" ;TODO: Put this string somewhere safe
         new-line "\n"]
     (apply str header
                new-line
-               pattern-string
+               string
                new-line
                new-line
                (convert-instructions instructions))))
