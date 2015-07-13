@@ -1,4 +1,4 @@
-(ns cardboard.font
+(ns cardboard.pattern
   (:require [cardboard.default_letters :refer :all]))
 
 (defn str->chars [string]

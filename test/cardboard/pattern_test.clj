@@ -1,6 +1,6 @@
-(ns cardboard.font-test
+(ns cardboard.pattern-test
   (:require [expectations :refer :all]
-            [cardboard.font :refer :all]
+            [cardboard.pattern :refer :all]
             [cardboard.default_letters :refer :all]))
 
 ;----- Splitting A String

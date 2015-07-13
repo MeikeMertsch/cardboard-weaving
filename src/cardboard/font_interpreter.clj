@@ -1,6 +1,6 @@
 (ns cardboard.font_interpreter
   (:require [expectations :refer :all]
-            [cardboard.font :refer :all]))
+            [cardboard.pattern :refer :all]))
 
 (defn pack-sizes [pattern-row]
   (->> (partition-by identity pattern-row)
