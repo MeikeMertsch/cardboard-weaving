@@ -4,7 +4,7 @@
 (defn pack-description [start-end-coll]
   (apply str (interpose "-" start-end-coll)))
 
-(defn convert-instructions [instructions]
+(defn convert-instructions [instructions]                    ;TODO: Look through with James
   (->> (map #(map pack-description %) instructions)
        (map #(clojure.string/join " " %))
        (interpose "\n")
