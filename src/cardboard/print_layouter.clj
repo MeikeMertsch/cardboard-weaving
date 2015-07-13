@@ -1,7 +1,7 @@
 (ns cardboard.print_layouter
   (:require [cardboard.instructions :refer :all]))
 
-(defn pattern->instructions [pattern]                             ;TODO: instead of the string give it the pattern
+(defn pattern->instructions [pattern]
   (map row-of-pattern pattern))
 
 (defn pack-description [start-end-coll]
