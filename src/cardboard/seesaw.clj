@@ -27,16 +27,7 @@
 (def style-filled (sg/style :background (scolor/color :black)))
 (def style-unfilled (sg/style :background (scolor/color :white)))
 
-;----- Actions
-(defn send-string->core [file action]
-  (save-instructions-for (value input-for-string) file)
-  (alert action "Thanks!\nYou saved your pattern"))
-
-(defn handle-enter [action]
-  (->> (choose-file :type :save)
-       (#(if (not (nil? %))
-          (send-string->core % action)))))
-
+;----- Preview
 (defn row-rectangles [row row-number]
   (for [column-number (range (count row))
         :let [cell (nth row column-number)]]
@@ -60,16 +51,25 @@
        pattern-in-rows
        preview))
 
+;----- Submitting The String
+(defn send-string->core [file action]
+  (save-instructions-for (value input-for-string) file)
+  (alert action "Thanks!\nYou saved your pattern"))
+
+(defn handle-submit [action]
+  (->> (choose-file :type :save)
+       (#(if (not (nil? %))
+          (send-string->core % action)))))
+
 (defn keypress [caller]
   (let [key (.getKeyChar caller)]
     (if (= key \newline)
-      (handle-enter caller))))
+      (handle-submit caller))))
 
-(listen send-button :action handle-enter)
+;----- Listeners
+(listen send-button :action handle-submit)
 (listen input-for-string :key-pressed keypress)
 (listen input-for-string :key handle-string-changed)
 
-
 ;----- Showing The UI
 (show! pgm-window)
-
