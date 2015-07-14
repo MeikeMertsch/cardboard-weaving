@@ -25,8 +25,6 @@
 
 
 
-
-
 (def form-for-saving (grid-panel :columns 2
                                  :items [input-for-string
                                          send-button
@@ -44,11 +42,31 @@
        (save-instructions-for (value input-for-string)))
   (alert action "Thanks!\nYou saved your pattern"))
 
+(defn row-rectangles [row row-number]
+  (for [column-number (range (count row))
+        :let [column (nth row column-number)]]
+    (sg/rect (* 6 column-number) (* 4 row-number) 6 4)))
+
+(defn rectangles [pattern]
+  (->> (for [row-number (range (count pattern))
+             :let [row (nth pattern row-number)]]
+         (row-rectangles row row-number))
+       (apply concat)))
+
+(defn paint [rects c g]
+  (doseq [rect rects]
+    (sg/draw g rect filled)))
+
+(defn preview [pattern-in-rows]
+  (config! a-canvas :paint #(paint (rectangles pattern-in-rows) %1 %2)))
+
 (defn keypress [e]
   (let [key (.getKeyChar e)]
     (if (= key \newline)
-      (send-string->core e))))
+      (send-string->core e)
+      (preview (pattern-in-rows (value input-for-string))))))
 
+;(pattern-in-rows (value input-for-string))
 
 (listen send-button :action send-string->core)
 (listen input-for-string :key-typed keypress)
