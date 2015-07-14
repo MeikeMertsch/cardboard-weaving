@@ -10,3 +10,6 @@
 (expect-let [placeholder (save-instructions-for "a" core-test-file)] (#(string-n-pattern->layout % (string->pattern %)) "a") (slurp core-test-file))
 (expect-let [placeholder (save-instructions-for "b" core-test-file)] (#(string-n-pattern->layout % (string->pattern %)) "b") (slurp core-test-file))
 (expect-let [placeholder (save-instructions-for "ab" core-test-file)] (#(string-n-pattern->layout % (string->pattern %)) "ab") (slurp core-test-file))
+
+;----- Give Me The Pattern To A String
+(expect (string->pattern "ab") (pattern-for-string "ab"))
