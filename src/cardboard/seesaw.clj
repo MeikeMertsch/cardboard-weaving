@@ -14,11 +14,12 @@
 (def send-button (button :text "Generate pattern"))
 
 
-(def my-style (sg/style :background (scolor/color :black)))
+(def filled (sg/style :background (scolor/color :black)))
+(def unfilled (sg/style :background (scolor/color :white)))
 (def my-rect (sg/rect 10 10 6 4))
 
 (defn my-draw [c g]
-  (sg/draw g my-rect my-style))
+  (sg/draw g my-rect filled))
 
 (def a-canvas (canvas :paint my-draw))
 
