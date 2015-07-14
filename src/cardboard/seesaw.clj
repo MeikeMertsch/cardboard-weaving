@@ -48,7 +48,7 @@
          (row-rectangles row row-number))
        (apply concat)))
 
-(defn paint [rects c g]
+(defn paint [rects _ g]
   (doseq [rect rects]
     (sg/draw g rect style-filled)))
 
