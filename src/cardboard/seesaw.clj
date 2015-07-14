@@ -25,13 +25,20 @@
     :width 600))
 
 (def style-filled (sg/style :background (scolor/color :black)))
-(def style-unfilled (sg/style :background (scolor/color :white)))
+(def style-unfilled (sg/style :background nil))
 
 ;----- Preview
+(defn cell-state [cell]
+  (if (= cell ".")
+      style-filled
+      style-unfilled))
+
 (defn row-rectangles [row row-number]
   (for [column-number (range (count row))
-        :let [cell (nth row column-number)]]
-    (sg/rect (* 6 column-number) (* 4 row-number) 6 4)))
+        :let [cell (nth row column-number)]
+        :let [rectangle (sg/rect (* 4 column-number) (* 2 row-number) 4 2)]
+        :let [style (cell-state cell)]]
+    [rectangle style]))
 
 (defn rectangles [pattern]
   (->> (for [row-number (range (count pattern))
@@ -40,8 +47,8 @@
        (apply concat)))
 
 (defn paint [rects _ g]
-  (doseq [rect rects]
-    (sg/draw g rect style-filled)))
+  (doseq [[rect style] rects]
+    (sg/draw g rect style)))
 
 (defn preview [pattern-in-rows]
   (config! preview-canvas :paint #(paint (rectangles pattern-in-rows) %1 %2)))
