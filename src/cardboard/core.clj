@@ -9,5 +9,7 @@
        (save file-path)))
 
 (defn pattern-in-rows [string]
-  (->> (string->pattern string)
-       (apply map concat)))
+  (if (= "" string)
+    '(())
+    (->> (string->pattern string)
+           (apply map concat))))

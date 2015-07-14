@@ -13,3 +13,5 @@
 
 ;----- Give Me The Pattern To A String
 (expect (repeat 17 (repeat 7 "0")) (pattern-in-rows "  "))
+(expect '(()) (pattern-in-rows ""))
+
