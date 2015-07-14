@@ -12,23 +12,11 @@
 ;----- Items
 (def input-for-string (text "Text to be turned into a pattern"))
 (def send-button (button :text "Generate pattern"))
-
-
-(def filled (sg/style :background (scolor/color :black)))
-(def unfilled (sg/style :background (scolor/color :white)))
-(def my-rect (sg/rect 10 10 6 4))
-
-(defn my-draw [c g]
-  (sg/draw g my-rect filled))
-
-(def a-canvas (canvas :paint nil))
-
-
-
+(def preview-canvas (canvas :paint nil))
 (def form-for-saving (grid-panel :columns 2
                                  :items [input-for-string
                                          send-button
-                                         a-canvas]))
+                                         preview-canvas]))
 
 (def pgm-window
   (frame
@@ -36,15 +24,22 @@
     :content form-for-saving
     :width 600))
 
+(def style-filled (sg/style :background (scolor/color :black)))
+(def style-unfilled (sg/style :background (scolor/color :white)))
+
 ;----- Actions
-(defn send-string->core [action]
-  (->> (choose-file :type :save)
-       (save-instructions-for (value input-for-string)))
+(defn send-string->core [file action]
+  (save-instructions-for (value input-for-string) file)
   (alert action "Thanks!\nYou saved your pattern"))
+
+(defn handle-enter [action]
+  (->> (choose-file :type :save)
+       (#(if (not (nil? %))
+          (send-string->core % action)))))
 
 (defn row-rectangles [row row-number]
   (for [column-number (range (count row))
-        :let [column (nth row column-number)]]
+        :let [cell (nth row column-number)]]
     (sg/rect (* 6 column-number) (* 4 row-number) 6 4)))
 
 (defn rectangles [pattern]
@@ -55,21 +50,24 @@
 
 (defn paint [rects c g]
   (doseq [rect rects]
-    (sg/draw g rect filled)))
+    (sg/draw g rect style-filled)))
 
 (defn preview [pattern-in-rows]
-  (config! a-canvas :paint #(paint (rectangles pattern-in-rows) %1 %2)))
+  (config! preview-canvas :paint #(paint (rectangles pattern-in-rows) %1 %2)))
 
-(defn keypress [e]
-  (let [key (.getKeyChar e)]
+(defn handle-string-changed [caller]
+  (->> (value caller)
+       pattern-in-rows
+       preview))
+
+(defn keypress [caller]
+  (let [key (.getKeyChar caller)]
     (if (= key \newline)
-      (send-string->core e)
-      (preview (pattern-in-rows (value input-for-string))))))
+      (handle-enter caller))))
 
-;(pattern-in-rows (value input-for-string))
-
-(listen send-button :action send-string->core)
-(listen input-for-string :key-typed keypress)
+(listen send-button :action handle-enter)
+(listen input-for-string :key-pressed keypress)
+(listen input-for-string :key handle-string-changed)
 
 
 ;----- Showing The UI
