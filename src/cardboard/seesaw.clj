@@ -18,14 +18,14 @@
                                          send-button]))
 (def preview-panel (horizontal-panel :items [form-for-saving
                                              preview-canvas]
-                                     :size [800 :by 300]))
+                                     :size [900 :by 300]))
 (def main-panel (vertical-panel :items [form-for-saving
                                         preview-panel]))
 (def pgm-window
   (frame
     :title "Cardboard Weaving Patterns"
     :content main-panel
-    :width 800))
+    :width 900))
 
 (def style-filled (sg/style :background (scolor/color :black)))
 (def style-unfilled (sg/style :background nil))
