@@ -41,7 +41,7 @@
         :let [cell (nth row column-number)]
         :let [rectangle (sg/rect (* 4 column-number) (* 2 row-number) 4 2)]
         :let [style (cell-state cell)]]
-    [rectangle style]))
+    [rectangle style]))                                        ;TODO: do by core??
 
 (defn rectangles [pattern]
   (->> (for [row-number (range (count pattern))
