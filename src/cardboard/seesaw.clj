@@ -21,7 +21,7 @@
 (defn my-draw [c g]
   (sg/draw g my-rect filled))
 
-(def a-canvas (canvas :paint my-draw))
+(def a-canvas (canvas :paint nil))
 
 
 
@@ -45,8 +45,8 @@
   (alert action "Thanks!\nYou saved your pattern"))
 
 (defn keypress [e]
-  (let [k (.getKeyChar e)]
-    (if (= k \newline)
+  (let [key (.getKeyChar e)]
+    (if (= key \newline)
       (send-string->core e))))
 
 
