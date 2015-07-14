@@ -8,5 +8,6 @@
        (string-n-pattern->layout string)
        (save file-path)))
 
-(defn pattern-for-string [string]
-  (string->pattern string))
+(defn pattern-in-rows [string]
+  (->> (string->pattern string)
+       (apply map concat)))

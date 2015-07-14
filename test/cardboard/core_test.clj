@@ -12,4 +12,4 @@
 (expect-let [placeholder (save-instructions-for "ab" core-test-file)] (#(string-n-pattern->layout % (string->pattern %)) "ab") (slurp core-test-file))
 
 ;----- Give Me The Pattern To A String
-(expect (string->pattern "ab") (pattern-for-string "ab"))
+(expect (repeat 17 (repeat 7 "0")) (pattern-in-rows "  "))
