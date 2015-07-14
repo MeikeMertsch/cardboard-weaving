@@ -1,8 +1,10 @@
 (ns cardboard.seesaw
   (:gen-class)
-  (:require [seesaw.core :refer :all])
-  (:require [seesaw.chooser :refer :all])
-  (:require [cardboard.core :refer :all]))
+  (:require [seesaw.core :refer :all]
+            [seesaw.chooser :refer :all]
+            [seesaw.graphics :as sg]
+            [seesaw.color :as scolor]
+            [cardboard.core :refer :all]))
 
 (native!)
 ; TODO: Take care of strings properly
@@ -11,16 +13,29 @@
 (def input-for-string (text "Text to be turned into a pattern"))
 (def send-button (button :text "Generate pattern"))
 
+
+(def my-style (sg/style :background (scolor/color :black)))
+(def my-rect (sg/rect 10 10 6 4))
+
+(defn my-draw [c g]
+  (sg/draw g my-rect my-style))
+
+(def a-canvas (canvas :paint my-draw))
+
+
+
+
+
 (def form-for-saving (grid-panel :columns 2
-    :items [input-for-string
-            send-button]))
+                                 :items [input-for-string
+                                         send-button
+                                         a-canvas]))
 
 (def pgm-window
   (frame
     :title "Cardboard Weaving Patterns"
     :content form-for-saving
     :width 600))
-
 
 ;----- Actions
 (defn send-string->core [action]
