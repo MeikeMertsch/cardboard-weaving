@@ -6,7 +6,6 @@
 
 ;----- Items
 (def preview-canvas (canvas :paint nil))
-
 (def style-foreground (sg/style :background (scol/color :black)))
 (def style-background (sg/style :background nil))
 
@@ -34,9 +33,9 @@
          (row-rectangles row row-number))
        (apply concat)))
 
-(defn paint [rects _ g]
+(defn paint [rects _ graphic]
   (doseq [[rect style] rects]
-    (sg/draw g rect style)))
+    (sg/draw graphic rect style)))
 
 (defn preview [pattern-in-rows]
   (config! preview-canvas :paint #(paint (rectangles pattern-in-rows) %1 %2)))
