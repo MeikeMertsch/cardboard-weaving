@@ -1,4 +1,4 @@
-(ns cardboard.seesaw
+(ns cardboard.main-ui
   (:gen-class)
   (:require [seesaw.core :refer :all]
             [seesaw.chooser :as sc]
