@@ -8,7 +8,6 @@
             [cardboard.constants :refer :all]))
 
 (native!)
-; TODO: Take care of strings properly
 
 ;----- Items
 (def input-for-string (text default-text))
