@@ -1,5 +1,5 @@
 (ns cardboard.pattern
-  (:require [cardboard.default_letters :refer :all]))
+  (:require [cardboard.default_letters :as dl]))
 
 (defn str->chars [string]
   (->> (seq string)
@@ -11,8 +11,8 @@
        (map str->chars)))
 
 (defn create-the-pattern [letters]
-  (->> (map char->pattern letters)
-       (interpose letter-space)
+  (->> (map dl/char->pattern letters)
+       (interpose dl/letter-space)
        (map letter-patterns->matrix)))
 
 (defn string->pattern [string]
