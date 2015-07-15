@@ -27,14 +27,14 @@
     :content main-panel
     :width 900))
 
-(def style-filled (sg/style :background (scolor/color :black)))
-(def style-unfilled (sg/style :background nil))
+(def style-foreground (sg/style :background (scolor/color :black)))
+(def style-background (sg/style :background nil))
 
 ;----- Preview
 (defn cell-state [cell]
   (if (= cell ".")
-      style-filled
-      style-unfilled))
+      style-foreground
+      style-background))
 
 (defn row-rectangles [row row-number]
   (for [column-number (range (count row))
