@@ -16,8 +16,7 @@
 (def form-for-saving (grid-panel :columns 2
                                  :items [input-for-string
                                          save-button]))
-(def preview-panel (horizontal-panel :items [form-for-saving
-                                             preview-canvas]
+(def preview-panel (horizontal-panel :items [preview-canvas]
                                      :size [900 :by 300]))
 (def main-panel (vertical-panel :items [form-for-saving
                                         preview-panel]))
@@ -61,15 +60,15 @@
        cc/pattern-in-rows
        preview))
 
-;----- Submitting The String
-(defn send-string->core [file action]
+;----- Saving The String
+(defn save-instructions [file action]
   (cc/save-instructions-for (value input-for-string) file)
   (alert action saved-instructions-text))
 
 (defn handle-submit [action]
   (->> (sc/choose-file :type :save)
        (#(if (not (nil? %))
-          (send-string->core % action)))))
+          (save-instructions % action)))))
 
 (defn keypress [caller]
   (let [key (.getKeyChar caller)]
