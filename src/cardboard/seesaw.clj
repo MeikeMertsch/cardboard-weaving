@@ -1,10 +1,10 @@
 (ns cardboard.seesaw
   (:gen-class)
   (:require [seesaw.core :refer :all]
-            [seesaw.chooser :refer :all]
+            [seesaw.chooser :as sc]
             [seesaw.graphics :as sg]
-            [seesaw.color :as scolor]
-            [cardboard.core :refer :all]))
+            [seesaw.color :as scol]
+            [cardboard.core :as cc]))
 
 (native!)
 ; TODO: Take care of strings properly
@@ -27,7 +27,7 @@
     :content main-panel
     :width 900))
 
-(def style-foreground (sg/style :background (scolor/color :black)))
+(def style-foreground (sg/style :background (scol/color :black)))
 (def style-background (sg/style :background nil))
 
 ;----- Preview
@@ -58,16 +58,16 @@
 
 (defn handle-string-changed [caller]
   (->> (value caller)
-       pattern-in-rows
+       cc/pattern-in-rows
        preview))
 
 ;----- Submitting The String
 (defn send-string->core [file action]
-  (save-instructions-for (value input-for-string) file)
+  (cc/save-instructions-for (value input-for-string) file)
   (alert action "Thanks!\nYou saved your pattern"))
 
 (defn handle-submit [action]
-  (->> (choose-file :type :save)
+  (->> (sc/choose-file :type :save)
        (#(if (not (nil? %))
           (send-string->core % action)))))
 
