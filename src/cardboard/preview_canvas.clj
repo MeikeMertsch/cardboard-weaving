@@ -11,7 +11,7 @@
 
 (defn rectangle [column row]
   (let [rect-height 2
-        rect-width 4]
+        rect-width 3]
     (sg/rect (* rect-width column) (* rect-height row) rect-width rect-height)))
 
 ;----- Preview
@@ -22,9 +22,9 @@
 
 (defn row-rectangles [row row-number]
   (for [column-number (range (count row))
-        :let [pixel (nth row column-number)]
-        :let [rect (rectangle column-number row-number)]
-        :let [style (pixel-state pixel)]]
+        :let [pixel (nth row column-number)
+              rect (rectangle column-number row-number)
+              style (pixel-state pixel)]]
     [rect style]))
 
 (defn rectangles [pattern]
