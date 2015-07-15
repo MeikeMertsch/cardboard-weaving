@@ -2,9 +2,8 @@
   (:gen-class)
   (:require [seesaw.core :refer :all]
             [seesaw.chooser :as sc]
-            [seesaw.graphics :as sg]
-            [seesaw.color :as scol]
             [cardboard.core :as cc]
+            [cardboard.preview-canvas :as pre]
             [cardboard.constants :refer :all]))
 
 (native!)
@@ -12,11 +11,10 @@
 ;----- Items
 (def input-for-string (text default-text))
 (def save-button (button :text save-button-text))
-(def preview-canvas (canvas :paint nil))
 (def form-for-saving (grid-panel :columns 2
                                  :items [input-for-string
                                          save-button]))
-(def preview-panel (horizontal-panel :items [preview-canvas]
+(def preview-panel (horizontal-panel :items [pre/preview-canvas]
                                      :size [900 :by 300]))
 (def main-panel (vertical-panel :items [form-for-saving
                                         preview-panel]))
@@ -26,41 +24,12 @@
     :content main-panel
     :width 900))
 
-(def style-foreground (sg/style :background (scol/color :black)))
-(def style-background (sg/style :background nil))
-
-;----- Preview
-(defn pixel-state [pixel]
-  (if (= pixel foreground-pixel)
-      style-foreground
-      style-background))
-
-(defn row-rectangles [row row-number]
-  (for [column-number (range (count row))
-        :let [pixel (nth row column-number)]
-        :let [rectangle (sg/rect (* 4 column-number) (* 2 row-number) 4 2)]
-        :let [style (pixel-state pixel)]]
-    [rectangle style]))                                        ;TODO: do by core??
-
-(defn rectangles [pattern]
-  (->> (for [row-number (range (count pattern))
-             :let [row (nth pattern row-number)]]
-         (row-rectangles row row-number))
-       (apply concat)))
-
-(defn paint [rects _ g]
-  (doseq [[rect style] rects]
-    (sg/draw g rect style)))
-
-(defn preview [pattern-in-rows]
-  (config! preview-canvas :paint #(paint (rectangles pattern-in-rows) %1 %2)))
-
+;----- Actions
 (defn handle-string-changed [caller]
   (->> (value caller)
        cc/pattern-in-rows
-       preview))
+       pre/preview))
 
-;----- Saving The String
 (defn save-instructions [file action]
   (cc/save-instructions-for (value input-for-string) file)
   (alert action saved-instructions-text))
