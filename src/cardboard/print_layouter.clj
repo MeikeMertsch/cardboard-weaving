@@ -1,5 +1,5 @@
 (ns cardboard.print_layouter
-  (:require [cardboard.instructions :refer :all]))
+  (:require [cardboard.instructions :as i]))
 
 (defn pack-description [start-end-coll]
   (apply str (interpose "-" start-end-coll)))
@@ -21,5 +21,5 @@
            (convert-instructions instructions))))
 
 (defn string-n-pattern->layout [string pattern]
-  (->> (pattern->instructions pattern)
+  (->> (i/pattern->instructions pattern)
        (compose-layout string)))
