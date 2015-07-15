@@ -4,14 +4,15 @@
             [seesaw.chooser :as sc]
             [seesaw.graphics :as sg]
             [seesaw.color :as scol]
-            [cardboard.core :as cc]))
+            [cardboard.core :as cc]
+            [cardboard.constants :refer :all]))
 
 (native!)
 ; TODO: Take care of strings properly
 
 ;----- Items
-(def input-for-string (text "Text to be turned into a pattern"))
-(def send-button (button :text "Generate pattern"))
+(def input-for-string (text default-text))
+(def send-button (button :text send-button-text))
 (def preview-canvas (canvas :paint nil))
 (def form-for-saving (grid-panel :columns 2
                                  :items [input-for-string
@@ -23,7 +24,7 @@
                                         preview-panel]))
 (def pgm-window
   (frame
-    :title "Cardboard Weaving Patterns"
+    :title app-title
     :content main-panel
     :width 900))
 
@@ -31,16 +32,16 @@
 (def style-background (sg/style :background nil))
 
 ;----- Preview
-(defn cell-state [cell]
-  (if (= cell ".")
+(defn pixel-state [pixel]
+  (if (= pixel foreground-pixel)
       style-foreground
       style-background))
 
 (defn row-rectangles [row row-number]
   (for [column-number (range (count row))
-        :let [cell (nth row column-number)]
+        :let [pixel (nth row column-number)]
         :let [rectangle (sg/rect (* 4 column-number) (* 2 row-number) 4 2)]
-        :let [style (cell-state cell)]]
+        :let [style (pixel-state pixel)]]
     [rectangle style]))                                        ;TODO: do by core??
 
 (defn rectangles [pattern]
@@ -64,7 +65,7 @@
 ;----- Submitting The String
 (defn send-string->core [file action]
   (cc/save-instructions-for (value input-for-string) file)
-  (alert action "Thanks!\nYou saved your pattern"))
+  (alert action saved-instructions-text))
 
 (defn handle-submit [action]
   (->> (sc/choose-file :type :save)
