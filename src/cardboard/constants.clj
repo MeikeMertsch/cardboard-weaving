@@ -9,7 +9,7 @@
 (def header "Pattern for")
 
 (def default-text "Text to be turned into a pattern")
-(def send-button-text "Generate pattern")
+(def save-button-text "Save pattern")
 (def app-title "Cardboard Weaving Patterns")
 (def saved-instructions-text "Thanks!\nYou saved your pattern")
 (def foreground-pixel ".")

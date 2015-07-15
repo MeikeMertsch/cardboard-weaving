@@ -11,11 +11,11 @@
 
 ;----- Items
 (def input-for-string (text default-text))
-(def send-button (button :text send-button-text))
+(def save-button (button :text save-button-text))
 (def preview-canvas (canvas :paint nil))
 (def form-for-saving (grid-panel :columns 2
                                  :items [input-for-string
-                                         send-button]))
+                                         save-button]))
 (def preview-panel (horizontal-panel :items [form-for-saving
                                              preview-canvas]
                                      :size [900 :by 300]))
@@ -77,7 +77,7 @@
       (handle-submit caller))))
 
 ;----- Listeners
-(listen send-button :action handle-submit)
+(listen save-button :action handle-submit)
 (listen input-for-string :key-pressed keypress)
 (listen input-for-string :key handle-string-changed)
 
