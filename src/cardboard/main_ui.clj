@@ -39,8 +39,15 @@
   (cc/save-instructions-for (value input-for-string) file)
   (alert action saved-instructions-text))
 
+(defn guarantee-txt [chooser file]
+  (if (not (.endsWith (str file) ".txt"))
+    (str file ".txt")
+    file))
+
 (defn handle-submit [action]
-  (->> (sc/choose-file :type :save)
+  (->> (sc/choose-file :type :save
+                       :success-fn guarantee-txt
+                       :selection-mode :files-only)
        (#(if (not (nil? %))
           (save-instructions % action)))))
 
