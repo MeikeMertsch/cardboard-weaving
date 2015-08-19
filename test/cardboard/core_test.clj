@@ -5,6 +5,7 @@
             [cardboard.pattern :refer :all]))
 
 (def core-test-file "instructions-new.txt")
+(def placeholder)
 
 ;----- Writing The Instructions To A Specified File
 (expect-let [placeholder (save-instructions-for "a" core-test-file)] (#(string-n-pattern->layout % (string->pattern %)) "a") (slurp core-test-file))
