@@ -1,7 +1,7 @@
 (ns cardboard.input
-(:require [cardboard.core :as cc]
-          [cardboard.preview-canvas :as pre]
-          [cardboard.constants :refer :all]))
+  (:require [cardboard.core :as cc]
+            [cardboard.preview-canvas :as pre]
+            [cardboard.constants :refer :all]))
 
 (defn preview-new-string [new-string]
   (->> new-string
