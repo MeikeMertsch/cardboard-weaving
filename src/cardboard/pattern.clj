@@ -13,6 +13,7 @@
 
 (defn create-the-pattern [letters]
   (->> (map #(get dl/char->pattern % empty-string) letters)
+       (remove empty?)
        (interpose dl/letter-space)
        (map letter-patterns->matrix)))
 
