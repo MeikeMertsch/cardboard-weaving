@@ -2,7 +2,6 @@
   (:gen-class)
   (:require [seesaw.core :refer :all]
             [seesaw.chooser :as sc]
-            [cardboard.core :as cc]
             [cardboard.preview-canvas :as pre]
             [cardboard.input :as in]
             [cardboard.constants :refer :all]))
