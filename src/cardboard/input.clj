@@ -8,12 +8,15 @@
        cc/pattern-in-rows
        pre/preview))
 
-(defn save-instructions [string _ file]
-  (if (not (nil? file))
-    (cc/save-instructions-for string file)))
-
-(defn guarantee-txt [_ file]
+(defn guarantee-txt [file]
   (if (not (.endsWith (str file) default-extension))
     (str file default-extension)
     file))
+
+(defn save-instructions [string _ file]
+  (if (not (nil? file))
+    (->> file
+         guarantee-txt
+         (cc/save-instructions-for string))))
+
 
