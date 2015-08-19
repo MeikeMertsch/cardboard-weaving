@@ -13,3 +13,4 @@
 (def app-title "Cardboard Weaving Patterns")
 (def saved-instructions-text "Thanks!\nYou saved your pattern")
 (def foreground-pixel ".")
+(def default-extension ".txt")

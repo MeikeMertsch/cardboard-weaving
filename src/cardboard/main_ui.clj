@@ -4,6 +4,7 @@
             [seesaw.chooser :as sc]
             [cardboard.core :as cc]
             [cardboard.preview-canvas :as pre]
+            [cardboard.input :as in]
             [cardboard.constants :refer :all]))
 
 (native!)
@@ -30,26 +31,14 @@
 (defn show-error [string]
   (config! error-label :text string))
 
-(defn handle-string-changed [caller]
-  (->> (value caller)
-       cc/pattern-in-rows
-       pre/preview))
-
-(defn save-instructions [file action]
-  (cc/save-instructions-for (value input-for-string) file)
+(defn handle-submit [action]
+  (sc/choose-file :type :save
+                  :success-fn (partial in/save-instructions (value input-for-string))
+                  :selection-mode :files-only)
   (alert action saved-instructions-text))
 
-(defn guarantee-txt [chooser file]
-  (if (not (.endsWith (str file) ".txt"))
-    (str file ".txt")
-    file))
-
-(defn handle-submit [action]
-  (->> (sc/choose-file :type :save
-                       :success-fn guarantee-txt
-                       :selection-mode :files-only)
-       (#(if (not (nil? %))
-          (save-instructions % action)))))
+(defn handle-string-changed [caller]
+  (in/preview-new-string (value caller)))
 
 (defn keypress [caller]
   (let [key (.getKeyChar caller)]
