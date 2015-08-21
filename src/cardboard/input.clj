@@ -19,4 +19,7 @@
          guarantee-txt
          (cc/save-instructions-for string))))
 
+(defn validate [string]
+  (cc/validate string))
+
 
