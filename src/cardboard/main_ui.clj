@@ -37,7 +37,12 @@
   (alert action saved-instructions-text))
 
 (defn handle-string-changed [caller]
-  (in/preview-new-string (value caller)))
+  (let [validation (in/validate (value caller))]
+    (in/preview-new-string (value caller))
+    (if (= :ok (:outcome validation))
+      (show-error empty-string)
+      (show-error (str (apply str (:error validation)) " are no valid characters.")))))
+
 
 (defn keypress [caller]
   (let [key (.getKeyChar caller)]
@@ -51,3 +56,4 @@
 
 ;----- Showing The UI
 (show! pgm-window)
+(handle-string-changed input-for-string)
