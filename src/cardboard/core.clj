@@ -14,3 +14,6 @@
     empty-pattern
     (->> (p/string->pattern string)
            (apply map concat))))
+
+(defn validate [string]
+  (p/validate string))
