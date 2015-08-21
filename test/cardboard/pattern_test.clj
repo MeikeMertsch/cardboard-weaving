@@ -17,3 +17,8 @@
 ;----- Turn The Pattern Into A Matrix
 (expect (repeat 17 '("0" "0" "0")) (letter-patterns->matrix space))
 (expect (repeat 17 '("0")) (letter-patterns->matrix letter-space))
+
+;----- Validation
+(expect :ok (:outcome (validate "aB c")))
+(expect :not-ok (:outcome (validate "1")))
+(expect ["2" "1"] (:error (validate "ab2c1")))

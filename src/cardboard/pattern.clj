@@ -20,3 +20,13 @@
 (defn string->pattern [string]
   (->> (str->chars string)
        (create-the-pattern)))
+
+(defn unavailable-chars [string]
+  (->> string
+       (filter #(not (contains? dl/available-chars (str %))))
+       (map str)))
+
+(defn validate [string]
+  (if (empty? (unavailable-chars string))
+    {:outcome :ok}
+    {:outcome :not-ok :error (unavailable-chars string)}))
