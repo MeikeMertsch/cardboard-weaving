@@ -11,14 +11,16 @@
 ;----- Items
 (def input-for-string (text default-text))
 (def save-button (button :text save-button-text))
-(def error-label (label :minimum-size  [900 :by 20]))
+(def error-label (label empty-string))
+(def error-panel (horizontal-panel :items [error-label]
+                                   :size [900 :by 20]))
 (def form-for-saving (grid-panel :columns 2
                                  :items [input-for-string
                                          save-button]))
 (def preview-panel (horizontal-panel :items [pre/preview-canvas]
                                      :size [900 :by 300]))
 (def main-panel (vertical-panel :items [form-for-saving
-                                        error-label
+                                        error-panel
                                         preview-panel]))
 (def pgm-window
   (frame
