@@ -30,12 +30,6 @@
 (defn show-error [string]
   (config! error-label :text string))
 
-(defn handle-submit [action]
-  (sc/choose-file :type :save
-                  :success-fn (partial in/save-instructions (value input-for-string))
-                  :selection-mode :files-only)
-  (alert action saved-instructions-text))
-
 (defn handle-string-changed [caller]
   (let [validation (in/validate (value caller))]
     (in/preview-new-string (value caller))
@@ -43,6 +37,11 @@
       (show-error empty-string)
       (show-error (str (apply str (:error validation)) " are no valid characters.")))))
 
+(defn handle-submit [action]
+  (sc/choose-file :type :save
+                  :success-fn (partial in/save-instructions (value input-for-string))
+                  :selection-mode :files-only)
+  (alert action saved-instructions-text))
 
 (defn keypress [caller]
   (let [key (.getKeyChar caller)]
