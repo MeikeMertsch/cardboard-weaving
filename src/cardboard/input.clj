@@ -25,6 +25,9 @@
        (str invalid-characters)))
 
 (defn validate [string]
-  (cc/validate string))
+  (let [validation-result (cc/validate string)]
+    (if (= :ok (:outcome validation-result))
+      empty-string
+      (error-message-for (:error validation-result)))))
 
 

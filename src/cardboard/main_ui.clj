@@ -29,15 +29,12 @@
     :width 900))
 
 ;----- Actions
-(defn show-error [string]
+(defn show-validation-result [string]
   (config! error-label :text string))
 
 (defn handle-string-changed [caller]
-  (let [validation (in/validate (value caller))]
-    (in/preview-new-string (value caller))
-    (if (= :ok (:outcome validation))
-      (show-error empty-string)
-      (show-error (in/error-message-for (:error validation))))))
+  (in/preview-new-string (value caller))
+  (show-validation-result (in/validate (value caller))))
 
 (defn handle-submit [action]
   (sc/choose-file :type :save
