@@ -33,8 +33,8 @@
 
 
 ;----- Generate A Beautiful Error
-(expect (str invalid-characters "1, =") (error-message-for ["1" "="]))
+(expect (str invalid-characters "1, =") (validation-message-for ["1" "="]))
 
 ;----- Deal With The Validation Result
 (expect empty-string (validate "a normal string"))
-(expect (error-message-for ["9" "&"]) (validate "a string with 9 and & as bad chars"))
+(expect (validation-message-for ["9" "&"]) (validate "a string with 9 and & as bad chars"))

@@ -3,11 +3,13 @@
             [cardboard.preview-canvas :as pre]
             [cardboard.constants :refer :all]))
 
+;----- Preview Related
 (defn preview-new-string [new-string]
   (->> new-string
        cc/pattern-in-rows
        pre/preview))
 
+;----- Saving Related
 (defn guarantee-txt [file]
   (if (not (.endsWith (str file) default-extension))
     (str file default-extension)
@@ -19,7 +21,8 @@
          guarantee-txt
          (cc/save-instructions-for string))))
 
-(defn error-message-for [invalid-chars]
+;----- Validation Related
+(defn validation-message-for [invalid-chars]
   (->> (interpose ", " invalid-chars)
        (apply str)
        (str invalid-characters)))
@@ -28,6 +31,6 @@
   (let [validation-result (cc/validate string)]
     (if (= :ok (:outcome validation-result))
       empty-string
-      (error-message-for (:error validation-result)))))
+      (validation-message-for (:error validation-result)))))
 
 
