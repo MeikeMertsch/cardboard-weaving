@@ -31,3 +31,6 @@
         (side-effects [cc/save-instructions-for]
                       (save-instructions the-string false "test_Meike II.txt")))
 
+
+;----- Generate A Beautiful Error
+(expect (str invalid-characters "1, =") (error-message-for ["1" "="]))

@@ -19,6 +19,11 @@
          guarantee-txt
          (cc/save-instructions-for string))))
 
+(defn error-message-for [invalid-chars]
+  (->> (interpose ", " invalid-chars)
+       (apply str)
+       (str invalid-characters)))
+
 (defn validate [string]
   (cc/validate string))
 

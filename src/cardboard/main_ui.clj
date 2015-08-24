@@ -37,7 +37,7 @@
     (in/preview-new-string (value caller))
     (if (= :ok (:outcome validation))
       (show-error empty-string)
-      (show-error (str (apply str (:error validation)) " are no valid characters.")))))
+      (show-error (in/error-message-for (:error validation))))))
 
 (defn handle-submit [action]
   (sc/choose-file :type :save
