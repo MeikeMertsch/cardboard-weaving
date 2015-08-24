@@ -24,6 +24,7 @@
 (defn unavailable-chars [string]
   (->> string
        (filter #(not (contains? dl/available-chars (str %))))
+       distinct
        (map str)))
 
 (defn validate [string]

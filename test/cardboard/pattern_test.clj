@@ -22,3 +22,4 @@
 (expect :ok (:outcome (validate "aB c")))
 (expect :not-ok (:outcome (validate "1")))
 (expect ["2" "1"] (:error (validate "ab2c1")))
+(expect ["2" "1"] (:error (validate "ab2c11")))
