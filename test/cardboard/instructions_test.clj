@@ -23,3 +23,6 @@
 
 ;----- Distinguish Between Uppercase Letters And Lowercase Letters
 (expect false? (= (pattern->instructions (string->pattern "a")) (pattern->instructions (string->pattern "A"))))
+
+;----- Turning The Pattern
+(expect (list (repeat 17 "0")) (turn-pattern-by-90-degrees (repeat 17 (repeat 1 "0"))))

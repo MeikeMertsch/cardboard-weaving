@@ -14,7 +14,6 @@
        (map distinct)))
 
 (defn pattern->instructions [pattern]
-  (->> (map turn-pattern-by-90-degrees pattern)
-       (map #(->> (map pack-sizes %)
-                  (map pack-sizes->instructions)))
-       (apply concat)))
+  (->> (turn-pattern-by-90-degrees pattern)
+       (map pack-sizes)
+       (map pack-sizes->instructions)))

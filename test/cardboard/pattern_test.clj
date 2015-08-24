@@ -10,9 +10,9 @@
 (expect '(" " "5") (str->chars " 5"))
 
 ;----- Pattern Of A String
-(expect (list (repeat 17 (repeat 3 "0"))) (string->pattern " "))
-(expect (list (repeat 17 (repeat 3 "0")) (repeat 17 (repeat 1 "0")) (repeat 17 (repeat 3 "0"))) (string->pattern "  "))
-(expect (list (repeat 17 (repeat 3 "0"))) (string->pattern " 5"))
+(expect (repeat 17 (repeat 3 "0")) (string->pattern " "))
+(expect (repeat 17 (repeat 7 "0")) (string->pattern "  "))
+(expect (repeat 17 (repeat 3 "0")) (string->pattern " 5"))
 
 ;----- Turn The Pattern Into A Matrix
 (expect (repeat 17 '("0" "0" "0")) (letter-patterns->matrix space))

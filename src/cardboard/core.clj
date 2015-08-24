@@ -12,8 +12,7 @@
 (defn pattern-in-rows [string]
   (if (= empty-string string)
     empty-pattern
-    (->> (p/string->pattern string)
-           (apply map concat))))
+    (p/string->pattern string)))
 
 (defn validate [string]
   (p/validate string))

@@ -15,7 +15,8 @@
   (->> (map #(get dl/char->pattern % empty-string) letters)
        (remove empty?)
        (interpose dl/letter-space)
-       (map letter-patterns->matrix)))
+       (map letter-patterns->matrix)
+       (apply map concat)))
 
 (defn string->pattern [string]
   (->> (str->chars string)
