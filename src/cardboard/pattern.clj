@@ -2,7 +2,6 @@
   (:require [cardboard.default_letters :as dl]
             [cardboard.constants :refer :all]))
 
-;----- Validation
 (defn unavailable-chars [string]
   (->> string
        (filter #(not (contains? dl/available-chars (str %))))
@@ -12,15 +11,6 @@
 (defn clean [string]
   (reduce #(clojure.string/replace %1 %2 "") string (unavailable-chars string)))
 
-(defn validate [string]
-  (if (empty? (unavailable-chars string))
-    {:outcome :ok
-     :valid string}
-    {:outcome :not-ok
-     :error (unavailable-chars string)
-     :valid (clean string)}))
-
-;----- Other Stuff
 (defn str->chars [string]
   (->> (seq string)
        (map str)))
@@ -41,3 +31,11 @@
        clean
        str->chars
        create-the-pattern))
+
+(defn validate [string]
+  (if (empty? (unavailable-chars string))
+    {:outcome :ok
+     :valid string}
+    {:outcome :not-ok
+     :error (unavailable-chars string)
+     :valid (clean string)}))
