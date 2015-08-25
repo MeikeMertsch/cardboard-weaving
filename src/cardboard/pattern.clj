@@ -22,6 +22,7 @@
   (->> (str->chars string)
        (create-the-pattern)))
 
+;----- Validation
 (defn unavailable-chars [string]
   (->> string
        (filter #(not (contains? dl/available-chars (str %))))
