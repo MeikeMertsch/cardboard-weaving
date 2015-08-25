@@ -6,7 +6,7 @@
   (->> string
        (filter #(not (contains? dl/available-chars (str %))))
        distinct
-       (map str)))
+       (map str)))     ; TODO: necessary??
 
 (defn clean [string]
   (reduce #(clojure.string/replace %1 %2 "") string (unavailable-chars string)))
