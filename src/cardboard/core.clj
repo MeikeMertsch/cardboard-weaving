@@ -4,9 +4,12 @@
   (:require [cardboard.saver :as s])
   (:require [cardboard.constants :refer :all]))
 
+(defn validate [string]
+  (p/validate string))
+
 (defn save-instructions-for [string file-path]
   (->> (p/string->pattern string)
-       (l/string-n-pattern->layout string)
+       (l/string-n-pattern->layout (:valid (validate string)))
        (s/save file-path)))
 
 (defn pattern-in-rows [string]
@@ -14,5 +17,3 @@
     empty-pattern
     (p/string->pattern string)))
 
-(defn validate [string]
-  (p/validate string))

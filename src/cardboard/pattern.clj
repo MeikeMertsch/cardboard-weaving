@@ -28,7 +28,13 @@
        distinct
        (map str)))
 
+(defn clean-string [string]
+  (reduce #(clojure.string/replace %1 %2 "") string (unavailable-chars string)))
+
 (defn validate [string]
   (if (empty? (unavailable-chars string))
-    {:outcome :ok}
-    {:outcome :not-ok :error (unavailable-chars string)}))
+    {:outcome :ok
+     :valid string}
+    {:outcome :not-ok
+     :error (unavailable-chars string)
+     :valid (clean-string string)}))
