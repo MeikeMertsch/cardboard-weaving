@@ -26,5 +26,5 @@
 (expect "abc" (:valid (validate "ab3c11")))
 
 ;----- Clean Strings
-(expect "clean string" (clean-string "clean string"))
-(expect "string" (clean-string "%s2tr5ing2"))
+(expect "clean string" (clean "clean string"))
+(expect "string" (clean "%s2tr5ing2"))
