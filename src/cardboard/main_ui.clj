@@ -16,7 +16,8 @@
                                    :size [900 :by 20]))
 (def form-for-saving (grid-panel :columns 2
                                  :items [input-for-string
-                                         save-button]))
+                                         save-button]
+                                 :size [900 :by 30]))
 (def preview-panel (horizontal-panel :items [pre/preview-canvas]
                                      :size [900 :by 300]))
 (def main-panel (vertical-panel :items [form-for-saving
@@ -26,7 +27,8 @@
   (frame
     :title app-title
     :content main-panel
-    :width 900))
+    :width 900
+    :height 500))
 
 ;----- Actions
 (defn show-validation-result [string]
