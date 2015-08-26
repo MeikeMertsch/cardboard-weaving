@@ -1,15 +1,7 @@
 (ns cardboard.pattern
   (:require [cardboard.default_chars :as dl]
+            [cardboard.string-cleaner :as sc]
             [cardboard.constants :refer :all]))
-
-(defn unavailable-chars [string]
-  (->> string
-       (filter #(not (contains? dl/available-chars (str %))))
-       distinct
-       (map str)))
-
-(defn clean [string]
-  (reduce #(clojure.string/replace %1 %2 "") string (unavailable-chars string)))
 
 (defn str->chars [string]
   (->> (seq string)
@@ -28,14 +20,14 @@
 
 (defn string->pattern [string]
   (->> string
-       clean
+       sc/clean
        str->chars
        create-the-pattern))
 
 (defn validate [string]
-  (if (empty? (unavailable-chars string))
+  (if (empty? (sc/unavailable-chars string))
     {:outcome :ok
      :valid string}
     {:outcome :not-ok
-     :error (unavailable-chars string)
-     :valid (clean string)}))
+     :error (sc/unavailable-chars string)
+     :valid (sc/clean string)}))
