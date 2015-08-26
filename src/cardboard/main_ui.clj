@@ -8,7 +8,7 @@
 
 (native!)
 
-;----- Items
+;;; Items
 (def input-for-string (text default-text))
 (def save-button (button :text save-button-text))
 (def error-label (label empty-string))
@@ -30,7 +30,7 @@
     :width 900
     :height 120))
 
-;----- Actions
+;;; Actions
 (defn show-validation-result [string]
   (config! error-label :text string))
 
@@ -49,11 +49,11 @@
     (if (= key \newline)
       (handle-submit caller))))
 
-;----- Listeners
+;;; Listeners
 (listen save-button :action handle-submit)
 (listen input-for-string :key-pressed keypress)
 (listen input-for-string :key handle-string-changed)
 
-;----- Showing The UI
+;;; Showing The UI
 (show! pgm-window)
 (handle-string-changed input-for-string)
