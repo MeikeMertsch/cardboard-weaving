@@ -3,7 +3,7 @@
             [cardboard.pattern :refer :all]
             [cardboard.common-test-data :refer :all]
             [cardboard.instructions :refer :all]
-            [cardboard.print_layouter :as pl]))
+            [cardboard.print_layout :as pl]))
 
 ;----- Row Partitions
 (expect [4] (pack-sizes (repeat 4 "0")))

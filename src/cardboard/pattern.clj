@@ -1,6 +1,6 @@
 (ns cardboard.pattern
   (:require [cardboard.default_chars :as dl]
-            [cardboard.string-cleaner :as sc]
+            [cardboard.string-cleaning :as sc]
             [cardboard.constants :refer :all]))
 
 (defn str->chars [string]

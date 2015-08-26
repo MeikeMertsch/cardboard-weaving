@@ -1,8 +1,8 @@
-(ns cardboard.print-layouter-test
+(ns cardboard.print-layout-test
   (:require [expectations :refer :all]
             [cardboard.common-test-data :refer :all]
             [cardboard.pattern :refer :all]
-            [cardboard.print_layouter :refer :all]))
+            [cardboard.print_layout :refer :all]))
 
 ;----- Construct Pack Descriptions Of Partitions
 (expect "1-4" (pack-description [1 4]))

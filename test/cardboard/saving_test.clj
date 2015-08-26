@@ -1,6 +1,6 @@
-(ns cardboard.saver-test
+(ns cardboard.saving-test
   (:require [expectations :refer :all]
-            [cardboard.saver :refer :all]))
+            [cardboard.saving :refer :all]))
 
 (def saver-test-file "instructions-saver.txt")
 (def some-test-data "12345")

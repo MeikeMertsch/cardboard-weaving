@@ -1,6 +1,6 @@
-(ns cardboard.string-cleaner-test
+(ns cardboard.string-cleaning-test
   (:require [expectations :refer :all]
-            [cardboard.string-cleaner :refer :all]))
+            [cardboard.string-cleaning :refer :all]))
 
 ;----- Clean Strings
 (expect "clean string" (clean "clean string"))

@@ -1,7 +1,7 @@
 (ns cardboard.core-test
   (:require [expectations :refer :all]
             [cardboard.core :refer :all]
-            [cardboard.print_layouter :refer :all]
+            [cardboard.print_layout :refer :all]
             [cardboard.pattern :as p]))
 
 (def core-test-file "instructions-new.txt")

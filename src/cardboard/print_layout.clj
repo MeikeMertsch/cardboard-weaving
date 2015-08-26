@@ -1,4 +1,4 @@
-(ns cardboard.print_layouter
+(ns cardboard.print_layout
   (:require [cardboard.instructions :as i])
   (:require [cardboard.constants :refer :all]))
 

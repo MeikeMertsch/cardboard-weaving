@@ -1,4 +1,4 @@
-(ns cardboard.string-cleaner
+(ns cardboard.string-cleaning
   (:require [cardboard.default_chars :as dl]))
 
 (defn unavailable-chars [string]

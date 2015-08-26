@@ -1,5 +1,5 @@
 (ns cardboard.validation
-  (:require [cardboard.string-cleaner :as sc]))
+  (:require [cardboard.string-cleaning :as sc]))
 
 (defn validate [string]
   (if (empty? (sc/unavailable-chars string))

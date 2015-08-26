@@ -1,7 +1,7 @@
 (ns cardboard.core
   (:require [cardboard.pattern :as p])
-  (:require [cardboard.print_layouter :as l])
-  (:require [cardboard.saver :as s])
+  (:require [cardboard.print_layout :as l])
+  (:require [cardboard.saving :as s])
   (:require [cardboard.validation :as v])
   (:require [cardboard.constants :refer :all]))
 
