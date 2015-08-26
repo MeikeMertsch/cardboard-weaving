@@ -18,11 +18,11 @@
                                  :items [input-for-string
                                          save-button]
                                  :size [900 :by 30]))
-(def preview-panel (horizontal-panel :items [pre/preview-canvas]
-                                     :size [900 :by 300]))
+(def preview-panel (horizontal-panel :items [pre/preview-canvas]))
+(def preview-scroll (scrollable preview-panel))
 (def main-panel (vertical-panel :items [form-for-saving
                                         error-panel
-                                        preview-panel]))
+                                        preview-scroll]))
 (def pgm-window
   (frame
     :title app-title
