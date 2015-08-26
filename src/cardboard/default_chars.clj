@@ -1,4 +1,4 @@
-(ns cardboard.default_letters)
+(ns cardboard.default_chars)
 
 (def lc-a
 "0000000

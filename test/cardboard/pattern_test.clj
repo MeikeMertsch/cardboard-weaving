@@ -1,7 +1,7 @@
 (ns cardboard.pattern-test
   (:require [expectations :refer :all]
             [cardboard.pattern :refer :all]
-            [cardboard.default_letters :refer :all]))
+            [cardboard.default_chars :refer :all]))
 
 ;----- Splitting A String
 (expect '("H" "a" "g" "r" "i" "d") (str->chars "Hagrid"))

@@ -1,5 +1,5 @@
 (ns cardboard.pattern
-  (:require [cardboard.default_letters :as dl]
+  (:require [cardboard.default_chars :as dl]
             [cardboard.constants :refer :all]))
 
 (defn unavailable-chars [string]
