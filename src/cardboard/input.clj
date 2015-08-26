@@ -1,6 +1,6 @@
 (ns cardboard.input
   (:require [cardboard.core :as cc]
-            [cardboard.pattern :as pat]
+            [cardboard.validation :as val]
             [cardboard.preview-canvas :as pre]
             [cardboard.constants :refer :all]))
 
@@ -29,7 +29,7 @@
        (str invalid-characters)))
 
 (defn validate [string]
-  (let [validation-result (pat/validate string)]
+  (let [validation-result (val/validate string)]
     (if (= :ok (:outcome validation-result))
       empty-string
       (validation-message-for (:error validation-result)))))
