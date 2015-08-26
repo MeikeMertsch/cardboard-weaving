@@ -15,15 +15,15 @@
   (->> (seq string)
        (map str)))
 
-(defn letter-patterns->matrix [letter]
-  (->> (clojure.string/split-lines letter)
+(defn char-patterns->matrix [char-patterns]
+  (->> (clojure.string/split-lines char-patterns)
        (map clojure.string/trim)
        (map str->chars)))
 
-(defn create-the-pattern [letters]
-  (->> (map dl/char->pattern letters)
+(defn create-the-pattern [chars]
+  (->> (map dl/char->pattern chars)
        (interpose dl/letter-space)
-       (map letter-patterns->matrix)
+       (map char-patterns->matrix)
        (apply map concat)))
 
 (defn string->pattern [string]

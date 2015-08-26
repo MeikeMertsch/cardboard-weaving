@@ -15,8 +15,8 @@
 (expect (repeat 17 (repeat 3 "0")) (string->pattern " 5"))
 
 ;----- Turn The Pattern Into A Matrix
-(expect (repeat 17 '("0" "0" "0")) (letter-patterns->matrix space))
-(expect (repeat 17 '("0")) (letter-patterns->matrix letter-space))
+(expect (repeat 17 '("0" "0" "0")) (char-patterns->matrix space))
+(expect (repeat 17 '("0")) (char-patterns->matrix letter-space))
 
 ;----- Validation
 (expect :ok (:outcome (validate "aB c")))
