@@ -28,7 +28,7 @@
     :title app-title
     :content main-panel
     :width 900
-    :height 500))
+    :height 200))
 
 ;----- Actions
 (defn show-validation-result [string]

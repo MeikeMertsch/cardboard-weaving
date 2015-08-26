@@ -8,8 +8,8 @@
 (def preview-canvas (canvas :paint nil))
 (def style-foreground (sg/style :background (scol/color :black)))
 (def style-background (sg/style :background nil))
-(def rect-height 10)
-(def rect-width 15)
+(def rect-height 2)
+(def rect-width 3)
 
 (defn rectangle [column row]
   (sg/rect (* rect-width column) (* rect-height row) rect-width rect-height))
