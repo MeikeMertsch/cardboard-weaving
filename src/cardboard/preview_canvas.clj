@@ -4,7 +4,7 @@
             [seesaw.color :as scol]
             [cardboard.constants :refer :all]))
 
-;----- Items
+;;; Items
 (def preview-canvas (canvas :paint nil))
 (def style-foreground (sg/style :background (scol/color :black)))
 (def style-background (sg/style :background nil))
@@ -14,7 +14,7 @@
 (defn rectangle [column row]
   (sg/rect (* rect-width column) (* rect-height row) rect-width rect-height))
 
-;----- Preview
+;;; Preview
 (defn pixel-state [pixel]
   (if (= pixel foreground-pixel)
     style-foreground
