@@ -5,10 +5,10 @@
             [cardboard.constants :refer :all]))
 
 ;;; Preview Related
-(defn preview-new-string [new-string]
-  (-> new-string
-      cc/pattern-in-rows
-      (pre/preview preview-size)))
+(defn preview-new-string [canvas new-string]
+  (->> new-string
+       cc/pattern-in-rows
+       (pre/preview canvas preview-size)))
 
 ;;; Saving Related
 (defn guarantee-txt [file]

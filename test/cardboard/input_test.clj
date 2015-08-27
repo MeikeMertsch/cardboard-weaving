@@ -14,10 +14,11 @@
 ;----- Preview Shall Be Called Correctly
 (def space-in-rows
   (repeat 17 (repeat 3 "0")))
+(def canvas (pre/preview-canvas))
 
-(expect [[space-in-rows preview-size]]
+(expect [[canvas preview-size space-in-rows]]
         (side-effects [pre/preview]
-                      (preview-new-string " ")))
+                      (preview-new-string canvas " ")))
 
 
 ;----- Saves With Proper Extension

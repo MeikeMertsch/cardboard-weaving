@@ -4,6 +4,7 @@
             [seesaw.chooser :as sc]
             [cardboard.preview-canvas :as pre]
             [cardboard.input :as in]
+            [cardboard.pattern :as pat]
             [cardboard.constants :refer :all]))
 
 (native!)
@@ -11,6 +12,7 @@
 ;;; Items
 (def input-for-string (text default-text))
 (def save-button (button :text save-button-text))
+(def overview-button (button :text overview-button-text))
 (def error-label (label empty-string))
 (def error-panel (horizontal-panel :items [error-label]
                                    :size [900 :by 20]))
@@ -18,24 +20,37 @@
                                  :items [input-for-string
                                          save-button]
                                  :size [900 :by 30]))
-(def preview-panel (horizontal-panel :items [pre/preview-canvas]))
+(def preview-canvas (pre/preview-canvas))
+(def overview-canvas (pre/preview-canvas))
+(def preview-panel (horizontal-panel :items [preview-canvas]))
+(def overview-panel (horizontal-panel :items [overview-canvas]))
 (def preview-scroll (scrollable preview-panel))
 (def main-panel (vertical-panel :items [form-for-saving
                                         error-panel
-                                        preview-scroll]))
+                                        preview-scroll
+                                        overview-button]))
+
 (def pgm-window
   (frame
     :title app-title
     :content main-panel
     :width 900
-    :height 120))
+    :height 140))
+
+(def overview-window
+  (frame
+    :title overview-title
+    :content overview-panel
+    :width 200
+    :height 200))
+
 
 ;;; Actions
 (defn show-validation-result [string]
   (config! error-label :text string))
 
 (defn handle-string-changed [caller]
-  (in/preview-new-string (value caller))
+  (in/preview-new-string preview-canvas (value caller))
   (show-validation-result (in/validate (value caller))))
 
 (defn handle-submit [action]
@@ -49,8 +64,13 @@
     (if (= key \newline)
       (handle-submit caller))))
 
+(defn open-overview [_]
+  (show! overview-window)
+  (pre/preview overview-canvas overview-size (pat/string->pattern "A")))
+
 ;;; Listeners
 (listen save-button :action handle-submit)
+(listen overview-button :action open-overview)
 (listen input-for-string :key-pressed keypress)
 (listen input-for-string :key handle-string-changed)
 

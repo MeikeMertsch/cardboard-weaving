@@ -5,9 +5,11 @@
             [cardboard.constants :refer :all]))
 
 ;;; Items
-(def preview-canvas (canvas :paint nil))
 (def style-foreground (sg/style :background (scol/color :black)))
-(def style-background (sg/style :background nil))
+(def style-background (sg/style :background (scol/color :white)))
+
+(defn preview-canvas []
+  (canvas :paint nil))
 
 (defn pixel [column row size]
   (let [width (size :width)
@@ -37,8 +39,8 @@
   (doseq [[pxl style] pxls]
     (sg/draw graphic pxl style)))
 
-(defn preview [pattern-in-rows size]
-  (config! preview-canvas :paint #(paint (pixels pattern-in-rows size) %1 %2)))
+(defn preview [canvas size pattern-in-rows]
+  (config! canvas :paint #(paint (pixels pattern-in-rows size) %1 %2)))
 
 
 
