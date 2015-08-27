@@ -20,17 +20,17 @@
     style-foreground
     style-background))
 
-(defn row-rectangles [row row-number]
+(defn row-pixels [row row-number]
   (for [column-number (range (count row))
         :let [pixel (nth row column-number)
               rect (rectangle column-number row-number)
               style (pixel-state pixel)]]
     [rect style]))
 
-(defn rectangles [pattern]
+(defn pixels [pattern]
   (->> (for [row-number (range (count pattern))
              :let [row (nth pattern row-number)]]
-         (row-rectangles row row-number))
+         (row-pixels row row-number))
        (apply concat)))
 
 (defn paint [rects _ graphic]
@@ -38,7 +38,7 @@
     (sg/draw graphic rect style)))
 
 (defn preview [pattern-in-rows]
-  (config! preview-canvas :paint #(paint (rectangles pattern-in-rows) %1 %2)))
+  (config! preview-canvas :paint #(paint (pixels pattern-in-rows) %1 %2)))
 
 
 
