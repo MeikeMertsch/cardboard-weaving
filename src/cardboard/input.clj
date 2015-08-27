@@ -6,9 +6,9 @@
 
 ;;; Preview Related
 (defn preview-new-string [new-string]
-  (->> new-string
-       cc/pattern-in-rows
-       pre/preview))
+  (-> new-string
+      cc/pattern-in-rows
+      (pre/preview preview-size)))
 
 ;;; Saving Related
 (defn guarantee-txt [file]

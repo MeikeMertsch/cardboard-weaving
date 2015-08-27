@@ -8,11 +8,10 @@
 (def preview-canvas (canvas :paint nil))
 (def style-foreground (sg/style :background (scol/color :black)))
 (def style-background (sg/style :background nil))
-(def pixel-size {:width 3 :height 2})
 
-(defn pixel [column row]
-  (let [width (pixel-size :width)
-        height (pixel-size :height)]
+(defn pixel [column row size]
+  (let [width (size :width)
+        height (size :height)]
   (sg/rect (* width column) (* height row) width height)))
 
 ;;; Preview
@@ -21,25 +20,25 @@
     style-foreground
     style-background))
 
-(defn row-pixels [row row-number]
+(defn row-pixels [row row-number size]
   (for [column-number (range (count row))
-        :let [pxl (pixel column-number row-number)
+        :let [pxl (pixel column-number row-number size)
               filling (nth row column-number)
               style (pixel-style filling)]]
     [pxl style]))
 
-(defn pixels [pattern]
+(defn pixels [pattern size]
   (->> (for [row-number (range (count pattern))
              :let [row (nth pattern row-number)]]
-         (row-pixels row row-number))
+         (row-pixels row row-number size))
        (apply concat)))
 
 (defn paint [pxls _ graphic]
   (doseq [[pxl style] pxls]
     (sg/draw graphic pxl style)))
 
-(defn preview [pattern-in-rows]
-  (config! preview-canvas :paint #(paint (pixels pattern-in-rows) %1 %2)))
+(defn preview [pattern-in-rows size]
+  (config! preview-canvas :paint #(paint (pixels pattern-in-rows size) %1 %2)))
 
 
 

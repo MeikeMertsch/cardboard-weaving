@@ -13,9 +13,9 @@
 
 ;----- Preview Shall Be Called Correctly
 (def space-in-rows
-  [[(repeat 17 (repeat 3 "0"))]])
+  (repeat 17 (repeat 3 "0")))
 
-(expect space-in-rows
+(expect [[space-in-rows preview-size]]
         (side-effects [pre/preview]
                       (preview-new-string " ")))
 
