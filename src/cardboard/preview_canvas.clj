@@ -8,11 +8,12 @@
 (def preview-canvas (canvas :paint nil))
 (def style-foreground (sg/style :background (scol/color :black)))
 (def style-background (sg/style :background nil))
-(def pixel-height 2)
-(def pixel-width 3)
+(def pixel-size {:width 3 :height 2})
 
 (defn pixel [column row]
-  (sg/rect (* pixel-width column) (* pixel-height row) pixel-width pixel-height))
+  (let [width (pixel-size :width)
+        height (pixel-size :height)]
+  (sg/rect (* width column) (* height row) width height)))
 
 ;;; Preview
 (defn pixel-style [filling]
