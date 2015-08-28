@@ -5,15 +5,15 @@
             [cardboard.default_chars :as dc]
             [cardboard.constants :refer :all]))
 
-(defn letter-panel [letter-pattern]
+(defn letter-panel [letter]
   (let [letter-canvas (pre/preview-canvas)
         letter-panel (horizontal-panel :items [letter-canvas])]
-    (pre/preview letter-canvas overview-size letter-pattern)
+    (pre/preview letter-canvas overview-size (pat/string->pattern letter))
     letter-panel))
 
-(defn panels [letter-patterns]
-  (for [pattern letter-patterns]
-    (letter-panel pattern)))
+(defn panels [letters]
+  (for [letter letters]
+    (letter-panel letter)))
 
 (def overview-window
   (frame
@@ -26,7 +26,7 @@
                           :vgap 10
                           :hgap 10
                           :size [1200 :by (* 180 7)]
-                          :items (panels (map pat/string->pattern (sort dc/available-chars))))))
+                          :items (panels (sort dc/available-chars)))))
 
 (defn preview []
   (config! overview-window :content (main-panel))
