@@ -2,10 +2,9 @@
   (:gen-class)
   (:require [seesaw.core :refer :all]
             [seesaw.chooser :as sc]
-            [seesaw.border :as sb]
             [cardboard.preview-canvas :as pre]
+            [cardboard.overview-canvas :as ov]
             [cardboard.input :as in]
-            [cardboard.pattern :as pat]
             [cardboard.constants :refer :all]))
 
 (native!)
@@ -22,34 +21,7 @@
                                          save-button]
                                  :size [900 :by 30]))
 (def preview-canvas (pre/preview-canvas))
-(def overview-canvas (pre/preview-canvas))
-(def overview-canvas-a (pre/preview-canvas))
-(def overview-canvas-b (pre/preview-canvas))
-(def overview-canvas-c (pre/preview-canvas))
-(def overview-canvas-d (pre/preview-canvas))
-(def overview-canvas-e (pre/preview-canvas))
-(def overview-canvas-f (pre/preview-canvas))
-
 (def preview-panel (horizontal-panel :items [preview-canvas]))
-(def overview-panel (horizontal-panel :items [overview-canvas]))
-
-
-(def a-panel (horizontal-panel :items [overview-canvas-a] :border (sb/line-border)))
-(def b-panel (horizontal-panel :items [overview-canvas-b]))
-(def c-panel (horizontal-panel :items [overview-canvas-c]))
-(def d-panel (horizontal-panel :items [overview-canvas-d]))
-(def e-panel (horizontal-panel :items [overview-canvas-e]))
-(def f-panel (horizontal-panel :items [overview-canvas-f]))
-
-(def my-xyz-panel (grid-panel :columns 8
-                              :items [overview-panel
-                                      a-panel
-                                      b-panel
-                                      c-panel
-                                      d-panel
-                                      e-panel
-                                      f-panel]))
-
 (def preview-scroll (scrollable preview-panel))
 (def main-panel (vertical-panel :items [form-for-saving
                                         error-panel
@@ -66,7 +38,7 @@
 (def overview-window
   (frame
     :title overview-title
-    :content my-xyz-panel
+    :content ov/my-xyz-panel
     :width 1400
     :height 190))
 
@@ -92,13 +64,7 @@
 
 (defn open-overview [_]
   (show! overview-window)
-  (pre/preview overview-canvas overview-size (pat/string->pattern "a"))
-  (pre/preview overview-canvas-a overview-size (pat/string->pattern "A"))
-  (pre/preview overview-canvas-b overview-size (pat/string->pattern "B"))
-  (pre/preview overview-canvas-c overview-size (pat/string->pattern "C"))
-  (pre/preview overview-canvas-d overview-size (pat/string->pattern "D"))
-  (pre/preview overview-canvas-e overview-size (pat/string->pattern "E"))
-  (pre/preview overview-canvas-f overview-size (pat/string->pattern "F")))
+  (ov/preview))
 
 ;;; Listeners
 (listen save-button :action handle-submit)
