@@ -3,7 +3,7 @@
   (:require [seesaw.core :refer :all]
             [seesaw.chooser :as sc]
             [cardboard.preview-canvas :as pre]
-            [cardboard.overview-canvas :as ov]
+            [cardboard.overview :as ov]
             [cardboard.input :as in]
             [cardboard.constants :refer :all]))
 

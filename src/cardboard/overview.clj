@@ -1,4 +1,4 @@
-(ns cardboard.overview-canvas
+(ns cardboard.overview
   (:require [seesaw.core :refer :all]
             [cardboard.preview-canvas :as pre]
             [cardboard.pattern :as pat]
