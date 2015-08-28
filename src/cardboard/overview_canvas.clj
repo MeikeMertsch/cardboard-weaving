@@ -25,7 +25,7 @@
   (scrollable (grid-panel :columns 8
                           :vgap 10
                           :hgap 10
-                          :size [1200 :by (* 170 7)]
+                          :size [1200 :by (* 180 7)]
                           :items (panels (map pat/string->pattern (sort dc/available-chars))))))
 
 (defn preview []
