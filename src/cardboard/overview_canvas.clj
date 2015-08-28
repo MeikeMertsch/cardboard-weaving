@@ -28,7 +28,7 @@
   (scrollable (grid-panel :columns 8
                           :vgap 10
                           :hgap 10
-                          :size [1200 :by (* 180 7)]
+                          :size [(* 9 10 8) :by (* 6 18 7)]
                           :items (character-canvases (sort dc/available-chars)))))
 
 (defn preview []
