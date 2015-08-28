@@ -5,20 +5,20 @@
             [cardboard.default_chars :as dc]
             [cardboard.constants :refer :all]))
 
+(def overview-window
+  (frame
+    :title overview-title
+    :width 1400
+    :height 800))
+
 (defn paint-canvas [letter letter-canvas]
   (pre/preview letter-canvas overview-size (pat/string->pattern letter))
   letter-canvas)
 
 (defn canvases [letters]
   (for [letter letters
-        :let [cnvs (pre/preview-canvas)]]
-    (paint-canvas letter cnvs)))
-
-(def overview-window
-  (frame
-    :title overview-title
-    :width 1400
-    :height 800))
+        :let [letter-canvas (pre/preview-canvas)]]
+    (paint-canvas letter letter-canvas)))
 
 (defn overview-panel []
   (scrollable (grid-panel :columns 8
