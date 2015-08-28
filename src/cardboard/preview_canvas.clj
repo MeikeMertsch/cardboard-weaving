@@ -39,8 +39,8 @@
   (doseq [[pxl style] pxls]
     (sg/draw graphic pxl style)))
 
-(defn preview [canvas size pattern-in-rows]
-  (config! canvas :paint #(paint (pixels pattern-in-rows size) %1 %2)))
+(defn preview [canvas pxl-size pattern-in-rows]
+  (config! canvas :paint #(paint (pixels pattern-in-rows pxl-size) %1 %2)))
 
 
 
