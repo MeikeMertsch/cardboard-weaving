@@ -1,6 +1,5 @@
 (ns cardboard.overview-canvas
   (:require [seesaw.core :refer :all]
-            [seesaw.border :as sb]
             [cardboard.preview-canvas :as pre]
             [cardboard.pattern :as pat]
             [cardboard.default_chars :as dc]
@@ -8,7 +7,7 @@
 
 (defn letter-panel [letter-pattern]
   (let [letter-canvas (pre/preview-canvas)
-        letter-panel (horizontal-panel :items [letter-canvas] :border (sb/line-border))]
+        letter-panel (horizontal-panel :items [letter-canvas])]
     (pre/preview letter-canvas overview-size letter-pattern)
     letter-panel))
 
@@ -22,9 +21,13 @@
     :width 1400
     :height 800))
 
+(defn main-panel []
+  (scrollable (grid-panel :columns 8
+                          :vgap 10
+                          :hgap 10
+                          :size [1200 :by (* 170 7)]
+                          :items (panels (map pat/string->pattern (sort dc/available-chars))))))
+
 (defn preview []
-  (let [my-xyz-panel (scrollable (grid-panel :columns 8
-                                             :size [1400 :by 2000]
-                                             :items (panels (map pat/string->pattern (sort dc/available-chars)))))]
-    (config! overview-window :content my-xyz-panel)
-    (show! overview-window)))
+  (config! overview-window :content (main-panel))
+  (show! overview-window))
