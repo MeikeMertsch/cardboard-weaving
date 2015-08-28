@@ -9,7 +9,7 @@
   (pre/preview letter-canvas overview-size (pat/string->pattern letter))
   letter-canvas)
 
-(defn panels [letters]
+(defn canvases [letters]
   (for [letter letters
         :let [cnvs (pre/preview-canvas)]]
     (paint-canvas letter cnvs)))
@@ -20,13 +20,13 @@
     :width 1400
     :height 800))
 
-(defn main-panel []
+(defn overview-panel []
   (scrollable (grid-panel :columns 8
                           :vgap 10
                           :hgap 10
                           :size [1200 :by (* 180 7)]
-                          :items (panels (sort dc/available-chars)))))
+                          :items (canvases (sort dc/available-chars)))))
 
 (defn preview []
-  (config! overview-window :content (main-panel))
+  (config! overview-window :content (overview-panel))
   (show! overview-window))
