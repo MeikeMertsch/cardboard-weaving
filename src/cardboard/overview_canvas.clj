@@ -11,16 +11,16 @@
     :width 1400
     :height 800))
 
-(defn open-letter [letter _]
-  (alert letter))
+(defn open-character [character _]
+  (alert character))
 
-(defn paint-canvas [letter letter-canvas]
-  (pre/preview letter-canvas overview-size (pat/string->pattern letter))
-  (listen letter-canvas :mouse-clicked (partial open-letter letter))
-  letter-canvas)
+(defn paint-canvas [character character-canvas]
+  (pre/preview character-canvas overview-size (pat/string->pattern character))
+  (listen character-canvas :mouse-clicked (partial open-character character))
+  character-canvas)
 
-(defn canvases [letters]
-  (for [letter letters
+(defn character-canvases [characters]
+  (for [letter characters
         :let [letter-canvas (pre/preview-canvas)]]
     (paint-canvas letter letter-canvas)))
 
@@ -29,7 +29,7 @@
                           :vgap 10
                           :hgap 10
                           :size [1200 :by (* 180 7)]
-                          :items (canvases (sort dc/available-chars)))))
+                          :items (character-canvases (sort dc/available-chars)))))
 
 (defn preview []
   (config! overview-window :content (overview-panel))
