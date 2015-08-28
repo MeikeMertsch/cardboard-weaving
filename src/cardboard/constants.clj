@@ -20,4 +20,5 @@
 
 (def preview-size {:width 3 :height 2})
 (def overview-size {:width 9 :height 6})
-(def zoom-size {:width 15 :height 10})
+(def zoom-size {:width 30 :height 20})
+(def status-bar-height 20)

@@ -1,6 +1,7 @@
 (ns cardboard.overview
   (:require [seesaw.core :refer :all]
             [cardboard.preview-canvas :as pre]
+            [cardboard.character-editing :as che]
             [cardboard.pattern :as pat]
             [cardboard.default_chars :as dc]
             [cardboard.constants :refer :all]))
@@ -12,7 +13,7 @@
     :height 800))
 
 (defn open-character [character _]
-  (alert character))
+  (che/open character))
 
 (defn paint-canvas [character character-canvas]
   (pre/preview character-canvas overview-size (pat/string->pattern character))
