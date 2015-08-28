@@ -3,6 +3,7 @@
             [seesaw.border :as sb]
             [cardboard.preview-canvas :as pre]
             [cardboard.pattern :as pat]
+            [cardboard.default_chars :as dc]
             [cardboard.constants :refer :all]))
 
 
@@ -33,6 +34,14 @@
                                       e-panel
                                       f-panel]))
 
+(def overview-window
+  (frame
+    :title overview-title
+    :content my-xyz-panel
+    :width 1400
+    :height 190))
+
+
 (defn preview []
   (pre/preview overview-canvas overview-size (pat/string->pattern "a"))
   (pre/preview overview-canvas-a overview-size (pat/string->pattern "A"))
@@ -40,4 +49,5 @@
   (pre/preview overview-canvas-c overview-size (pat/string->pattern "C"))
   (pre/preview overview-canvas-d overview-size (pat/string->pattern "D"))
   (pre/preview overview-canvas-e overview-size (pat/string->pattern "E"))
-  (pre/preview overview-canvas-f overview-size (pat/string->pattern "F")))
+  (pre/preview overview-canvas-f overview-size (pat/string->pattern "F"))
+  (show! overview-window))

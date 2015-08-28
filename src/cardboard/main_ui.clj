@@ -35,14 +35,6 @@
     :width 900
     :height 140))
 
-(def overview-window
-  (frame
-    :title overview-title
-    :content ov/my-xyz-panel
-    :width 1400
-    :height 190))
-
-
 ;;; Actions
 (defn show-validation-result [string]
   (config! error-label :text string))
@@ -62,13 +54,9 @@
     (if (= key \newline)
       (handle-submit caller))))
 
-(defn open-overview [_]
-  (show! overview-window)
-  (ov/preview))
-
 ;;; Listeners
 (listen save-button :action handle-submit)
-(listen overview-button :action open-overview)
+(listen overview-button :action (fn [_] (ov/preview)))
 (listen input-for-string :key-pressed keypress)
 (listen input-for-string :key handle-string-changed)
 
