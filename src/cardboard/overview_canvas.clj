@@ -5,16 +5,14 @@
             [cardboard.default_chars :as dc]
             [cardboard.constants :refer :all]))
 
-(defn letter-canvas []
-  (pre/preview-canvas))
-
-(defn letter-panel [letter letter-canvas]
+(defn paint-canvas [letter letter-canvas]
   (pre/preview letter-canvas overview-size (pat/string->pattern letter))
   letter-canvas)
 
 (defn panels [letters]
-  (for [letter letters]
-    (letter-panel letter (letter-canvas))))
+  (for [letter letters
+        :let [cnvs (pre/preview-canvas)]]
+    (paint-canvas letter cnvs)))
 
 (def overview-window
   (frame
