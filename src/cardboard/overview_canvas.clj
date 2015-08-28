@@ -11,8 +11,12 @@
     :width 1400
     :height 800))
 
+(defn open-letter [letter _]
+  (alert letter))
+
 (defn paint-canvas [letter letter-canvas]
   (pre/preview letter-canvas overview-size (pat/string->pattern letter))
+  (listen letter-canvas :mouse-clicked (partial open-letter letter))
   letter-canvas)
 
 (defn canvases [letters]
