@@ -1,15 +1,9 @@
-(ns cardboard.character-editing-test
-  (:require [expectations :refer :all]
-            [cardboard.character-editing :refer :all]
-            [cardboard.constants :refer :all]))
+(ns cardboard.pixel-change
+  (:require [cardboard.constants :refer :all]))
 
-
-;;; Finding The Pixel Coordinations Of The Absolute Coordinations
-(expect [1 2] (pixel-coords [40 40]))
-(expect [1 0] (pixel-coords [58 8]))
-
-
-;;; Exchanging The Color Of The Pixel
+(defn pixel-coords [[x y]]
+  [(quot x (zoom-size :width))
+   (quot y (zoom-size :height))])
 
 (defn invert-pixel [filling]
   (if (= filling foreground-pixel)
@@ -36,5 +30,3 @@
   (->> (pixel-at location pattern)
        invert-pixel
        (exchange-pixel location pattern)))
-
-(expect '(("1" "2") ("." "4") ("5" "6")) (change-pixel [0 1] '(("1" "2") ("0" "4") ("5" "6"))))
