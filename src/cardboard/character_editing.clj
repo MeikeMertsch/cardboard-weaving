@@ -16,13 +16,13 @@
 (defn new-pxl [loc]
   [[(sg/rect (first loc) (last loc) 15 10) (sg/style :background (scol/color :red))]])
 
-(defn do-something [character-canvas caller]
+(defn handle-click [character-canvas caller]
   (config! character-canvas :paint #(pre/paint (new-pxl (mou/location caller))
                                                %1 %2)))
 
 (defn paint-canvas [character character-canvas]
   (pre/preview character-canvas zoom-size (pat/string->pattern character))
-  (listen character-canvas :mouse-clicked (partial do-something character-canvas))
+  (listen character-canvas :mouse-clicked (partial handle-click character-canvas))
   character-canvas)
 
 (defn open [character]
