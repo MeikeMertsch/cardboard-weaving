@@ -40,7 +40,8 @@
     (sg/draw graphic pxl style)))
 
 (defn preview [canvas pxl-size pattern-in-rows]
-  (config! canvas :paint #(paint (pixels pattern-in-rows pxl-size) %1 %2)))
+  (config! canvas :paint #(paint (pixels pattern-in-rows pxl-size) %1 %2)
+                  :user-data pattern-in-rows))
 
 
 
