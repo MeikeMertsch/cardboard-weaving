@@ -5,6 +5,10 @@
   [(quot x (zoom-size :width))
    (quot y (zoom-size :height))])
 
+(defn valid-coords? [[x y] pattern]
+  (and (<= 0 x (dec (count (first pattern))))
+       (<= 0 y (dec (count pattern)))))
+
 (defn invert [filling]
   (if (= filling foreground-pixel)
     background-pixel
@@ -28,6 +32,8 @@
 
 (defn invert-pixel [location pattern]
   (let [coords (pixel-coords location)]
-    (->> (pixel-filling coords pattern)
-         invert
-         (exchange-pixel coords pattern))))
+    (if (valid-coords? coords pattern)
+      (->> (pixel-filling coords pattern)
+           invert
+           (exchange-pixel coords pattern))
+      pattern)))
