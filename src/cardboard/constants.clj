@@ -15,6 +15,7 @@
 (def overview-title "Font overview")
 (def saved-instructions-text "Thanks!\nYou saved your pattern")
 (def foreground-pixel ".")
+(def background-pixel "0")
 (def default-extension ".txt")
 (def invalid-characters "The following invalid characters will be ignored: ")
 
