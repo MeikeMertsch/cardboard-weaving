@@ -13,11 +13,12 @@
     :width (* 10 (zoom-size :width))
     :height (+ status-bar-height (* 17 (zoom-size :height)))))
 
-(defn new-pxl [loc]
-  [[(sg/rect (first loc) (last loc) 15 10) (sg/style :background (scol/color :red))]])
+(defn new-pxl [caller]
+  (concat (pre/pixels (user-data caller) zoom-size)
+          [[(sg/rect (first (mou/location caller)) (last (mou/location caller)) 15 10) (sg/style :background (scol/color :red))]]))
 
 (defn handle-click [character-canvas caller]
-  (config! character-canvas :paint #(pre/paint (new-pxl (mou/location caller))
+  (config! character-canvas :paint #(pre/paint (new-pxl caller)
                                                %1 %2)))
 
 (defn paint-canvas [character character-canvas]
