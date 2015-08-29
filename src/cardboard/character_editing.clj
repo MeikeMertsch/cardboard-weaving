@@ -15,14 +15,15 @@
 (defn new-pattern [caller]
   (pc/invert-pixel (mou/location caller) (user-data caller)))
 
-(defn paint [caller unknown graphic]
-  (-> (new-pattern caller)
+(defn paint [pattern unknown graphic]
+  (-> pattern
       (pre/pixels zoom-size)
       (pre/paint unknown graphic)))
 
 (defn handle-click [caller]
-  (config! caller :paint (partial paint caller)
-                  :user-data (new-pattern caller)))
+  (let [pattern (new-pattern caller)]
+    (config! caller :paint (partial paint pattern)
+                    :user-data pattern)))
 
 (defn paint-canvas [character character-canvas]
   (pre/preview character-canvas zoom-size (pat/string->pattern character))
