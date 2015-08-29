@@ -5,12 +5,12 @@
   [(quot x (zoom-size :width))
    (quot y (zoom-size :height))])
 
-(defn invert-pixel [filling]
+(defn invert [filling]
   (if (= filling foreground-pixel)
     background-pixel
     foreground-pixel))
 
-(defn pixel-at [[x y] pattern]
+(defn pixel-filling [[x y] pattern]
   (nth (nth pattern y) x))
 
 (defn exchange-row-pixel [x row filling]
@@ -26,7 +26,8 @@
                  (exchange-row-pixel x (first (last %)) filling)
                  (rest (last %))))))
 
-(defn change-pixel [location pattern]
-  (->> (pixel-at location pattern)
-       invert-pixel
-       (exchange-pixel location pattern)))
+(defn invert-pixel [location pattern]
+  (let [coords (pixel-coords location)]
+    (->> (pixel-filling coords pattern)
+         invert
+         (exchange-pixel coords pattern))))
