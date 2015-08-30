@@ -6,7 +6,7 @@
   (spit file instructions))
 
 (defn character-file-name [character]
-  (first (map int character)))
+  (int (first character)))
 
 (defn save-character [character pattern]
   (save (str default-character-location
