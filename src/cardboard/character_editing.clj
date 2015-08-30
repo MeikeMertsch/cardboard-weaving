@@ -8,6 +8,7 @@
 ;;; GUI Elements
 (def save-button (button :text save-letter-button-text))
 (def cancel-button (button :text cancel-button-text))
+
 (def button-panel (horizontal-panel :items [save-button
                                             cancel-button]))
 (def main-panel (vertical-panel))
@@ -19,17 +20,13 @@
     :height (+ status-bar-height button-bar-height (* 17 (zoom-size :height)))
     :content main-panel))
 
-(defn something [_]
-  (let [userdata (user-data (select main-panel [:#character-canvas]))]
-    (alert (first (map int (:string userdata))))
-    (spit (str "resources/default/" (first (map int (:string userdata))) ".txt") (:pattern userdata))))
-
-(listen cancel-button :action dispose!)
-(listen save-button :action something)
 
 ;;; Logic
+(defn canvas-information []
+  (user-data (select main-panel [:#character-canvas])))
+
 (defn updated-pattern [canvas]
-  (pc/invert-pixel (mou/location canvas) ((user-data canvas) :pattern)))
+  (pc/invert-pixel (mou/location canvas) ((canvas-information) :pattern)))
 
 (defn paint [pattern unknown graphic]
   (-> pattern
@@ -38,7 +35,7 @@
 
 (defn fill-canvas [canvas pattern]
   (config! canvas :paint (partial paint pattern)
-                  :user-data (assoc (user-data canvas) :pattern pattern)))
+                  :user-data (assoc (canvas-information) :pattern pattern)))
 
 (defn handle-click [canvas]
   (->> (updated-pattern canvas)
@@ -55,3 +52,11 @@
                               button-panel])
   (show! editing-window))
 
+
+;;; Non-Dynamic Listeners
+
+(defn save-character [_]
+    (spit (str "resources/default/" (first (map int (:string canvas-information))) ".txt") (:pattern canvas-information))))
+
+(listen cancel-button :action dispose!)
+(listen save-button :action save-character)
