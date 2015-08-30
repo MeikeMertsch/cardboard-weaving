@@ -3,7 +3,7 @@
             [seesaw.mouse :as mou]
             [cardboard.preview-canvas :as pre]
             [cardboard.pixel-change :as pc]
-            [cardboard.saving :as sav]
+            [cardboard.core :as cc]
             [cardboard.constants :refer :all]))
 
 ;;; GUI Elements
@@ -56,8 +56,8 @@
 
 ;;; Non-Dynamic Listeners
 (defn save-character [caller]
-  (sav/save-character (:string (canvas-information))
-                      (:pattern (canvas-information)))
+  (cc/save-character (:string (canvas-information))
+                     (:pattern (canvas-information)))
   (dispose! caller))
 
 (listen cancel-button :action dispose!)
