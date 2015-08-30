@@ -42,11 +42,11 @@
   (->> (updated-pattern canvas)
        (fill-canvas canvas)))
 
-(defn character-canvas [character character-canvas]
-  (pre/preview character-canvas zoom-size character)
-  (listen character-canvas :mouse-clicked handle-click)
-  (config! character-canvas :id :character-canvas)
-  character-canvas)
+(defn character-canvas [character new-canvas]
+  (pre/preview new-canvas zoom-size character)
+  (listen new-canvas :mouse-clicked handle-click)
+  (config! new-canvas :id :character-canvas)
+  new-canvas)
 
 (defn open [character]
   (config! main-panel :items [(character-canvas character (pre/preview-canvas))
