@@ -15,7 +15,7 @@
     (str file default-extension)
     file))
 
-(defn save-instructions [string _ file]
+(defn save-instructions [string file]
   (if (not (nil? file))
     (->> file
          guarantee-txt

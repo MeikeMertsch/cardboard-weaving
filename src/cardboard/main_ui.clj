@@ -43,11 +43,14 @@
   (in/preview-new-string preview-canvas (value caller))
   (show-validation-result (in/validate (value caller))))
 
-(defn handle-submit [action]
-  (sc/choose-file :type :save
-                  :success-fn (partial in/save-instructions (value input-for-string))
-                  :selection-mode :files-only)
+(defn save [_ file]
+  (in/save-instructions (value input-for-string) file)
   (alert action saved-instructions-text))
+
+(defn handle-submit [_]
+  (sc/choose-file :type :save
+                  :success-fn save
+                  :selection-mode :files-only))
 
 (defn keypress [caller]
   (let [key (.getKeyChar caller)]
