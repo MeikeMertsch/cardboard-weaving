@@ -6,10 +6,11 @@
             [cardboard.pixel-change :as pc]
             [cardboard.constants :refer :all]))
 
+;;; GUI Elements
 (def save-button (button :text save-letter-button-text))
 (def cancel-button (button :text cancel-button-text))
 (def button-panel (horizontal-panel :items [save-button
-                                              cancel-button]))
+                                            cancel-button]))
 (def main-panel (vertical-panel))
 
 (def editing-window
@@ -21,17 +22,18 @@
 
 (listen cancel-button :action dispose!)
 
-(defn new-pattern [caller]
-  (pc/invert-pixel (mou/location caller) (user-data caller)))
+;;; Logic
+(defn new-pattern [canvas]
+  (pc/invert-pixel (mou/location canvas) (user-data canvas)))
 
 (defn paint [pattern unknown graphic]
   (-> pattern
-      (pre/pixels zoom-size)
-      (pre/paint unknown graphic)))
+      (pre/pixels  zoom-size)
+      (pre/paint  unknown graphic)))
 
-(defn handle-click [caller]
-  (let [pattern (new-pattern caller)]
-    (config! caller :paint (partial paint pattern)
+(defn handle-click [canvas]
+  (let [pattern (new-pattern canvas)]
+    (config! canvas :paint (partial paint pattern)
                     :user-data pattern)))
 
 (defn paint-canvas [character character-canvas]
@@ -41,5 +43,5 @@
 
 (defn open [character]
   (config! main-panel :items [(paint-canvas character (pre/preview-canvas))
-                                button-panel])
+                              button-panel])
   (show! editing-window))
