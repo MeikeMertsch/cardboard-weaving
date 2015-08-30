@@ -27,3 +27,5 @@
 (def save-letter-button-text "Save")
 (def cancel-button-text "Cancel")
 (def button-bar-height 30)
+
+(def default-character-location "resources/default/")
