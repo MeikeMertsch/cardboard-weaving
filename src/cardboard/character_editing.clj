@@ -16,7 +16,7 @@
   (frame
     :title overview-title
     :width (* 10 (zoom-size :width))
-    :height (+ status-bar-height (* 17 (zoom-size :height)))
+    :height (+ status-bar-height button-bar-height (* 17 (zoom-size :height)))
     :content main-panel))
 
 (listen cancel-button :action dispose!)
@@ -30,17 +30,20 @@
       (pre/pixels  zoom-size)
       (pre/paint  unknown graphic)))
 
-(defn handle-click [canvas]
-  (let [pattern (updated-pattern canvas)]
-    (config! canvas :paint (partial paint pattern)
-                    :user-data (assoc (user-data canvas) :pattern pattern))))
+(defn fill-canvas [canvas pattern]
+  (config! canvas :paint (partial paint pattern)
+                  :user-data (assoc (user-data canvas) :pattern pattern)))
 
-(defn paint-canvas [character character-canvas]
+(defn handle-click [canvas]
+  (->> (updated-pattern canvas)
+       (fill-canvas canvas)))
+
+(defn character-canvas [character character-canvas]
   (pre/preview character-canvas zoom-size character)
   (listen character-canvas :mouse-clicked handle-click)
   character-canvas)
 
 (defn open [character]
-  (config! main-panel :items [(paint-canvas character (pre/preview-canvas))
+  (config! main-panel :items [(character-canvas character (pre/preview-canvas))
                               button-panel])
   (show! editing-window))
