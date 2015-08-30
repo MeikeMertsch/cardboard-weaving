@@ -19,7 +19,13 @@
     :height (+ status-bar-height button-bar-height (* 17 (zoom-size :height)))
     :content main-panel))
 
+(defn something [_]
+  (let [userdata (user-data (select main-panel [:#character-canvas]))]
+    (alert (first (map int (:string userdata))))
+    (spit (str "resources/default/" (first (map int (:string userdata))) ".txt") (:pattern userdata))))
+
 (listen cancel-button :action dispose!)
+(listen save-button :action something)
 
 ;;; Logic
 (defn updated-pattern [canvas]
@@ -41,9 +47,11 @@
 (defn character-canvas [character character-canvas]
   (pre/preview character-canvas zoom-size character)
   (listen character-canvas :mouse-clicked handle-click)
+  (config! character-canvas :id :character-canvas)
   character-canvas)
 
 (defn open [character]
   (config! main-panel :items [(character-canvas character (pre/preview-canvas))
                               button-panel])
   (show! editing-window))
+
