@@ -6,8 +6,8 @@
             [cardboard.pixel-change :as pc]
             [cardboard.constants :refer :all]))
 
-(def save-button (button :text "Save"))
-(def cancel-button (button :text "Cancel"))
+(def save-button (button :text save-letter-button-text))
+(def cancel-button (button :text cancel-button-text))
 (def button-panel (horizontal-panel :items [save-button
                                               cancel-button]))
 (def main-panel (vertical-panel))
