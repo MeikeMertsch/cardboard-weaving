@@ -3,6 +3,7 @@
             [seesaw.mouse :as mou]
             [cardboard.preview-canvas :as pre]
             [cardboard.pixel-change :as pc]
+            [cardboard.pixel-size :as ps]
             [cardboard.core :as cc]
             [cardboard.constants :refer :all]))
 
@@ -51,6 +52,7 @@
 (defn open [character]
   (config! main-panel :items [(character-canvas character (pre/preview-canvas))
                               button-panel])
+  (config! editing-window :size (ps/absolute-size zoom-size character))
   (show! editing-window))
 
 
