@@ -16,7 +16,7 @@
 (defn save-character [character pattern]
   (s/save (str default-character-location
                (character-file-name character)
-               default-extension)
+               character-extension)
           (p/pattern->string pattern)))
 
 (defn pattern-in-rows [string]

@@ -29,3 +29,4 @@
 (def button-bar-height 30)
 
 (def default-character-location "resources/default/")
+(def character-extension ".ch")
