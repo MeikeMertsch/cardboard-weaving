@@ -16,7 +16,3 @@
 (expect (repeat 17 (repeat 7 "0")) (pattern-in-rows "  "))
 (expect '(()) (pattern-in-rows ""))
 
-;;; Figure Proper Filename For Saving Characters
-(expect 71 (character-file-name "G"))
-(expect 32 (character-file-name " "))
-(expect 117 (character-file-name "u"))

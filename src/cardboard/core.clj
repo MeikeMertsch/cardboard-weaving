@@ -10,13 +10,8 @@
        (l/string-n-pattern->layout (:valid (v/validate string)))
        (s/save file-path)))
 
-(defn character-file-name [character]
-  (int (first character)))
-
 (defn save-character [character pattern]
-  (s/save (str default-character-location
-               (character-file-name character)
-               character-extension)
+  (s/save (s/character-location character)
           (p/pattern->string pattern)))
 
 (defn pattern-in-rows [string]

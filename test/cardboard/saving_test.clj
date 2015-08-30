@@ -10,3 +10,7 @@
 (expect-let [placeholder (save saver-test-file some-test-data)] some-test-data (slurp saver-test-file))
 (expect-let [placeholder (save saver-test-file other-test-data)] other-test-data (slurp saver-test-file))
 
+;;; Figure Proper Filename For Saving Characters
+(expect 71 (character-file-name "G"))
+(expect 32 (character-file-name " "))
+(expect 117 (character-file-name "u"))
