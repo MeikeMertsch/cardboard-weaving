@@ -29,10 +29,10 @@
 (defn updated-pattern [canvas]
   (pc/invert-pixel (mou/location canvas) ((canvas-information) :pattern)))
 
-(defn paint [pattern unknown graphic]
+(defn paint [pattern widget graphic]
   (-> pattern
       (pre/pixels  zoom-size)
-      (pre/paint  unknown graphic)))
+      (pre/paint  widget graphic)))
 
 (defn fill-canvas [canvas pattern]
   (config! canvas :paint (partial paint pattern)
