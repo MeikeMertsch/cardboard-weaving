@@ -16,10 +16,9 @@
     file))
 
 (defn save-instructions [string file]
-  (if (not (nil? file))
-    (->> file
-         guarantee-txt
-         (cc/save-instructions-for string))))
+  (->> file
+       guarantee-txt
+       (cc/save-instructions-for string)))
 
 ;;; Validation Related
 (defn validation-message-for [invalid-chars]
