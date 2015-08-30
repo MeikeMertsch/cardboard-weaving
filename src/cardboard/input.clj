@@ -7,7 +7,6 @@
 ;;; Preview Related
 (defn preview-new-string [canvas new-string]
   (->> new-string
-       cc/pattern-in-rows
        (pre/preview canvas preview-size)))
 
 ;;; Saving Related

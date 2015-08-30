@@ -12,11 +12,9 @@
 
 
 ;----- Preview Shall Be Called Correctly
-(def space-in-rows
-  (repeat 17 (repeat 3 "0")))
 (def canvas (pre/preview-canvas))
 
-(expect [[canvas preview-size space-in-rows]]
+(expect [[canvas preview-size " "]]
         (side-effects [pre/preview]
                       (preview-new-string canvas " ")))
 

@@ -34,10 +34,11 @@
 (defn handle-click [canvas]
   (let [pattern (new-pattern canvas)]
     (config! canvas :paint (partial paint pattern)
-                    :user-data {:pattern pattern})))
+                    :user-data {:pattern pattern
+                                :string (:string (user-data canvas))})))
 
 (defn paint-canvas [character character-canvas]
-  (pre/preview character-canvas zoom-size (pat/string->pattern character))
+  (pre/preview character-canvas zoom-size character)
   (listen character-canvas :mouse-clicked handle-click)
   character-canvas)
 
