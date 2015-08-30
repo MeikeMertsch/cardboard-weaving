@@ -22,7 +22,7 @@
 (listen cancel-button :action dispose!)
 
 ;;; Logic
-(defn new-pattern [canvas]
+(defn updated-pattern [canvas]
   (pc/invert-pixel (mou/location canvas) ((user-data canvas) :pattern)))
 
 (defn paint [pattern unknown graphic]
@@ -31,7 +31,7 @@
       (pre/paint  unknown graphic)))
 
 (defn handle-click [canvas]
-  (let [pattern (new-pattern canvas)]
+  (let [pattern (updated-pattern canvas)]
     (config! canvas :paint (partial paint pattern)
                     :user-data (assoc (user-data canvas) :pattern pattern))))
 
