@@ -1,5 +1,6 @@
 (ns cardboard.saving
-  (:require [cardboard.constants :refer :all]))
+  (:require [cardboard.constants :refer :all]
+            [cardboard.pattern :as pat]))
 
 (defn save [file instructions]
   (spit file instructions))
@@ -11,4 +12,4 @@
   (save (str default-character-location
              (character-file-name character)
              default-extension)
-        pattern))
+        (pat/pattern->string pattern)))

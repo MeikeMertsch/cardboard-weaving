@@ -1,6 +1,7 @@
 (ns cardboard.pattern
   (:require [cardboard.default_chars :as dl]
-            [cardboard.string-cleaning :as sc]))
+            [cardboard.string-cleaning :as sc]
+            [cardboard.constants :refer :all]))
 
 (defn str->chars [string]
   (->> (seq string)
@@ -22,3 +23,9 @@
        sc/clean
        str->chars
        create-the-pattern))
+
+(defn pattern->string [pattern]
+  (->> pattern
+       (interpose new-line)
+       (apply concat)
+       (apply str)))
