@@ -1,9 +1,10 @@
 (ns cardboard.core
-  (:require [cardboard.pattern :as p])
-  (:require [cardboard.print_layout :as l])
-  (:require [cardboard.saving :as s])
-  (:require [cardboard.validation :as v])
-  (:require [cardboard.constants :refer :all]))
+  (:require [cardboard.pattern :as p]
+            [cardboard.print_layout :as l]
+            [cardboard.default_chars :as dc]
+            [cardboard.saving :as s]
+            [cardboard.validation :as v]
+            [cardboard.constants :refer :all]))
 
 (defn save-instructions-for [string file-path]
   (->> (p/string->pattern string)
@@ -19,3 +20,7 @@
     empty-pattern
     (p/string->pattern string)))
 
+(defn prefill-default-characters []
+  (for [character dc/available-chars
+        :let [pattern (pattern-in-rows character)]]
+    (save-character character pattern)))
