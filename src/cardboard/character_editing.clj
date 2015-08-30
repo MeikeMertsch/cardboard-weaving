@@ -24,7 +24,7 @@
 
 ;;; Logic
 (defn new-pattern [canvas]
-  (pc/invert-pixel (mou/location canvas) (user-data canvas)))
+  (pc/invert-pixel (mou/location canvas) ((user-data canvas) :pattern)))
 
 (defn paint [pattern unknown graphic]
   (-> pattern
@@ -34,7 +34,7 @@
 (defn handle-click [canvas]
   (let [pattern (new-pattern canvas)]
     (config! canvas :paint (partial paint pattern)
-                    :user-data pattern)))
+                    :user-data {:pattern pattern})))
 
 (defn paint-canvas [character character-canvas]
   (pre/preview character-canvas zoom-size (pat/string->pattern character))
