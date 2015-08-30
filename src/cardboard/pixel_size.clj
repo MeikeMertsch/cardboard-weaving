@@ -13,3 +13,4 @@
     [(* (pixel-size :width) (max (first size-in-pixels) minimum-width))
      :by
      (+ status-bar-height button-bar-height (* (pixel-size :height) (last size-in-pixels)))]))
+;; TODO: Better naming. With the addition to the height, it's bound to the character windows
