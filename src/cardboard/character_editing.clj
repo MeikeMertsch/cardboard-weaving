@@ -2,7 +2,6 @@
   (:require [seesaw.core :refer :all]
             [seesaw.mouse :as mou]
             [cardboard.preview-canvas :as pre]
-            [cardboard.pattern :as pat]
             [cardboard.pixel-change :as pc]
             [cardboard.constants :refer :all]))
 
