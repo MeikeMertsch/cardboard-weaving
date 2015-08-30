@@ -6,11 +6,20 @@
             [cardboard.pixel-change :as pc]
             [cardboard.constants :refer :all]))
 
+(def save-button (button :text "Save"))
+(def cancel-button (button :text "Cancel"))
+(def button-panel (horizontal-panel :items [save-button
+                                              cancel-button]))
+(def main-panel (vertical-panel))
+
 (def editing-window
   (frame
     :title overview-title
     :width (* 10 (zoom-size :width))
-    :height (+ status-bar-height (* 17 (zoom-size :height)))))
+    :height (+ status-bar-height (* 17 (zoom-size :height)))
+    :content main-panel))
+
+(listen cancel-button :action dispose!)
 
 (defn new-pattern [caller]
   (pc/invert-pixel (mou/location caller) (user-data caller)))
@@ -31,5 +40,6 @@
   character-canvas)
 
 (defn open [character]
-  (config! editing-window :content (paint-canvas character (pre/preview-canvas)))
+  (config! main-panel :items [(paint-canvas character (pre/preview-canvas))
+                                button-panel])
   (show! editing-window))
