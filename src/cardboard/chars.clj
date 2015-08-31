@@ -28,9 +28,6 @@
        (remove-substring default-character-location)
        int-str->character))
 
-(defn letter-space []
-  dc/letter-space)
-
 (defn create-mapping []
   (zipmap (map filename->character (character-files))
           (map slurp (character-files))))
@@ -44,6 +41,9 @@
 
 (defn available-chars []
   (into #{} (keys (char->pattern))))
+
+(defn letter-space []
+  dc/letter-space)
 
 (defn update-mapping []
   (reset! mapping-char->pattern (create-mapping)))
