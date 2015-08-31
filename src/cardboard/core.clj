@@ -22,4 +22,4 @@
 
 (defn prefill-default-characters []
   (doseq [character dc/available-chars]
-    (save-character character (pattern-in-rows character))))
+    (s/save (s/character-location character) (dc/char->pattern character))))
