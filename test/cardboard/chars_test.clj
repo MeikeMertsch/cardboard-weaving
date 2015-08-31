@@ -1,39 +1,11 @@
 (ns cardboard.chars-test
   (require [expectations :refer :all]
-           [cardboard.constants :refer :all]
-           [cardboard.default_chars :as dc]))
+           [cardboard.chars :refer :all]
+           [cardboard.constants :refer :all]))
 
 
-;;; Figure Out All Available Chars
-(def filereader (clojure.java.io/file "resources/default"))
+(expect "d" (filename->character "resources/default/100.ch"))
 
-(defn only-characters [file-list]
-  (filter #(.endsWith % character-extension) file-list))
+(expect "/" (remove-substring "resources/default" default-character-location))
 
-(defn character-files []
-  (->> (file-seq filereader)
-       (map str)
-       only-characters))
-
-
-(defn remove [subs string]
-  (clojure.string/replace string subs ""))
-
-(defn filename->character [string]
-  (->> string
-       (remove character-extension)
-       (remove default-character-location)
-       bigint
-       char
-       str))
-
-(defn char->pattern []
-  (zipmap (map filename->character (character-files))
-          (map slurp (character-files))))
-
-(defn available-chars []
-  (into #{} (keys (char->pattern))))
-
-(expect dc/available-chars (available-chars))
-
-(expect "/" (remove "resources/default" default-character-location))
+(expect ["75.ch"] (only-characters ["75.ch" "something different"]))

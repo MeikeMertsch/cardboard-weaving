@@ -22,5 +22,5 @@
 
 (defn prefill-default-characters []
   (for [character dc/available-chars
-        :let [pattern (pattern-in-rows character)]]
+        :let [pattern (dc/char->pattern character)]]
     (save-character character pattern)))
