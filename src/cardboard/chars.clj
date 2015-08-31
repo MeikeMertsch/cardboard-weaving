@@ -2,7 +2,7 @@
   (require [cardboard.constants :refer :all]
            [cardboard.default_chars :as dc]))
 
-(def filereader (clojure.java.io/file "resources/default"))
+(def filereader (clojure.java.io/file default-character-location))
 
 (defn only-characters [file-list]
   (filter #(.endsWith % character-extension) file-list))
@@ -26,9 +26,18 @@
 (defn letter-space []
   dc/letter-space)
 
-(defn char->pattern []
+(defn create-mapping []
   (zipmap (map filename->character (character-files))
           (map slurp (character-files))))
 
+(def mapping-char->pattern
+  (atom (create-mapping)))
+
+(defn char->pattern []
+  (deref mapping-char->pattern))
+
 (defn available-chars []
   (into #{} (keys (char->pattern))))
+
+(defn update-mapping []
+  (reset! mapping-char->pattern (create-mapping)))

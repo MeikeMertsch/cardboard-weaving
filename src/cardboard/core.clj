@@ -4,7 +4,8 @@
             [cardboard.default_chars :as dc]
             [cardboard.saving :as s]
             [cardboard.validation :as v]
-            [cardboard.constants :refer :all]))
+            [cardboard.constants :refer :all]
+            [cardboard.chars :as c]))
 
 (defn save-instructions-for [string file-path]
   (->> (p/string->pattern string)
@@ -13,7 +14,8 @@
 
 (defn save-character [character pattern]
   (s/save (s/character-location character)
-          (p/pattern->string pattern)))
+          (p/pattern->string pattern))
+  (c/update-mapping))
 
 (defn pattern-in-rows [string]
   (if (= empty-string string)
