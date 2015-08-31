@@ -11,4 +11,4 @@
 
 (expect "/" (remove-substring "resources/default" default-character-location))
 
-(expect ["75.ch"] (only-characters ["75.ch" "something different"]))
+(expect ["75.ch"] (keep-only-characters ["75.ch" "something different"]))

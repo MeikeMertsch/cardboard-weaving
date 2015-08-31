@@ -2,26 +2,31 @@
   (require [cardboard.constants :refer :all]
            [cardboard.default_chars :as dc]))
 
+;;; Read Available Characters From Files
 (def filereader (clojure.java.io/file default-character-location))
 
-(defn only-characters [file-list]
+(defn keep-only-characters [file-list]
   (filter #(.endsWith % character-extension) file-list))
 
 (defn character-files []
   (->> (file-seq filereader)
        (map str)
-       only-characters))
+       keep-only-characters))
 
 (defn remove-substring [subs string]
   (clojure.string/replace string subs ""))
+
+(defn int-str->character [string]
+  (->> string
+       bigint
+       char
+       str))
 
 (defn filename->character [string]
   (->> string
        (remove-substring character-extension)
        (remove-substring default-character-location)
-       bigint
-       char
-       str))
+       int-str->character))
 
 (defn letter-space []
   dc/letter-space)
@@ -33,6 +38,7 @@
 (def mapping-char->pattern
   (atom (create-mapping)))
 
+;;; Functions That Are Needed From Outside
 (defn char->pattern []
   (deref mapping-char->pattern))
 
