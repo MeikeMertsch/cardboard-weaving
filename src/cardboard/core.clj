@@ -21,6 +21,5 @@
     (p/string->pattern string)))
 
 (defn prefill-default-characters []
-  (for [character dc/available-chars
-        :let [pattern (dc/char->pattern character)]]
-    (save-character character pattern)))
+  (doseq [character dc/available-chars]
+    (save-character character (pattern-in-rows character))))

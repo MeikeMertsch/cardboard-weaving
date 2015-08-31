@@ -66,4 +66,5 @@
 
 ;;; Showing The UI
 (show! pgm-window)
+(cc/prefill-default-characters)
 (handle-string-changed input-for-string)
