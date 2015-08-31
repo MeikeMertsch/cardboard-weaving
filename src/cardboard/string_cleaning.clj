@@ -9,4 +9,3 @@
 
 (defn clean [string]
   (reduce #(clojure.string/replace %1 %2 "") string (unavailable-chars string)))
-
