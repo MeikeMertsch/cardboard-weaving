@@ -56,15 +56,16 @@
 (defn keypress [caller]
   (let [key (.getKeyChar caller)]
     (if (= key \newline)
-      (handle-submit caller))))
+      (handle-submit caller)
+      (handle-string-changed caller))))
 
 ;;; Listeners
 (listen save-button :action handle-submit)
 (listen overview-button :action (fn [_] (ov/preview)))
-(listen input-for-string :key-pressed keypress)
-(listen input-for-string :key handle-string-changed)
+(listen input-for-string :key keypress)
+
 
 ;;; Showing The UI
 (show! pgm-window)
-(cc/prefill-default-characters)
+#_(cc/prefill-default-characters)
 (handle-string-changed input-for-string)
