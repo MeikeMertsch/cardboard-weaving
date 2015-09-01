@@ -5,7 +5,7 @@
             [cardboard.preview-canvas :as pre]
             [cardboard.overview :as ov]
             [cardboard.input :as in]
-            [cardboard.core :as cc]
+            [cardboard.default_chars :as dc]
             [cardboard.constants :refer :all]))
 
 (native!)
@@ -68,5 +68,5 @@
 
 ;;; Showing The UI
 (show! pgm-window)
-#_(cc/prefill-default-characters)
+#_(dc/prefill-default-characters)
 (handle-string-changed input-for-string)

@@ -16,7 +16,3 @@
   (s/save (s/character-location character)
           (p/pattern->string pattern))
   (c/update-mapping))
-
-(defn prefill-default-characters []
-  (doseq [character dc/available-chars]
-    (s/save (s/character-location character) (dc/char->pattern character))))
