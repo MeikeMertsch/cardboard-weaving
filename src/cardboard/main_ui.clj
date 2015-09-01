@@ -14,6 +14,7 @@
 (def input-for-string (text default-text))
 (def save-button (button :text save-button-text))
 (def overview-button (button :text overview-button-text))
+(def overview-panel (horizontal-panel :items [overview-button]))
 (def error-label (label empty-string))
 (def error-panel (horizontal-panel :items [error-label]
                                    :size [900 :by 20]))
@@ -27,7 +28,7 @@
 (def main-panel (vertical-panel :items [form-for-saving
                                         error-panel
                                         preview-scroll
-                                        overview-button]))
+                                        overview-panel]))
 
 (def pgm-window
   (frame
