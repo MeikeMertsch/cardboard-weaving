@@ -11,8 +11,8 @@
 
 ;;; Saving Related
 (defn guarantee-txt [file]
-  (if (not (.endsWith (str file) default-extension))
-    (str file default-extension)
+  (if (not (.endsWith (str file) instruction-extension))
+    (str file instruction-extension)
     file))
 
 (defn save-instructions [string file]
