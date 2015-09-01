@@ -3,7 +3,6 @@
             [cardboard.print_layout :as l]
             [cardboard.saving :as s]
             [cardboard.validation :as v]
-            [cardboard.constants :refer :all]
             [cardboard.chars :as c]))
 
 (defn save-instructions-for [string file-path]
