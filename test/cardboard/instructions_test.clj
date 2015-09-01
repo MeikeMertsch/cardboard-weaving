@@ -1,9 +1,9 @@
 (ns cardboard.instructions_test
   (:require [expectations :refer :all]
+            [cardboard.default_chars :refer :all]
             [cardboard.pattern :refer :all]
             [cardboard.common-test-data :refer :all]
-            [cardboard.instructions :refer :all]
-            [cardboard.print_layout :as pl]))
+            [cardboard.instructions :refer :all]))
 
 ;----- Row Partitions
 (expect [4] (pack-sizes (repeat 4 "0")))
@@ -17,12 +17,18 @@
 (expect [[1 3] [4 12] [13 14]] (pack-sizes->instructions [3 9 2]))
 
 ;----- Instructions For Letters
-(expect char-a-instructions (pattern->instructions (string->pattern "a")))
-(expect char-b-instructions (pattern->instructions (string->pattern "b")))
-(expect (concat char-a-instructions '(((1 17))) char-b-instructions) (pattern->instructions (string->pattern "ab")))
+(defn pattern-of [letters]
+  (->> (map char-patterns->matrix letters)
+       (apply map concat)))
+
+(expect char-a-instructions (pattern->instructions (pattern-of [lc-a])))
+(expect char-b-instructions (pattern->instructions (pattern-of [lc-b])))
+(expect (concat char-a-instructions '(((1 17))) char-b-instructions)
+        (pattern->instructions (pattern-of [lc-a letter-space lc-b])))
+
 
 ;----- Distinguish Between Uppercase Letters And Lowercase Letters
-(expect false? (= (pattern->instructions (string->pattern "a")) (pattern->instructions (string->pattern "A"))))
+(expect false? (= (pattern->instructions (pattern-of [lc-a])) (pattern->instructions (pattern-of [uc-a]))))
 
 ;----- Turning The Pattern
 (expect (list (repeat 17 "0")) (turn-pattern-by-90-degrees (repeat 17 (repeat 1 "0"))))
