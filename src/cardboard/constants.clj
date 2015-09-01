@@ -10,7 +10,7 @@
 
 (def default-text "Text to be turned into a pattern")
 (def save-button-text "Save instructions")
-(def overview-button-text "Font overview")
+(def overview-button-text "Edit font")
 (def app-title "Cardboard Weaving Patterns")
 (def overview-title "Font overview")
 (def saved-instructions-text "Thanks!\nYou saved your pattern")
