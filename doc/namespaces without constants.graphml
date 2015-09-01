@@ -136,7 +136,7 @@
     <node id="n7">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="102.70400000000001" x="481.408" y="-78.0"/>
+          <y:Geometry height="30.0" width="102.70400000000001" x="315.1146953125" y="-143.5"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="custom" textColor="#000000" visible="true" width="72.91796875" x="14.893015624999975" y="5.93359375">instructions<y:LabelModel>
@@ -411,7 +411,7 @@
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="1.1368683772161603E-13" tx="0.0" ty="0.0">
-            <y:Point x="399.95302013422815" y="-146.98993288590611"/>
+            <y:Point x="437.95302013422815" y="-152.98993288590611"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
