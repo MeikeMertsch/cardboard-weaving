@@ -1,9 +1,9 @@
 (ns cardboard.pixel-size
-  (:require [cardboard.core :as cc]
+  (:require [cardboard.pattern :as pat]
             [cardboard.constants :refer :all]))
 
 (defn size [string]
-  (let [pattern (cc/pattern-in-rows string)]
+  (let [pattern (pat/string->pattern string)]
     [(count (first pattern))
      (count pattern)]))
 

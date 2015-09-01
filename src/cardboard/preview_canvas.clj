@@ -3,7 +3,7 @@
             [seesaw.graphics :as sg]
             [seesaw.color :as scol]
             [cardboard.constants :refer :all]
-            [cardboard.core :as cc]))
+            [cardboard.pattern :as pat]))
 
 ;;; Items
 (def style-foreground (sg/style :background (scol/color :black)))
@@ -41,7 +41,7 @@
     (sg/draw graphic pxl style)))
 
 (defn preview [canvas pxl-size string]
-  (let [pattern (cc/pattern-in-rows string)]
+  (let [pattern (pat/string->pattern string)]
     (config! canvas :paint #(paint (pixels pattern pxl-size) %1 %2)
                     :user-data {:string string
                                 :pattern pattern})))

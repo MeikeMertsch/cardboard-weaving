@@ -19,10 +19,12 @@
        (apply map concat)))
 
 (defn string->pattern [string]
-  (->> string
-       sc/clean
-       str->chars
-       create-the-pattern))
+  (if (= empty-string string)
+    empty-pattern
+    (->> string
+         sc/clean
+         str->chars
+         create-the-pattern)))
 
 (defn pattern->string [pattern]
   (->> pattern

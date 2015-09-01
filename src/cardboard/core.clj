@@ -17,11 +17,6 @@
           (p/pattern->string pattern))
   (c/update-mapping))
 
-(defn pattern-in-rows [string]
-  (if (= empty-string string)
-    empty-pattern
-    (p/string->pattern string)))
-
 (defn prefill-default-characters []
   (doseq [character dc/available-chars]
     (s/save (s/character-location character) (dc/char->pattern character))))
