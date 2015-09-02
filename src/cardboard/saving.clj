@@ -8,6 +8,6 @@
   (-> (int (first character))
       (str character-extension)))
 
-(defn character-location [character]
+(defn character->location [character]
   (str default-character-location
        (character->file-name character)))
