@@ -1,13 +1,15 @@
 (ns cardboard.pixel-change
-  (:require [cardboard.constants :refer :all]))
+  (:require [cardboard.constants :refer :all]
+            [cardboard.size :as s]))
 
 (defn pattern-pixel-coords [[x y]]
   [(quot x (zoom-size :width))
    (quot y (zoom-size :height))])
 
 (defn valid-coords? [[x y] pattern]
-  (and (< -1 x (count (first pattern)))
-       (< -1 y (count pattern))))
+  (let [[width height] (s/pattern-size pattern)]
+    (and (< -1 x width)
+         (< -1 y height))))
 
 (defn invert [filling]
   (if (= filling foreground-pixel)
