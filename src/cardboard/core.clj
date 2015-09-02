@@ -13,4 +13,4 @@
 (defn save-character [character pattern]
   (s/save (s/character-location character)
           (p/pattern->string pattern))
-  (c/update-mapping))
+  (c/update-mapping!))

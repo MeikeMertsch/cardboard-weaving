@@ -45,5 +45,5 @@
 (defn letter-space []
   dc/letter-space)
 
-(defn update-mapping []
+(defn update-mapping! []
   (reset! mapping-char->pattern (create-mapping)))
