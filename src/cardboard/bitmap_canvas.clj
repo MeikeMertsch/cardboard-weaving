@@ -45,7 +45,3 @@
     (config! canvas :paint #(paint (pixels pattern pxl-size) %1 %2)
                     :user-data {:string string
                                 :pattern pattern})))
-
-
-
-
