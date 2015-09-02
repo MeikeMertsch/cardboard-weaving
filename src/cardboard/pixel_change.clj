@@ -16,7 +16,7 @@
     background-pixel
     foreground-pixel))
 
-(defn pixel-filling [[x y] pattern]
+(defn current-filling [[x y] pattern]
   (nth (nth pattern y) x))
 
 (defn exchange-row-pixel [x row filling]
@@ -35,7 +35,7 @@
 (defn invert-pixel [location pattern]
   (let [coords (pattern-pixel-coords location)]
     (if (valid-coords? coords pattern)
-      (->> (pixel-filling coords pattern)
+      (->> (current-filling coords pattern)
            invert
            (exchange-pixel coords pattern))
       pattern)))
