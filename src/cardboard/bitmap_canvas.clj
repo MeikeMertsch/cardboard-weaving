@@ -9,7 +9,7 @@
 (def style-foreground (sg/style :background (scol/color :black)))
 (def style-background (sg/style :background (scol/color :white)))
 
-(defn preview-canvas []
+(defn bitmap-canvas []
   (canvas :paint nil))
 
 (defn pixel [column row size]

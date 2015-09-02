@@ -21,7 +21,7 @@
 
 (defn character-canvases [characters]
   (for [letter characters
-        :let [letter-canvas (pre/preview-canvas)]]
+        :let [letter-canvas (pre/bitmap-canvas)]]
     (paint-canvas letter letter-canvas)))
 
 (defn overview-panel []

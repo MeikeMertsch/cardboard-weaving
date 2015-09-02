@@ -50,7 +50,7 @@
   new-canvas)
 
 (defn open [character]
-  (config! main-panel :items [(character-canvas character (pre/preview-canvas))
+  (config! main-panel :items [(character-canvas character (pre/bitmap-canvas))
                               button-panel])
   (config! editing-window :size (ps/screen-size zoom-size character))
   (show! editing-window))

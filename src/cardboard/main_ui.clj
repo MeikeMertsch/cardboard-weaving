@@ -22,7 +22,7 @@
                                  :items [input-for-string
                                          save-button]
                                  :size [900 :by 30]))
-(def preview-canvas (pre/preview-canvas))
+(def preview-canvas (pre/bitmap-canvas))
 (def preview-panel (horizontal-panel :items [preview-canvas]))
 (def preview-scroll (scrollable preview-panel))
 (def main-panel (vertical-panel :items [form-for-saving

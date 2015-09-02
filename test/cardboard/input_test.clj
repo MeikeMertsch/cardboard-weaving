@@ -12,7 +12,7 @@
 
 
 ;----- Preview Shall Be Called Correctly
-(def canvas (pre/preview-canvas))
+(def canvas (pre/bitmap-canvas))
 
 (expect [[canvas preview-size " "]]
         (side-effects [pre/render]
