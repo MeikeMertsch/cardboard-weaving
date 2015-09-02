@@ -30,8 +30,8 @@
 
 (defn paint [pattern widget graphic]
   (-> pattern
-      (pre/pixels  zoom-size)
-      (pre/paint  widget graphic)))
+      (pre/pixels zoom-size)
+      (pre/paint widget graphic)))
 
 (defn fill-canvas [canvas pattern]
   (config! canvas :paint (partial paint pattern)
