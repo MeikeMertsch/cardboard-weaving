@@ -4,10 +4,10 @@
 (defn save [file instructions]
   (spit file instructions))
 
-(defn character-file-name [character]
+(defn character->file-name [character]
   (-> (int (first character))
-      (str  character-extension)))
+      (str character-extension)))
 
 (defn character-location [character]
   (str default-character-location
-       (character-file-name character)))
+       (character->file-name character)))
