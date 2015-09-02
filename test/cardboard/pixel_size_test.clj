@@ -1,6 +1,6 @@
 (ns cardboard.pixel-size-test
   (require [expectations :refer :all]
-           [cardboard.pixel-size :refer :all]
+           [cardboard.size :refer :all]
            [cardboard.constants :refer :all]))
 
 ;;; Sizes In Pixels

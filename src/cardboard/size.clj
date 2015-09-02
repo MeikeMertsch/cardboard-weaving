@@ -1,4 +1,4 @@
-(ns cardboard.pixel-size
+(ns cardboard.size
   (:require [cardboard.pattern :as pat]
             [cardboard.constants :refer :all]))
 

@@ -3,7 +3,7 @@
             [seesaw.mouse :as mou]
             [cardboard.bitmap-canvas :as pre]
             [cardboard.pixel-change :as pc]
-            [cardboard.pixel-size :as ps]
+            [cardboard.size :as ps]
             [cardboard.saving :as s]
             [cardboard.constants :refer :all]))
 
