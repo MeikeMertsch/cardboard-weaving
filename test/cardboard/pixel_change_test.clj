@@ -5,8 +5,8 @@
 
 
 ;;; Finding The Pixel Coordinations Of The Absolute Coordinations
-(expect [1 2] (pixel-coords [40 40]))
-(expect [1 0] (pixel-coords [58 8]))
+(expect [1 2] (pattern-pixel-coords [40 40]))
+(expect [1 0] (pattern-pixel-coords [58 8]))
 
 
 ;;; Check The Coordinates

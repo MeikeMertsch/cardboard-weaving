@@ -1,7 +1,7 @@
 (ns cardboard.pixel-change
   (:require [cardboard.constants :refer :all]))
 
-(defn pixel-coords [[x y]]
+(defn pattern-pixel-coords [[x y]]
   [(quot x (zoom-size :width))
    (quot y (zoom-size :height))])
 
@@ -31,7 +31,7 @@
                  (rest (last %))))))
 
 (defn invert-pixel [location pattern]
-  (let [coords (pixel-coords location)]
+  (let [coords (pattern-pixel-coords location)]
     (if (valid-coords? coords pattern)
       (->> (pixel-filling coords pattern)
            invert
