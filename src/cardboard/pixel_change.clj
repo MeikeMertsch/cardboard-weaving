@@ -6,8 +6,8 @@
    (quot y (zoom-size :height))])
 
 (defn valid-coords? [[x y] pattern]
-  (and (<= 0 x (dec (count (first pattern))))
-       (<= 0 y (dec (count pattern)))))
+  (and (< -1 x (count (first pattern)))
+       (< -1 y (count pattern))))
 
 (defn invert [filling]
   (if (= filling foreground-pixel)

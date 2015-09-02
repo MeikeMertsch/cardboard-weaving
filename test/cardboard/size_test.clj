@@ -1,11 +1,12 @@
 (ns cardboard.size-test
   (require [expectations :refer :all]
            [cardboard.size :refer :all]
-           [cardboard.constants :refer :all]))
+           [cardboard.constants :refer :all]
+           [cardboard.pattern :as pat]))
 
 ;;; Sizes In Pixels
-(expect [3 17] (pattern-size " "))
-(expect [22 17] (pattern-size "abc"))
+(expect [3 17] (pattern-size (pat/string->pattern " ")))
+(expect [22 17] (pattern-size (pat/string->pattern "abc")))
 
 ;;; Absolute Sizes
 (expect [330 :by 340] (screen-size zoom-size "   "))
