@@ -1,5 +1,5 @@
 (ns cardboard.input
-  (:require [cardboard.core :as cc]
+  (:require [cardboard.saving :as s]
             [cardboard.validation :as val]
             [cardboard.preview-canvas :as pre]
             [cardboard.constants :refer :all]))
@@ -18,7 +18,7 @@
 (defn save-instructions [string file]
   (->> file
        guarantee-txt
-       (cc/save-instructions-for string)))
+       (s/save-instructions-for string)))
 
 ;;; Validation Related
 (defn validation-message-for [invalid-chars]

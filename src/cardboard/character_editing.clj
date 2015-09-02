@@ -4,7 +4,7 @@
             [cardboard.preview-canvas :as pre]
             [cardboard.pixel-change :as pc]
             [cardboard.pixel-size :as ps]
-            [cardboard.core :as cc]
+            [cardboard.saving :as s]
             [cardboard.constants :refer :all]))
 
 ;;; GUI Elements
@@ -58,7 +58,7 @@
 
 ;;; Non-Dynamic Listeners
 (defn save-character [caller]
-  (cc/save-character (:string (canvas-information))
+  (s/save-character (:string (canvas-information))
                      (:pattern (canvas-information)))
   (dispose! caller))
 

@@ -1,5 +1,5 @@
-(ns cardboard.default_chars
-  (require [cardboard.saving :as s]))
+(ns cardboard.default_chars)
+  #_(require [cardboard.saving :as s])
 
 (def lc-a
 "0000000
@@ -1037,6 +1037,6 @@
   (->> (keys char->pattern)
        (into #{})))
 
-(defn prefill-default-characters []
+#_(defn prefill-default-characters []
   (doseq [character available-chars]
     (s/save (s/character->location character) (char->pattern character))))

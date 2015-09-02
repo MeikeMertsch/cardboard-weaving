@@ -4,7 +4,7 @@
            [cardboard.constants :refer :all]
            [cardboard.default_chars :as dc]))
 
-(expect-let [placeholder (dc/prefill-default-characters)] dc/available-chars (available-chars))
+#_(expect-let [placeholder (dc/prefill-default-characters)] dc/available-chars (available-chars))
 
 (expect "d" (filename->character "resources/default/100.ch"))
 
