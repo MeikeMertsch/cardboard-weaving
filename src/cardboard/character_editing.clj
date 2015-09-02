@@ -18,8 +18,6 @@
 (def editing-window
   (frame
     :title overview-title
-    :width (* 10 (zoom-size :width))
-    :height (+ status-bar-height button-bar-height (* 17 (zoom-size :height)))
     :content main-panel))
 
 

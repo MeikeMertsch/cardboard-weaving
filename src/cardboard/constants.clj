@@ -22,11 +22,9 @@
 (def preview-size {:width 3 :height 2})
 (def overview-size {:width 9 :height 6})
 (def zoom-size {:width 30 :height 20})
-(def status-bar-height 20)
 
 (def save-letter-button-text "Save")
 (def cancel-button-text "Cancel")
-(def button-bar-height 30)
 
 (def default-character-location "resources/default/")
 (def character-extension ".ch")
