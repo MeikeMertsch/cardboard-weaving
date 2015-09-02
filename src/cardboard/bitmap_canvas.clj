@@ -1,4 +1,4 @@
-(ns cardboard.preview-canvas
+(ns cardboard.bitmap-canvas
   (:require [seesaw.core :refer :all]
             [seesaw.graphics :as sg]
             [seesaw.color :as scol]
@@ -40,7 +40,7 @@
   (doseq [[pxl style] pxls]
     (sg/draw graphic pxl style)))
 
-(defn preview [canvas pxl-size string]
+(defn render [canvas pxl-size string]
   (let [pattern (pat/string->pattern string)]
     (config! canvas :paint #(paint (pixels pattern pxl-size) %1 %2)
                     :user-data {:string string

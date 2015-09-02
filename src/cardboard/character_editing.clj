@@ -1,7 +1,7 @@
 (ns cardboard.character-editing
   (:require [seesaw.core :refer :all]
             [seesaw.mouse :as mou]
-            [cardboard.preview-canvas :as pre]
+            [cardboard.bitmap-canvas :as pre]
             [cardboard.pixel-change :as pc]
             [cardboard.pixel-size :as ps]
             [cardboard.saving :as s]
@@ -44,7 +44,7 @@
        (fill-canvas canvas)))
 
 (defn character-canvas [character new-canvas]
-  (pre/preview new-canvas zoom-size character)
+  (pre/render new-canvas zoom-size character)
   (listen new-canvas :mouse-clicked handle-click)
   (config! new-canvas :id :character-canvas)
   new-canvas)
