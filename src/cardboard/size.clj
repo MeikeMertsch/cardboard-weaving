@@ -12,4 +12,4 @@
         minimum-width 6]
     [(* (pattern-pixel-size :width) (max (first size-in-pattern-pixels) minimum-width))
      :by
-     (+ status-bar-height button-bar-height (* (pattern-pixel-size :height) (last size-in-pattern-pixels)))]))
+     (* (pattern-pixel-size :height) (last size-in-pattern-pixels))]))

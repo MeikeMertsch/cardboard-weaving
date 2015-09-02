@@ -52,7 +52,8 @@
 (defn open [character]
   (config! main-panel :items [(character-canvas character (pre/bitmap-canvas))
                               button-panel])
-  (config! editing-window :size (ps/screen-size zoom-size character))
+  (config! (select main-panel [:#character-canvas]) :size (ps/screen-size zoom-size character))
+  (pack! editing-window)
   (show! editing-window))
 
 
