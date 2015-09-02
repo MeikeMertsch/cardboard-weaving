@@ -1,4 +1,4 @@
-(ns cardboard.pixel-size-test
+(ns cardboard.size-test
   (require [expectations :refer :all]
            [cardboard.size :refer :all]
            [cardboard.constants :refer :all]))
