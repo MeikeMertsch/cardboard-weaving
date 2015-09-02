@@ -102,7 +102,7 @@
     <node id="n5">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="102.70400000000001" x="317.70400000000006" y="-78.0"/>
+          <y:Geometry height="30.0" width="102.70400000000001" x="481.408" y="-78.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="custom" textColor="#000000" visible="true" width="74.482421875" x="14.110789062499975" y="5.93359375">print-layout<y:LabelModel>
@@ -119,7 +119,7 @@
     <node id="n6">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="102.70400000000001" x="662.5380594059405" y="-78.0"/>
+          <y:Geometry height="30.0" width="102.70400000000001" x="662.5380594059405" y="60.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="custom" textColor="#000000" visible="true" width="41.353515625" x="30.675242187499975" y="5.93359375">saving<y:LabelModel>
@@ -136,7 +136,7 @@
     <node id="n7">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="102.70400000000001" x="315.1146953125" y="-143.5"/>
+          <y:Geometry height="30.0" width="102.70400000000001" x="662.5380594059405" y="-78.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="custom" textColor="#000000" visible="true" width="72.91796875" x="14.893015624999975" y="5.93359375">instructions<y:LabelModel>
@@ -170,7 +170,7 @@
     <node id="n9">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="102.70400000000001" x="481.408" y="60.0"/>
+          <y:Geometry height="30.0" width="102.70400000000001" x="317.70400000000006" y="-78.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" modelName="custom" textColor="#000000" visible="true" width="62.62890625" x="20.037546875000032" y="5.93359375">pixel-size<y:LabelModel>
@@ -410,9 +410,7 @@
     <edge id="e9" source="n11::n4" target="n9">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="1.1368683772161603E-13" tx="0.0" ty="0.0">
-            <y:Point x="437.95302013422815" y="-152.98993288590611"/>
-          </y:Path>
+          <y:Path sx="0.0" sy="1.1368683772161603E-13" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
