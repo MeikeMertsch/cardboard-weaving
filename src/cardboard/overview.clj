@@ -3,19 +3,18 @@
             [cardboard.bitmap-canvas :as pre]
             [cardboard.character-editing :as che]
             [cardboard.chars :as c]
-            [cardboard.constants :refer :all]))
+            [cardboard.constants :refer :all]
+            [cardboard.size :as s]))
 
 (def overview-window
-  (frame
-    :title overview-title
-    :width 1400
-    :height 800))
+  (frame :title overview-title))
 
 (defn open-character [character _]
   (che/open character))
 
 (defn paint-canvas [character character-canvas]
   (pre/render character-canvas overview-size character)
+  (config! character-canvas :size (s/screen-size overview-size character))
   (listen character-canvas :mouse-clicked (partial open-character character))
   character-canvas)
 
@@ -25,14 +24,14 @@
     (paint-canvas letter letter-canvas)))
 
 (defn overview-panel []
-  (scrollable (grid-panel :columns 8
+  (scrollable (grid-panel :columns 10
                           :vgap 10
                           :hgap 10
-                          :size [(* 9 10 8) :by (* 6 18 7)]
                           :items (character-canvases (sort (c/available-chars))))))
 
 (defn reload [_]
-  (config! overview-window :content (overview-panel)))
+  (config! overview-window :content (overview-panel))
+  (pack! overview-window))
 
 (defn preview []
   (reload overview-window)
