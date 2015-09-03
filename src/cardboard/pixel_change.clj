@@ -16,26 +16,12 @@
     background-pixel
     foreground-pixel))
 
-(defn current-filling [[x y] pattern]
-  (nth (nth pattern y) x))
-
-(defn exchange-row-pixel [x row filling]
-  (->> row
-       (split-at x)
-       (#(list (concat (first %)
-                       (list filling)
-                       (rest (last %)))))))
-
-(defn exchange-pixel [[x y] pattern filling]
-  (->> (split-at y pattern)
-       (#(concat (first %)
-                 (exchange-row-pixel x (first (last %)) filling)
-                 (rest (last %))))))
+(defn exchange-pixel [[x y] pattern]
+  (->> (fn [row] (update-in (vec row) [x] invert))
+       (update-in (vec pattern) [y])))
 
 (defn invert-pixel [location pattern]
   (let [coords (pattern-pixel-coords location)]
     (if (valid-coords? coords pattern)
-      (->> (current-filling coords pattern)
-           invert
-           (exchange-pixel coords pattern))
+        (exchange-pixel coords pattern)
       pattern)))
