@@ -23,7 +23,7 @@
 (def overview-size {:width 9 :height 6})
 (def zoom-size {:width 30 :height 20})
 
-(def save-letter-button-text "Save")
+(def save-character-button-text "Save")
 (def cancel-button-text "Cancel")
 
 (def default-character-location "resources/default/")

@@ -8,7 +8,7 @@
             [cardboard.constants :refer :all]))
 
 ;;; GUI Elements
-(def save-button (button :text save-letter-button-text))
+(def save-button (button :text save-character-button-text))
 (def cancel-button (button :text cancel-button-text))
 
 (def button-panel (horizontal-panel :items [save-button

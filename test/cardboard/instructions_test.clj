@@ -16,9 +16,9 @@
 (expect [[1] [2 3] [4]] (pack-sizes->instructions [1 2 1]))
 (expect [[1 3] [4 12] [13 14]] (pack-sizes->instructions [3 9 2]))
 
-;;; Instructions For Letters
-(defn pattern-of [letters]
-  (->> (map char-patterns->matrix letters)
+;;; Instructions For Characters
+(defn pattern-of [character]
+  (->> (map char-patterns->matrix character)
        (apply map concat)))
 
 (expect char-a-instructions (pattern->instructions (pattern-of [lc-a])))
@@ -26,7 +26,7 @@
 (expect (concat char-a-instructions '(((1 17))) char-b-instructions)
         (pattern->instructions (pattern-of [lc-a letter-space lc-b])))
 
-;;; Distinguish Between Uppercase Letters And Lowercase Letters
+;;; Distinguish Between Uppercase Characters And Lowercase Characters
 (expect false? (= (pattern->instructions (pattern-of [lc-a])) (pattern->instructions (pattern-of [uc-a]))))
 
 ;;; Turning The Pattern

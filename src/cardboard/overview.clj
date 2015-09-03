@@ -19,9 +19,9 @@
   character-canvas)
 
 (defn character-canvases [characters]
-  (for [letter characters
-        :let [letter-canvas (bc/bitmap-canvas)]]
-    (paint-canvas letter letter-canvas)))
+  (for [character characters
+        :let [character-canvas (bc/bitmap-canvas)]]
+    (paint-canvas character character-canvas)))
 
 (defn overview-panel []
   (scrollable (grid-panel :columns 10

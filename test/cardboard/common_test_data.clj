@@ -1,6 +1,6 @@
 (ns cardboard.common-test-data)
 
-;----- Instructions For A Letters
+;----- Instructions For A Character
 (def char-a-instructions
   '(((1 5) (6 7) (8 10) (11) (12 17))
     ((1 4) (5 8) (9 10) (11 12) (13 17))
