@@ -7,7 +7,7 @@
    (count pattern)])
 
 (defn screen-size [pattern-pixel-size string]
-  (let [size-in-pattern-pixels (pattern-size (pat/string->pattern string))
+  (let [size-in-pattern-pixels (pattern-size (pat/string->pattern (str string)))
         minimum-width 6]
     [(* (pattern-pixel-size :width) (max (first size-in-pattern-pixels) minimum-width))
      :by

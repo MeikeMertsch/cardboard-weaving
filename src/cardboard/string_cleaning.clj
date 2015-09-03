@@ -2,7 +2,7 @@
   (:require [cardboard.chars :as c]))
 
 (defn unavailable-chars [string]
-  (->> (seq string)
+  (->> string
        (filter #(not (contains? (c/available-chars) %)))
        distinct))
 
