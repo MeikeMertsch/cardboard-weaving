@@ -43,5 +43,5 @@
 (defn render [canvas pxl-size string]
   (let [pattern (pat/string->pattern (str string))]
     (config! canvas :paint #(paint (pixels pattern pxl-size) %1 %2)
-                    :user-data {:string string
+                    :user-data {:content string
                                 :pattern pattern})))

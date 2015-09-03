@@ -60,7 +60,7 @@
 
 ;;; Non-Dynamic Listeners
 (defn save-character [caller]
-  (s/save-character (:string (canvas-information))
+  (s/save-character (:content (canvas-information))
                     (:pattern (canvas-information)))
   (dispose! caller))
 
