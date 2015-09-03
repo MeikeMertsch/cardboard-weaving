@@ -5,13 +5,13 @@
 ;;; Read Available Characters From Files
 (def filereader (clojure.java.io/file default-character-location))
 
-(defn keep-only-characters [file-list]
+(defn keep-only-character-files [file-list]
   (filter #(.endsWith % character-extension) file-list))
 
 (defn character-files []
   (->> (file-seq filereader)
        (map str)
-       keep-only-characters))
+       keep-only-character-files))
 
 (defn remove-substring [subs string]
   (clojure.string/replace string subs ""))

@@ -24,7 +24,7 @@
 (defn validation-message-for [invalid-chars]
   (->> (interpose ", " invalid-chars)
        (apply str)
-       (str invalid-characters)))
+       (str invalid-characters-message)))
 
 (defn validate [string]
   (let [validation-result (val/validate string)]

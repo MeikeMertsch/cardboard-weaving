@@ -10,7 +10,7 @@
 
 (expect "/" (remove-substring "resources/default" default-character-location))
 
-(expect ["75.ch"] (keep-only-characters ["75.ch" "something different"]))
+(expect ["75.ch"] (keep-only-character-files ["75.ch" "something different"]))
 
 (expect dc/space ((char->pattern) \space))
 (expect dc/lc-a ((char->pattern) \a))

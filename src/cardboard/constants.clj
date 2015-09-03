@@ -17,7 +17,7 @@
 (def foreground-pixel ".")
 (def background-pixel "0")
 (def instruction-extension ".txt")
-(def invalid-characters "The following invalid characters will be ignored: ")
+(def invalid-characters-message "The following invalid characters will be ignored: ")
 
 (def preview-size {:width 3 :height 2})
 (def overview-size {:width 9 :height 6})

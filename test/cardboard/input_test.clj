@@ -32,7 +32,7 @@
 
 
 ;----- Generate A Beautiful Error
-(expect (str invalid-characters "1, =") (validation-message-for [\1 \=]))
+(expect (str invalid-characters-message "1, =") (validation-message-for [\1 \=]))
 
 ;----- Deal With The Validation Result
 (expect empty-string (validate "a normal string"))
