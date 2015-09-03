@@ -19,8 +19,7 @@
 (defn int-str->character [string]
   (->> string
        bigint
-       char
-       str))
+       char))
 
 (defn filename->character [string]
   (->> string

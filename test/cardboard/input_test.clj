@@ -14,9 +14,9 @@
 ;----- Preview Shall Be Called Correctly
 (def canvas (bc/bitmap-canvas))
 
-(expect [[canvas preview-size " "]]
+(expect [[canvas preview-size \space]]
         (side-effects [bc/render]
-                      (preview-new-string canvas " ")))
+                      (preview-new-string canvas \space)))
 
 
 ;----- Saves With Proper Extension
@@ -32,8 +32,8 @@
 
 
 ;----- Generate A Beautiful Error
-(expect (str invalid-characters "1, =") (validation-message-for ["1" "="]))
+(expect (str invalid-characters "1, =") (validation-message-for [\1 \=]))
 
 ;----- Deal With The Validation Result
 (expect empty-string (validate "a normal string"))
-(expect (validation-message-for ["9" "&"]) (validate "a string with 9 and & as bad chars"))
+(expect (validation-message-for [\9 \&]) (validate "a string with 9 and & as bad chars"))

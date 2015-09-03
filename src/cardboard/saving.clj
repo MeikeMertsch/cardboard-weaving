@@ -9,7 +9,7 @@
   (spit file instructions))
 
 (defn character->file-name [character]
-  (-> (int (first character))
+  (-> (int character)
       (str character-extension)))
 
 (defn character->location [character]

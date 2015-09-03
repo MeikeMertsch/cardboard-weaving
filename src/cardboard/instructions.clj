@@ -1,7 +1,7 @@
 (ns cardboard.instructions)
 
-(defn turn-pattern-by-90-degrees [letter]
-  (->> (apply map list letter)
+(defn turn-pattern-by-90-degrees [pattern]
+  (->> (apply map list pattern)
        (map reverse)))
 
 (defn pack-sizes [pattern-row]

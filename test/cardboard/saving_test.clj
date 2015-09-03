@@ -13,9 +13,9 @@
 (expect-let [placeholder (save saver-test-file other-test-data)] other-test-data (slurp saver-test-file))
 
 ;;; Figure Proper Filename For Saving Characters
-(expect "71.ch" (character->file-name "G"))
-(expect "32.ch" (character->file-name " "))
-(expect "117.ch" (character->file-name "u"))
+(expect "71.ch" (character->file-name \G))
+(expect "32.ch" (character->file-name \space))
+(expect "117.ch" (character->file-name \u))
 
 (def core-test-file "instructions-new.txt")
 (def placeholder)

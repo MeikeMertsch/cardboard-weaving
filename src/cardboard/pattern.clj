@@ -4,13 +4,13 @@
             [cardboard.constants :refer :all]))
 
 (defn str->chars [string]
-  (->> (seq string)
-       (map str)))
+  (seq string))
 
 (defn char-patterns->matrix [char-patterns]
   (->> (clojure.string/split-lines char-patterns)
        (map clojure.string/trim)
-       (map str->chars)))
+       (map str->chars)
+       (map #(map str %))))
 
 (defn create-the-pattern [chars]
   (->> (map #((c/char->pattern) %) chars)

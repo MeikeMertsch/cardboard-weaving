@@ -3,9 +3,9 @@
 
 (defn unavailable-chars [string]
   (->> string
-       (filter #(not (contains? (c/available-chars) (str %))))
-       distinct
-       (map str)))
+       (filter #(not (contains? (c/available-chars) %)))
+       distinct))
 
 (defn clean [string]
-  (reduce #(clojure.string/replace %1 %2 "") string (unavailable-chars string)))
+  (->> (reduce #(remove (partial = %2) %1) string (unavailable-chars string))
+       (apply str)))
