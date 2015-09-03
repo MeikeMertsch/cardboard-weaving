@@ -22,8 +22,11 @@
 
 
 ;;; Logic
+(defn character-canvas []
+  (select main-panel [:#character-canvas]))
+
 (defn canvas-information []
-  (user-data (select main-panel [:#character-canvas])))
+  (user-data (character-canvas)))
 
 (defn updated-pattern [canvas]
   (pc/invert-pixel (mou/location canvas) ((canvas-information) :pattern)))
@@ -41,16 +44,16 @@
   (->> (updated-pattern canvas)
        (fill-canvas canvas)))
 
-(defn character-canvas [character new-canvas]
+(defn render-canvas [character new-canvas]
   (bc/render new-canvas zoom-size character)
   (listen new-canvas :mouse-clicked handle-click)
   (config! new-canvas :id :character-canvas)
   new-canvas)
 
 (defn open [character]
-  (config! main-panel :items [(character-canvas character (bc/bitmap-canvas))
+  (config! main-panel :items [(render-canvas character (bc/bitmap-canvas))
                               button-panel])
-  (config! (select main-panel [:#character-canvas]) :size (ps/screen-size zoom-size character))
+  (config! (character-canvas) :size (ps/screen-size zoom-size character))
   (pack! editing-window)
   (show! editing-window))
 
