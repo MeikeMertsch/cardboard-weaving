@@ -1,6 +1,6 @@
 (ns cardboard.overview
   (:require [seesaw.core :refer :all]
-            [cardboard.bitmap-canvas :as pre]
+            [cardboard.bitmap-canvas :as bc]
             [cardboard.character-editing :as che]
             [cardboard.chars :as c]
             [cardboard.constants :refer :all]
@@ -13,14 +13,14 @@
   (che/open character))
 
 (defn paint-canvas [character character-canvas]
-  (pre/render character-canvas overview-size character)
+  (bc/render character-canvas overview-size character)
   (config! character-canvas :size (s/screen-size overview-size character))
   (listen character-canvas :mouse-clicked (partial open-character character))
   character-canvas)
 
 (defn character-canvases [characters]
   (for [letter characters
-        :let [letter-canvas (pre/bitmap-canvas)]]
+        :let [letter-canvas (bc/bitmap-canvas)]]
     (paint-canvas letter letter-canvas)))
 
 (defn overview-panel []

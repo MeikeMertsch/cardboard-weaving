@@ -1,7 +1,7 @@
 (ns cardboard.character-editing
   (:require [seesaw.core :refer :all]
             [seesaw.mouse :as mou]
-            [cardboard.bitmap-canvas :as pre]
+            [cardboard.bitmap-canvas :as bc]
             [cardboard.pixel-change :as pc]
             [cardboard.size :as ps]
             [cardboard.saving :as s]
@@ -30,8 +30,8 @@
 
 (defn paint [pattern widget graphic]
   (-> pattern
-      (pre/pixels zoom-size)
-      (pre/paint widget graphic)))
+      (bc/pixels zoom-size)
+      (bc/paint widget graphic)))
 
 (defn fill-canvas [canvas pattern]
   (config! canvas :paint (partial paint pattern)
@@ -42,13 +42,13 @@
        (fill-canvas canvas)))
 
 (defn character-canvas [character new-canvas]
-  (pre/render new-canvas zoom-size character)
+  (bc/render new-canvas zoom-size character)
   (listen new-canvas :mouse-clicked handle-click)
   (config! new-canvas :id :character-canvas)
   new-canvas)
 
 (defn open [character]
-  (config! main-panel :items [(character-canvas character (pre/bitmap-canvas))
+  (config! main-panel :items [(character-canvas character (bc/bitmap-canvas))
                               button-panel])
   (config! (select main-panel [:#character-canvas]) :size (ps/screen-size zoom-size character))
   (pack! editing-window)

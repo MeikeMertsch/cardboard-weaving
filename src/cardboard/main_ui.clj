@@ -2,7 +2,7 @@
   (:gen-class)
   (:require [seesaw.core :refer :all]
             [seesaw.chooser :as sc]
-            [cardboard.bitmap-canvas :as pre]
+            [cardboard.bitmap-canvas :as bc]
             [cardboard.overview :as ov]
             [cardboard.input :as in]
             [cardboard.default_chars :as dc]
@@ -22,7 +22,7 @@
                                  :items [input-for-string
                                          save-button]
                                  :size [900 :by 30]))
-(def preview-canvas (pre/bitmap-canvas))
+(def preview-canvas (bc/bitmap-canvas))
 (def preview-panel (horizontal-panel :items [preview-canvas]))
 (def preview-scroll (scrollable preview-panel))
 (def main-panel (vertical-panel :items [form-for-saving

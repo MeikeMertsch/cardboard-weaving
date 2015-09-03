@@ -2,7 +2,7 @@
   (:require [expectations :refer :all]
             [cardboard.input :refer :all]
             [cardboard.saving :as s]
-            [cardboard.bitmap-canvas :as pre]
+            [cardboard.bitmap-canvas :as bc]
             [cardboard.constants :refer :all]))
 
 ;----- Ensure Correct File Extension
@@ -12,10 +12,10 @@
 
 
 ;----- Preview Shall Be Called Correctly
-(def canvas (pre/bitmap-canvas))
+(def canvas (bc/bitmap-canvas))
 
 (expect [[canvas preview-size " "]]
-        (side-effects [pre/render]
+        (side-effects [bc/render]
                       (preview-new-string canvas " ")))
 
 

@@ -1,13 +1,13 @@
 (ns cardboard.input
   (:require [cardboard.saving :as s]
             [cardboard.validation :as val]
-            [cardboard.bitmap-canvas :as pre]
+            [cardboard.bitmap-canvas :as bc]
             [cardboard.constants :refer :all]))
 
 ;;; Preview Related
 (defn preview-new-string [canvas new-string]
   (->> new-string
-       (pre/render canvas preview-size)))
+       (bc/render canvas preview-size)))
 
 ;;; Saving Related
 (defn guarantee-txt [file]
