@@ -1,4 +1,4 @@
-(ns cardboard.chars
+(ns cardboard.font
   (require [cardboard.constants :refer :all]))
 
 ;;; Read Available Characters From Files

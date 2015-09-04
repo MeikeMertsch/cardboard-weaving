@@ -3,7 +3,7 @@
             [cardboard.print_layout :as l]
             [cardboard.validation :as v]
             [cardboard.pattern :as p]
-            [cardboard.chars :as c]))
+            [cardboard.font :as c]))
 
 (defn save [file instructions]
   (spit file instructions))

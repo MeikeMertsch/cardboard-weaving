@@ -1,5 +1,5 @@
 (ns cardboard.pattern
-  (:require [cardboard.chars :as c]
+  (:require [cardboard.font :as c]
             [cardboard.string-cleaning :as sc]
             [cardboard.constants :refer :all]))
 

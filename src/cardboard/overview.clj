@@ -2,7 +2,7 @@
   (:require [seesaw.core :refer :all]
             [cardboard.bitmap-canvas :as bc]
             [cardboard.character-editing :as che]
-            [cardboard.chars :as c]
+            [cardboard.font :as c]
             [cardboard.constants :refer :all]
             [cardboard.size :as s]))
 

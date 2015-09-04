@@ -1,5 +1,5 @@
 (ns cardboard.string-cleaning
-  (:require [cardboard.chars :as c]))
+  (:require [cardboard.font :as c]))
 
 (defn unavailable-chars [string]
   (->> string
