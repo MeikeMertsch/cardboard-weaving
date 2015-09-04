@@ -3,8 +3,8 @@
             [cardboard.size :as s]))
 
 (defn pattern-pixel-coords [[x y]]
-  [(quot x (zoom-size :width))
-   (quot y (zoom-size :height))])
+  [(quot x (inc (zoom-size :width)))
+   (quot y (inc (zoom-size :height)))])
 
 (defn valid-coords? [[x y] pattern]
   (let [[width height] (s/pattern-size pattern)]
