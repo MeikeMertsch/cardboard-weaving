@@ -14,7 +14,8 @@
 (def input-for-string (text default-text))
 (def save-button (button :text save-button-text))
 (def overview-button (button :text overview-button-text))
-(def overview-panel (horizontal-panel :items [overview-button]))
+(def overview-panel (border-panel :east overview-button
+                                  :size [900 :by 30]))
 (def error-label (label empty-string))
 (def error-panel (horizontal-panel :items [error-label]
                                    :size [900 :by 20]))
