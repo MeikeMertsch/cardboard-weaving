@@ -40,5 +40,5 @@
 (defn available-chars []
   (into #{} (keys (char->pattern))))
 
-(defn update-mapping! []
+(defn update-mapping! [font]
   (reset! mapping-char->pattern (create-mapping)))

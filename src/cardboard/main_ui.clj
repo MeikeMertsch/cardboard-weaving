@@ -6,7 +6,8 @@
             [cardboard.overview :as ov]
             [cardboard.input :as in]
             [cardboard.default_chars :as dc]
-            [cardboard.constants :refer :all]))
+            [cardboard.constants :refer :all]
+            [cardboard.font :as c]))
 
 (native!)
 
@@ -15,7 +16,8 @@
 (def save-button (button :text save-button-text))
 (def font-choice (combobox :model ["custom" "default"]))
 (def font-button (button :text overview-button-text))
-(def font-panel (border-panel :east font-button
+(def font-panel (border-panel :center font-choice
+                              :east font-button
                               :size [900 :by 30]))
 (def error-label (label empty-string))
 (def error-panel (horizontal-panel :items [error-label]
@@ -62,10 +64,15 @@
       (handle-submit caller)
       (handle-string-changed caller))))
 
+(defn handle-font-changed [caller]
+  (c/update-mapping! (value caller))
+  (handle-string-changed input-for-string))
+
 ;;; Listeners
 (listen save-button :action handle-submit)
 (listen font-button :action (fn [_] (ov/render)))
 (listen input-for-string :key keypress)
+(listen font-choice :selection handle-font-changed)
 
 
 ;;; Showing The UI
