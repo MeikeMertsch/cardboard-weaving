@@ -3,7 +3,7 @@
             [cardboard.print_layout :as l]
             [cardboard.validation :as v]
             [cardboard.pattern :as p]
-            [cardboard.font :as c]))
+            [cardboard.font :as f]))
 
 (defn save [file instructions]
   (spit file instructions))
@@ -19,7 +19,7 @@
 (defn save-character [character pattern]
   (save (character->location character)
           (p/pattern->string pattern))
-  (c/update-mapping!))
+  (f/update-mapping!))
 
 (defn save-instructions-for [string file-path]
   (->> (p/string->pattern string)

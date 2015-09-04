@@ -1,9 +1,9 @@
 (ns cardboard.string-cleaning
-  (:require [cardboard.font :as c]))
+  (:require [cardboard.font :as f]))
 
 (defn unavailable-chars [string]
   (->> string
-       (filter #(not (contains? (c/available-chars) %)))
+       (filter #(not (contains? (f/available-chars) %)))
        distinct))
 
 (defn clean [string]

@@ -2,7 +2,7 @@
   (:require [seesaw.core :refer :all]
             [cardboard.bitmap-canvas :as bc]
             [cardboard.character-editing :as che]
-            [cardboard.font :as c]
+            [cardboard.font :as f]
             [cardboard.constants :refer :all]
             [cardboard.size :as s]))
 
@@ -27,7 +27,7 @@
   (scrollable (grid-panel :columns 10
                           :vgap 10
                           :hgap 10
-                          :items (character-canvases (sort (c/available-chars))))))
+                          :items (character-canvases (sort (f/available-chars))))))
 
 (defn reload [_]
   (config! overview-window :content (overview-panel))

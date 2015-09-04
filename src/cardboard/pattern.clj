@@ -1,5 +1,5 @@
 (ns cardboard.pattern
-  (:require [cardboard.font :as c]
+  (:require [cardboard.font :as f]
             [cardboard.string-cleaning :as sc]
             [cardboard.constants :refer :all]))
 
@@ -10,7 +10,7 @@
        (map #(map str %))))
 
 (defn create-the-pattern [chars]
-  (->> (map #((c/char->pattern) %) chars)
+  (->> (map #((f/char->pattern) %) chars)
        (interpose letter-space)
        (map char-patterns->matrix)
        (apply map concat)))

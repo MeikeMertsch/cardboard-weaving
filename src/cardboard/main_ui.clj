@@ -7,7 +7,7 @@
             [cardboard.input :as in]
             [cardboard.default_chars :as dc]
             [cardboard.constants :refer :all]
-            [cardboard.font :as c]))
+            [cardboard.font :as f]))
 
 (native!)
 
@@ -65,7 +65,7 @@
       (handle-string-changed caller))))
 
 (defn handle-font-changed [caller]
-  (c/update-mapping! (value caller))
+  (f/update-mapping! (value caller))
   (handle-string-changed input-for-string))
 
 ;;; Listeners
