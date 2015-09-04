@@ -13,9 +13,10 @@
 ;;; Items
 (def input-for-string (text default-text))
 (def save-button (button :text save-button-text))
+(def font-choice (combobox :model ["custom" "default"]))
 (def font-button (button :text overview-button-text))
 (def font-panel (border-panel :east font-button
-                                  :size [900 :by 30]))
+                              :size [900 :by 30]))
 (def error-label (label empty-string))
 (def error-panel (horizontal-panel :items [error-label]
                                    :size [900 :by 20]))
@@ -43,7 +44,7 @@
   (config! error-label :text string))
 
 (defn handle-string-changed [caller]
-  (in/preview-new-string preview-canvas (value caller))
+  (bc/render preview-canvas preview-size (value caller))
   (show-validation-result (in/validate (value caller))))
 
 (defn save [_ file]

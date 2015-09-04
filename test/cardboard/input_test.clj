@@ -11,14 +11,6 @@
 (expect "Wir.tx.txt" (guarantee-txt "Wir.tx"))
 
 
-;----- Preview Shall Be Called Correctly
-(def canvas (bc/bitmap-canvas))
-
-(expect [[canvas preview-size \space]]
-        (side-effects [bc/render]
-                      (preview-new-string canvas \space)))
-
-
 ;----- Saves With Proper Extension
 (def the-string "abc")
 

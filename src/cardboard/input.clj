@@ -4,11 +4,6 @@
             [cardboard.bitmap-canvas :as bc]
             [cardboard.constants :refer :all]))
 
-;;; Preview Related
-(defn preview-new-string [canvas new-string]
-  (->> new-string
-       (bc/render canvas preview-size)))
-
 ;;; Saving Related
 (defn guarantee-txt [file]
   (if (not (.endsWith (str file) instruction-extension))
