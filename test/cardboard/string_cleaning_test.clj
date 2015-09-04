@@ -6,4 +6,3 @@
 ;----- Clean Strings
 (expect "clean string" (clean "clean string"))
 (expect "string" (clean "%s2tr5ing2"))
-(expect dc/available-chars (into #{} (map clean dc/available-chars)))

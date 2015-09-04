@@ -11,7 +11,7 @@
 
 ;;; Turn The Pattern Into A Matrix
 (expect (repeat 17 '("0" "0" "0")) (char-patterns->matrix space))
-(expect (repeat 17 '("0")) (char-patterns->matrix letter-space))
+(expect (repeat 17 '("0")) (char-patterns->matrix con/letter-space))
 
 ;;; Pattern Of A String
 (expect (repeat 17 (repeat 3 "0")) (string->pattern " "))

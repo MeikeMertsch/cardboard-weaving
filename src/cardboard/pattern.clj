@@ -14,7 +14,7 @@
 
 (defn create-the-pattern [chars]
   (->> (map #((c/char->pattern) %) chars)
-       (interpose (c/letter-space))
+       (interpose letter-space)
        (map char-patterns->matrix)
        (apply map concat)))
 

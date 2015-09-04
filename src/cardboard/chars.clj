@@ -1,6 +1,5 @@
 (ns cardboard.chars
-  (require [cardboard.constants :refer :all]
-           [cardboard.default_chars :as dc]))
+  (require [cardboard.constants :refer :all]))
 
 ;;; Read Available Characters From Files
 (def filereader (clojure.java.io/file default-character-location))
@@ -40,9 +39,6 @@
 
 (defn available-chars []
   (into #{} (keys (char->pattern))))
-
-(defn letter-space []
-  dc/letter-space)
 
 (defn update-mapping! []
   (reset! mapping-char->pattern (create-mapping)))

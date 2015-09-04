@@ -2,6 +2,7 @@
 
 (def empty-string "")
 (def empty-pattern '(()))
+(def letter-space "0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0")
 
 (def new-line "\n")
 (def dash "-")

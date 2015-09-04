@@ -1,7 +1,8 @@
 (ns cardboard.instructions_test
   (:require [expectations :refer :all]
-            [cardboard.default_chars :refer :all]
+            [cardboard.default_chars :as dc]
             [cardboard.pattern :refer :all]
+            [cardboard.constants :refer :all]
             [cardboard.common-test-data :refer :all]
             [cardboard.instructions :refer :all]))
 
@@ -21,13 +22,13 @@
   (->> (map char-patterns->matrix character)
        (apply map concat)))
 
-(expect char-a-instructions (pattern->instructions (pattern-of [lc-a])))
-(expect char-b-instructions (pattern->instructions (pattern-of [lc-b])))
+(expect char-a-instructions (pattern->instructions (pattern-of [dc/lc-a])))
+(expect char-b-instructions (pattern->instructions (pattern-of [dc/lc-b])))
 (expect (concat char-a-instructions '(((1 17))) char-b-instructions)
-        (pattern->instructions (pattern-of [lc-a letter-space lc-b])))
+        (pattern->instructions (pattern-of [dc/lc-a letter-space dc/lc-b])))
 
 ;;; Distinguish Between Uppercase Characters And Lowercase Characters
-(expect false? (= (pattern->instructions (pattern-of [lc-a])) (pattern->instructions (pattern-of [uc-a]))))
+(expect false? (= (pattern->instructions (pattern-of [dc/lc-a])) (pattern->instructions (pattern-of [dc/uc-a]))))
 
 ;;; Turning The Pattern
 (expect (list (repeat 17 "0")) (turn-pattern-by-90-degrees (repeat 17 (repeat 1 "0"))))
