@@ -33,7 +33,7 @@
   (config! overview-window :content (overview-panel))
   (pack! overview-window))
 
-(defn preview []
+(defn render []
   (reload overview-window)
   (show! overview-window))
 

@@ -13,8 +13,8 @@
 ;;; Items
 (def input-for-string (text default-text))
 (def save-button (button :text save-button-text))
-(def overview-button (button :text overview-button-text))
-(def overview-panel (border-panel :east overview-button
+(def font-button (button :text overview-button-text))
+(def font-panel (border-panel :east font-button
                                   :size [900 :by 30]))
 (def error-label (label empty-string))
 (def error-panel (horizontal-panel :items [error-label]
@@ -26,10 +26,10 @@
 (def preview-canvas (bc/bitmap-canvas))
 (def preview-panel (horizontal-panel :items [preview-canvas]))
 (def preview-scroll (scrollable preview-panel))
-(def main-panel (vertical-panel :items [form-for-saving
+(def main-panel (vertical-panel :items [font-panel
+                                        form-for-saving
                                         error-panel
-                                        preview-scroll
-                                        overview-panel]))
+                                        preview-scroll]))
 
 (def pgm-window
   (frame
@@ -63,7 +63,7 @@
 
 ;;; Listeners
 (listen save-button :action handle-submit)
-(listen overview-button :action (fn [_] (ov/preview)))
+(listen font-button :action (fn [_] (ov/render)))
 (listen input-for-string :key keypress)
 
 
