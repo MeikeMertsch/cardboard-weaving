@@ -7,4 +7,4 @@
                  [expectations "2.1.2"]
                  [seesaw "1.4.5"]]
   :plugins [[lein-autoexpect "1.6.0"]]
-  :test-paths ["test/cardboard"])
+  :test-paths ["test"])
