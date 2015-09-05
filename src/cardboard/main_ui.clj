@@ -14,7 +14,7 @@
 ;;; Items
 (def input-for-string (text default-text))
 (def save-button (button :text save-button-text))
-(def font-choice (combobox :model ["custom" "default"]))
+(def font-choice (combobox :model (f/fonts)))
 (def font-button (button :text overview-button-text))
 (def font-panel (border-panel :center font-choice
                               :east font-button
@@ -76,6 +76,7 @@
 
 
 ;;; Showing The UI
+(f/update-mapping! (selection font-choice))
 (show! pgm-window)
 #_(dc/prefill-default-characters)
 (handle-string-changed input-for-string)
