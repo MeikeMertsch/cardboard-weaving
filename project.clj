@@ -6,4 +6,5 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [expectations "2.1.2"]
                  [seesaw "1.4.5"]]
-  :plugins [[lein-autoexpect "1.6.0"]])
+  :plugins [[lein-autoexpect "1.6.0"]]
+  :test-paths ["test/cardboard"])
