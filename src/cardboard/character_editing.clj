@@ -44,14 +44,15 @@
   (->> (updated-pattern canvas)
        (fill-canvas canvas)))
 
-(defn render-canvas [character new-canvas]
+(defn render-canvas [font character new-canvas]
   (bc/render new-canvas zoom-size character)
   (listen new-canvas :mouse-clicked handle-click)
-  (config! new-canvas :id :character-canvas)
+  (config! new-canvas :id :character-canvas
+                      :user-data (assoc (user-data new-canvas) :font font))
   new-canvas)
 
-(defn open [character]
-  (config! main-panel :items [(render-canvas character (bc/bitmap-canvas))
+(defn open [font character]
+  (config! main-panel :items [(render-canvas font character (bc/bitmap-canvas))
                               button-panel])
   (config! (character-canvas) :size (ps/screen-size zoom-size character))
   (pack! editing-window)
@@ -61,7 +62,8 @@
 ;;; Non-Dynamic Listeners
 (defn save-character [caller]
   (s/save-character (:content (canvas-information))
-                    (:pattern (canvas-information)))
+                    (:pattern (canvas-information))
+                    (:font (canvas-information)))
   (dispose! caller))
 
 (listen cancel-button :action dispose!)

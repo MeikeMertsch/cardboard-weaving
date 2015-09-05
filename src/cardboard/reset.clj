@@ -4,4 +4,4 @@
 
 (defn prefill-default-characters []
     (doseq [character dc/available-chars]
-      (s/save (s/character->location character) (dc/char->pattern character))))
+      (s/save (s/character->location character "default") (dc/char->pattern character))))

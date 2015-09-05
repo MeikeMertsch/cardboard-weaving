@@ -9,13 +9,13 @@
 (def overview-window
   (frame :title overview-title))
 
-(defn open-character [character _]
-  (che/open character))
+(defn font []
+  (config overview-window :title))
 
 (defn paint-canvas [character character-canvas]
   (bc/render character-canvas overview-size character)
   (config! character-canvas :size (s/screen-size overview-size character))
-  (listen character-canvas :mouse-clicked (partial open-character character))
+  (listen character-canvas :mouse-clicked (fn [_] (che/open (font) character)))
   character-canvas)
 
 (defn character-canvases [characters]
@@ -33,8 +33,9 @@
   (config! overview-window :content (overview-panel))
   (pack! overview-window))
 
-(defn render []
+(defn render [font]
   (reload overview-window)
+  (config! overview-window :title font)
   (show! overview-window))
 
 (listen overview-window :focus-gained reload)

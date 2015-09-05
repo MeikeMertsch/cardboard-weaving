@@ -65,18 +65,17 @@
       (handle-string-changed caller))))
 
 (defn handle-font-changed [caller]
-  (f/update-mapping! (value caller))
+  (f/update-mapping! (selection caller))
   (handle-string-changed input-for-string))
 
 ;;; Listeners
 (listen save-button :action handle-submit)
-(listen font-button :action (fn [_] (ov/render)))
+(listen font-button :action (fn [_] (ov/render (selection font-choice))))
 (listen input-for-string :key keypress)
 (listen font-choice :selection handle-font-changed)
 
 
 ;;; Showing The UI
 (res/prefill-default-characters)
-(f/update-mapping! (selection font-choice))
 (show! pgm-window)
-(handle-string-changed input-for-string)
+(handle-font-changed font-choice)

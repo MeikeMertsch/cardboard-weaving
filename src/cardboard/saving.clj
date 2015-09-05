@@ -12,14 +12,16 @@
   (-> (int character)
       (str character-extension)))
 
-(defn character->location [character]
-  (str default-character-location
+(defn character->location [character font]
+  (str font-location
+       font
+       path-separator
        (character->file-name character)))
 
-(defn save-character [character pattern]
-  (save (character->location character)
-          (p/pattern->string pattern))
-  (f/update-mapping! "custom"))
+(defn save-character [character pattern font]
+  (save (character->location character font)
+        (p/pattern->string pattern))
+  (f/update-mapping! font))
 
 (defn save-instructions-for [string file-path]
   (->> (p/string->pattern string)
