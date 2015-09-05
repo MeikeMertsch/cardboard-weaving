@@ -1,7 +1,6 @@
-(ns cardboard.input
+(ns cardboard.gui.input
   (:require [cardboard.saving :as s]
             [cardboard.validation :as val]
-            [cardboard.bitmap-canvas :as bc]
             [cardboard.constants :refer :all]))
 
 ;;; Saving Related

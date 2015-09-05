@@ -1,7 +1,7 @@
-(ns cardboard.overview
+(ns cardboard.gui.overview
   (:require [seesaw.core :refer :all]
-            [cardboard.bitmap-canvas :as bc]
-            [cardboard.character-editing :as che]
+            [cardboard.gui.bitmap-canvas :as bc]
+            [cardboard.gui.character-editing :as che]
             [cardboard.font :as f]
             [cardboard.constants :refer :all]
             [cardboard.size :as s]))

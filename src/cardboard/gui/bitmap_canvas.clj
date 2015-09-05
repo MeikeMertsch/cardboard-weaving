@@ -1,4 +1,4 @@
-(ns cardboard.bitmap-canvas
+(ns cardboard.gui.bitmap-canvas
   (:require [seesaw.core :refer :all]
             [seesaw.graphics :as sg]
             [seesaw.color :as scol]

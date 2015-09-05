@@ -1,10 +1,10 @@
-(ns cardboard.main-ui
+(ns cardboard.gui.main-ui
   (:gen-class)
   (:require [seesaw.core :refer :all]
             [seesaw.chooser :as sc]
-            [cardboard.bitmap-canvas :as bc]
-            [cardboard.overview :as ov]
-            [cardboard.input :as in]
+            [cardboard.gui.bitmap-canvas :as bc]
+            [cardboard.gui.overview :as ov]
+            [cardboard.gui.input :as in]
             [cardboard.reset :as res]
             [cardboard.constants :refer :all]
             [cardboard.font :as f]))

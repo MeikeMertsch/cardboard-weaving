@@ -1,8 +1,7 @@
 (ns cardboard.input-test
   (:require [expectations :refer :all]
-            [cardboard.input :refer :all]
+            [cardboard.gui.input :refer :all]
             [cardboard.saving :as s]
-            [cardboard.bitmap-canvas :as bc]
             [cardboard.constants :refer :all]))
 
 ;----- Ensure Correct File Extension

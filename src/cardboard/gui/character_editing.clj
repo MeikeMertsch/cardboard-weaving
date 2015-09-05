@@ -1,7 +1,7 @@
-(ns cardboard.character-editing
+(ns cardboard.gui.character-editing
   (:require [seesaw.core :refer :all]
             [seesaw.mouse :as mou]
-            [cardboard.bitmap-canvas :as bc]
+            [cardboard.gui.bitmap-canvas :as bc]
             [cardboard.pixel-change :as pc]
             [cardboard.size :as ps]
             [cardboard.saving :as s]
