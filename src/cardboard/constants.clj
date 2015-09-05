@@ -30,4 +30,5 @@
 (def default-character-location "resources/default/")
 (def font-location "resources/")
 (def path-separator "/")
+(def default-font "default")
 (def character-extension ".ch")

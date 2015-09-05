@@ -33,7 +33,7 @@
             (map slurp files))))
 
 (def mapping-char->pattern
-  (atom (create-mapping "default")))
+  (atom (create-mapping default-font)))
 
 (defn keep-only-directories [files]
   (filter #(.isDirectory %) files))

@@ -7,7 +7,7 @@
 #_(expect-let [placeholder (dc/prefill-default-characters)] dc/available-chars (available-chars))
 
 
-(expect \d (filename->character "resources/default/100.ch" "default"))
+(expect \d (filename->character "resources/default/100.ch" default-font))
 (expect \e (filename->character "resources/custom/101.ch" "custom"))
 
 (expect "/" (remove-substring "resources/default" default-character-location))
@@ -17,4 +17,4 @@
 (expect dc/space ((char->pattern) \space))
 (expect dc/lc-a ((char->pattern) \a))
 
-(expect ["custom" "default"] (fonts)) ;highly dependant on available fonts
+(expect ["custom" default-font] (fonts)) ;highly dependant on available fonts
