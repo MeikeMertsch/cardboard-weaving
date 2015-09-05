@@ -14,7 +14,7 @@
        keep-only-character-files))
 
 (defn remove-substring [subs string]
-  (clojure.string/replace string subs ""))
+  (clojure.string/replace string subs empty-string))
 
 (defn int-str->character [string]
   (->> string
@@ -24,7 +24,7 @@
 (defn filename->character [string font]
   (->> string
        (remove-substring character-extension)
-       (remove-substring (str font-location font "/"))
+       (remove-substring (str font-location font path-separator))
        int-str->character))
 
 (defn create-mapping [font]
@@ -43,7 +43,7 @@
        keep-only-directories
        (map str)
        (map (partial remove-substring font-location))
-       (remove (partial = (remove-substring "/" font-location)))))
+       (remove (partial = (remove-substring path-separator font-location)))))
 
 ;;; Functions That Are Needed From Outside
 (defn char->pattern []
