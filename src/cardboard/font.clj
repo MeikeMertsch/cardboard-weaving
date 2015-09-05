@@ -1,15 +1,15 @@
 (ns cardboard.font
   (require [cardboard.constants :refer :all]))
 
-;;; Read Available Characters From Files
-(defn filereader [font]
-  (clojure.java.io/file (str font-location font)))
+;;; Read From Files
+(defn reader [dir]
+  (clojure.java.io/file dir))
 
 (defn keep-only-character-files [file-list]
   (filter #(.endsWith % character-extension) file-list))
 
 (defn character-files [font]
-  (->> (file-seq (filereader font))
+  (->> (file-seq (reader (str font-location font)))
        (map str)
        keep-only-character-files))
 
@@ -34,6 +34,16 @@
 
 (def mapping-char->pattern
   (atom (create-mapping "default")))
+
+(defn keep-only-directories [files]
+  (filter #(.isDirectory %) files))
+
+(defn fonts []
+  (->> (file-seq (reader font-location))
+       keep-only-directories
+       (map str)
+       (map (partial remove-substring font-location))
+       (remove (partial = (remove-substring "/" font-location)))))
 
 ;;; Functions That Are Needed From Outside
 (defn char->pattern []

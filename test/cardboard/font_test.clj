@@ -16,19 +16,4 @@
 (expect dc/space ((char->pattern) \space))
 (expect dc/lc-a ((char->pattern) \a))
 
-
-
-(defn reader [dir]
-  (clojure.java.io/file dir))
-
-(defn keep-only-directories [files]
-  (filter #(.isDirectory %) files))
-
-(defn directories [dir]
-  (->> (file-seq (reader dir))
-       keep-only-directories
-       (map str)
-       (map (partial remove-substring dir))
-       (remove (partial = (remove-substring "/" dir)))))
-
-(expect ["custom" "default"] (directories "resources/"))
+(expect ["custom" "default"] (fonts))
