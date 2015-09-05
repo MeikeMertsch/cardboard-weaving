@@ -5,7 +5,7 @@
             [cardboard.bitmap-canvas :as bc]
             [cardboard.overview :as ov]
             [cardboard.input :as in]
-            [cardboard.default_chars :as dc]
+            [cardboard.reset :as res]
             [cardboard.constants :refer :all]
             [cardboard.font :as f]))
 
@@ -76,7 +76,7 @@
 
 
 ;;; Showing The UI
+(res/prefill-default-characters)
 (f/update-mapping! (selection font-choice))
 (show! pgm-window)
-#_(dc/prefill-default-characters)
 (handle-string-changed input-for-string)
