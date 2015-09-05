@@ -19,7 +19,7 @@
 (defn save-character [character pattern]
   (save (character->location character)
           (p/pattern->string pattern))
-  (f/update-mapping!))
+  (f/update-mapping! "custom"))
 
 (defn save-instructions-for [string file-path]
   (->> (p/string->pattern string)

@@ -6,7 +6,8 @@
 
 #_(expect-let [placeholder (dc/prefill-default-characters)] dc/available-chars (available-chars))
 
-(expect \d (filename->character "resources/default/100.ch"))
+(expect \d (filename->character "resources/default/100.ch" "default"))
+(expect \e (filename->character "resources/custom/101.ch" "custom"))
 
 (expect "/" (remove-substring "resources/default" default-character-location))
 

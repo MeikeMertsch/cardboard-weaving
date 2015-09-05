@@ -28,4 +28,5 @@
 (def cancel-button-text "Cancel")
 
 (def default-character-location "resources/default/")
+(def font-location "resources/")
 (def character-extension ".ch")
