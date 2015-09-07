@@ -40,8 +40,10 @@
   (doseq [[pxl style] pxls]
     (sg/draw graphic pxl style)))
 
-(defn render [canvas pxl-size string]
-  (let [pattern (pat/string->pattern (str string))]
-    (config! canvas :paint #(paint (pixels pattern pxl-size) %1 %2)
-                    :user-data {:content string
-                                :pattern pattern})))
+(defn build-canvas [canvas pattern content pxl-size]
+  (config! canvas :paint #(paint (pixels pattern pxl-size) %1 %2)
+           :user-data {:content content
+                       :pattern pattern}))
+
+(defn render [canvas pxl-size content]
+  (build-canvas canvas (pat/string->pattern (str content)) content pxl-size))
