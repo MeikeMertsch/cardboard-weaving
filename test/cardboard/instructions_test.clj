@@ -7,19 +7,19 @@
             [cardboard.instructions :refer :all]))
 
 ;;; Row Partitions
-(expect [4] (pack-sizes (repeat 4 "0")))
-(expect [1 2 1] (pack-sizes (concat (repeat 1 "0") (repeat 2 "1") (repeat 1 "0"))))
-(expect [1 1 2] (pack-sizes (concat (repeat 1 "0") (repeat 1 "1") (repeat 2 "0"))))
-(expect [3 9 2] (pack-sizes (concat (repeat 3 "0") (repeat 9 "1") (repeat 2 "0"))))
+(expect [4] (#'cardboard.instructions/pack-sizes (repeat 4 "0")))
+(expect [1 2 1] (#'cardboard.instructions/pack-sizes (concat (repeat 1 "0") (repeat 2 "1") (repeat 1 "0"))))
+(expect [1 1 2] (#'cardboard.instructions/pack-sizes (concat (repeat 1 "0") (repeat 1 "1") (repeat 2 "0"))))
+(expect [3 9 2] (#'cardboard.instructions/pack-sizes (concat (repeat 3 "0") (repeat 9 "1") (repeat 2 "0"))))
 
 ;;; Partitions To Card Pack Rows
-(expect [[1 4]] (pack-sizes->instructions [4]))
-(expect [[1] [2 3] [4]] (pack-sizes->instructions [1 2 1]))
-(expect [[1 3] [4 12] [13 14]] (pack-sizes->instructions [3 9 2]))
+(expect [[1 4]] (#'cardboard.instructions/pack-sizes->instructions [4]))
+(expect [[1] [2 3] [4]] (#'cardboard.instructions/pack-sizes->instructions [1 2 1]))
+(expect [[1 3] [4 12] [13 14]] (#'cardboard.instructions/pack-sizes->instructions [3 9 2]))
 
 ;;; Instructions For Characters
 (defn pattern-of [character]
-  (->> (map char-patterns->matrix character)
+  (->> (map #'cardboard.pattern/char-patterns->matrix character)
        (apply map concat)))
 
 (expect char-a-instructions (pattern->instructions (pattern-of [dc/lc-a])))
@@ -31,4 +31,4 @@
 (expect false? (= (pattern->instructions (pattern-of [dc/lc-a])) (pattern->instructions (pattern-of [dc/uc-a]))))
 
 ;;; Turning The Pattern
-(expect (list (repeat 17 "0")) (turn-pattern-by-90-degrees (repeat 17 (repeat 1 "0"))))
+(expect (list (repeat 17 "0")) (#'cardboard.instructions/turn-pattern-by-90-degrees (repeat 17 (repeat 1 "0"))))

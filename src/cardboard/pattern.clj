@@ -3,13 +3,13 @@
             [cardboard.string-cleaning :as sc]
             [cardboard.constants :refer :all]))
 
-(defn char-patterns->matrix [char-patterns]
+(defn- char-patterns->matrix [char-patterns]
   (->> (clojure.string/split-lines char-patterns)
        (map clojure.string/trim)
        (map seq)
        (map #(map str %))))
 
-(defn create-the-pattern [chars]
+(defn- create-the-pattern [chars]
   (->> (map #((f/char->pattern) %) chars)
        (interpose letter-space)
        (map char-patterns->matrix)

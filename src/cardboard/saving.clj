@@ -8,7 +8,7 @@
 (defn save [file instructions]
   (spit file instructions))
 
-(defn character->file-name [character]
+(defn- character->file-name [character]
   (-> (int character)
       (str character-extension)))
 
