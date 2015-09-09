@@ -39,12 +39,12 @@
   (->> (updated-pattern canvas)
        (redraw-canvas canvas (:font (canvas-information)))))
 
-(defn- render-canvas [font character new-canvas]
-  (bc/render-from-content new-canvas zoom-size character)
-  (listen new-canvas :mouse-clicked handle-click)
-  (config! new-canvas :id :character-canvas
-                      :user-data (assoc (user-data new-canvas) :font font))
-  new-canvas)
+(defn- render-canvas [font character canvas]
+  (bc/render-from-content canvas zoom-size character)
+  (listen canvas :mouse-clicked handle-click)
+  (config! canvas :id :character-canvas
+                      :user-data (assoc (user-data canvas) :font font))
+  canvas)
 
 (defn open [font character]
   (config! main-panel :items [(render-canvas font character (bc/bitmap-canvas))
