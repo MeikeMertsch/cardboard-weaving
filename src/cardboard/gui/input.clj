@@ -4,7 +4,7 @@
             [cardboard.constants :refer :all]))
 
 ;;; Saving Related
-(defn guarantee-txt [file]
+(defn- guarantee-txt [file]
   (if (not (.endsWith (str file) instruction-extension))
     (str file instruction-extension)
     file))
@@ -15,7 +15,7 @@
        (s/save-instructions-for string)))
 
 ;;; Validation Related
-(defn validation-message-for [invalid-chars]
+(defn- validation-message-for [invalid-chars]
   (->> (interpose ", " invalid-chars)
        (apply str)
        (str invalid-characters-message)))

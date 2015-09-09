@@ -5,9 +5,9 @@
             [cardboard.constants :refer :all]))
 
 ;----- Ensure Correct File Extension
-(expect "Hagrid.txt" (guarantee-txt "Hagrid"))
-(expect "Meike.txt" (guarantee-txt "Meike.txt"))
-(expect "Wir.tx.txt" (guarantee-txt "Wir.tx"))
+(expect "Hagrid.txt" (#'cardboard.gui.input/guarantee-txt "Hagrid"))
+(expect "Meike.txt" (#'cardboard.gui.input/guarantee-txt "Meike.txt"))
+(expect "Wir.tx.txt" (#'cardboard.gui.input/guarantee-txt "Wir.tx"))
 
 
 ;----- Saves With Proper Extension
@@ -23,8 +23,8 @@
 
 
 ;----- Generate A Beautiful Error
-(expect (str invalid-characters-message "1, =") (validation-message-for [\1 \=]))
+(expect (str invalid-characters-message "1, =") (#'cardboard.gui.input/validation-message-for [\1 \=]))
 
 ;----- Deal With The Validation Result
 (expect empty-string (validate "a normal string"))
-(expect (validation-message-for [\9 \&]) (validate "a string with 9 and & as bad chars"))
+(expect (#'cardboard.gui.input/validation-message-for [\9 \&]) (validate "a string with 9 and & as bad chars"))

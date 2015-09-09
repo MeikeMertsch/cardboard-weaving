@@ -42,29 +42,29 @@
     :height 160))
 
 ;;; Actions
-(defn show-validation-result [string]
+(defn- show-validation-result [string]
   (config! error-label :text string))
 
-(defn handle-string-changed [caller]
+(defn- handle-string-changed [caller]
   (bc/render-from-content preview-canvas preview-size (value caller))
   (show-validation-result (in/validate (value caller))))
 
-(defn save [_ file]
+(defn- save [_ file]
   (in/save-instructions (value input-for-string) file)
   (alert action saved-instructions-text))
 
-(defn handle-submit [_]
+(defn- handle-submit [_]
   (sc/choose-file :type :save
                   :success-fn save
                   :selection-mode :files-only))
 
-(defn keypress [caller]
+(defn- keypress [caller]
   (let [key (.getKeyChar caller)]
     (if (= key \newline)
       (handle-submit caller)
       (handle-string-changed caller))))
 
-(defn handle-font-changed [caller]
+(defn- handle-font-changed [caller]
   (f/update-mapping! (selection caller))
   (handle-string-changed input-for-string))
 

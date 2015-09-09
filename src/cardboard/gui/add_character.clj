@@ -14,10 +14,10 @@
                                      "Width"
                                      input-for-width]))
 
-(defn default-pattern []
+(defn- default-pattern []
   (repeat 17 (repeat (bigint (value input-for-width)) background-pixel)))
 
-(defn ok-function [_]
+(defn- ok-function [_]
   (let [character (first (value input-for-character))]
     (sav/save-character character (default-pattern) "custom")
     (ce/open "custom" character))
