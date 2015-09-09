@@ -7,12 +7,12 @@
 #_(expect-let [placeholder (dc/prefill-default-characters)] dc/available-chars (available-chars))
 
 
-(expect \d (filename->character "resources/default/100.ch" default-font))
-(expect \e (filename->character "resources/custom/101.ch" "custom"))
+(expect \d (#'cardboard.font/filename->character "resources/default/100.ch" default-font))
+(expect \e (#'cardboard.font/filename->character "resources/custom/101.ch" "custom"))
 
-(expect "/" (remove-substring "resources/default" default-character-location))
+(expect "/" (#'cardboard.font/remove-substring "resources/default" default-character-location))
 
-(expect ["75.ch"] (keep-only-character-files ["75.ch" "something different"]))
+(expect ["75.ch"] (#'cardboard.font/keep-only-character-files ["75.ch" "something different"]))
 
 (expect dc/space ((char->pattern) \space))
 (expect dc/lc-a ((char->pattern) \a))
