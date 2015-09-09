@@ -50,5 +50,5 @@
   (config! overview-window :title font)
   (show! overview-window))
 
-(listen overview-window :focus-gained reload)
 (listen add-button :action add-character)
+(listen add-button :focus-gained reload)
