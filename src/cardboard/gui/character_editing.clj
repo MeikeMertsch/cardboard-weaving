@@ -32,7 +32,7 @@
   (pc/invert-pixel (mou/location canvas) ((canvas-information) :pattern)))
 
 (defn- redraw-canvas [canvas font pattern]
-  (->> (bc/build-canvas canvas pattern (:content (canvas-information)) zoom-size)
+  (->> (bc/render canvas pattern (:content (canvas-information)) zoom-size)
        (#(config! % :user-data (assoc (canvas-information) :font font)))))
 
 (defn- handle-click [canvas]
@@ -40,7 +40,7 @@
        (redraw-canvas canvas (:font (canvas-information)))))
 
 (defn- render-canvas [font character new-canvas]
-  (bc/render new-canvas zoom-size character)
+  (bc/render-from-content new-canvas zoom-size character)
   (listen new-canvas :mouse-clicked handle-click)
   (config! new-canvas :id :character-canvas
                       :user-data (assoc (user-data new-canvas) :font font))

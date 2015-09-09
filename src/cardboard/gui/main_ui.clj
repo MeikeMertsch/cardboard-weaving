@@ -46,7 +46,7 @@
   (config! error-label :text string))
 
 (defn handle-string-changed [caller]
-  (bc/render preview-canvas preview-size (value caller))
+  (bc/render-from-content preview-canvas preview-size (value caller))
   (show-validation-result (in/validate (value caller))))
 
 (defn save [_ file]

@@ -16,7 +16,7 @@
   (config overview-window :title))
 
 (defn paint-canvas [character character-canvas]
-  (bc/render character-canvas overview-size character)
+  (bc/render-from-content character-canvas overview-size character)
   (config! character-canvas :size (s/screen-size overview-size character))
   (if (not= (font) default-font)
     (listen character-canvas :mouse-clicked (fn [_] (che/open (font) character))))

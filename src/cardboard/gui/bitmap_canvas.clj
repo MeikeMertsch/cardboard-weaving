@@ -30,20 +30,20 @@
               style (pixel-style filling)]]
     [pxl style]))
 
-(defn pixels [pattern size]
+(defn- pixels [pattern size]
   (->> (for [row-number (range (count pattern))
              :let [row (nth pattern row-number)]]
          (row-pixels row row-number size))
        (apply concat)))
 
-(defn paint [pxls _ graphic]
+(defn- paint [pxls _ graphic]
   (doseq [[pxl style] pxls]
     (sg/draw graphic pxl style)))
 
-(defn build-canvas [canvas pattern content pxl-size]
+(defn render [canvas pattern content pxl-size]
   (config! canvas :paint #(paint (pixels pattern pxl-size) %1 %2)
            :user-data {:content content
                        :pattern pattern}))
 
-(defn render [canvas pxl-size content]
-  (build-canvas canvas (pat/string->pattern (str content)) content pxl-size))
+(defn render-from-content [canvas pxl-size content]
+  (render canvas (pat/string->pattern (str content)) content pxl-size))
