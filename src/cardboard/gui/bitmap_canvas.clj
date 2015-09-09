@@ -12,18 +12,18 @@
 (defn bitmap-canvas []
   (canvas :paint nil))
 
-(defn pixel [column row size]
+(defn- pixel [column row size]
   (let [width (size :width)
         height (size :height)]
   (sg/rect (* (inc width) column) (* (inc height) row) width height)))
 
 ;;; Preview
-(defn pixel-style [filling]
+(defn- pixel-style [filling]
   (if (= filling foreground-pixel)
     style-foreground
     style-background))
 
-(defn row-pixels [row row-number size]
+(defn- row-pixels [row row-number size]
   (for [column-number (range (count row))
         :let [pxl (pixel column-number row-number size)
               filling (nth row column-number)

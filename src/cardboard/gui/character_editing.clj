@@ -22,29 +22,24 @@
 
 
 ;;; Logic
-(defn character-canvas []
+(defn- character-canvas []
   (select main-panel [:#character-canvas]))
 
-(defn canvas-information []
+(defn- canvas-information []
   (user-data (character-canvas)))
 
-(defn updated-pattern [canvas]
+(defn- updated-pattern [canvas]
   (pc/invert-pixel (mou/location canvas) ((canvas-information) :pattern)))
 
-(defn paint [pattern widget graphic]
-  (-> pattern
-      (bc/pixels zoom-size)
-      (bc/paint widget graphic)))
+(defn- redraw-canvas [canvas font pattern]
+  (->> (bc/build-canvas canvas pattern (:content (canvas-information)) zoom-size)
+       (#(config! % :user-data (assoc (canvas-information) :font font)))))
 
-(defn fill-canvas [canvas pattern]
-  (config! canvas :paint (partial paint pattern)
-                  :user-data (assoc (canvas-information) :pattern pattern)))
-
-(defn handle-click [canvas]
+(defn- handle-click [canvas]
   (->> (updated-pattern canvas)
-       (fill-canvas canvas)))
+       (redraw-canvas canvas (:font (canvas-information)))))
 
-(defn render-canvas [font character new-canvas]
+(defn- render-canvas [font character new-canvas]
   (bc/render new-canvas zoom-size character)
   (listen new-canvas :mouse-clicked handle-click)
   (config! new-canvas :id :character-canvas
@@ -60,7 +55,7 @@
 
 
 ;;; Non-Dynamic Listeners
-(defn save-character [caller]
+(defn- save-character [caller]
   (s/save-character (:content (canvas-information))
                     (:pattern (canvas-information))
                     (:font (canvas-information)))
