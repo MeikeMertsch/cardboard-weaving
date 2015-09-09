@@ -1,6 +1,8 @@
 (ns cardboard.gui.add-character
   (require [seesaw.core :refer :all]
            [seesaw.dev :refer :all]
+           [cardboard.saving :as sav]
+           [cardboard.gui.character-editing :as ce]
            [cardboard.constants :refer :all]))
 
 
@@ -12,7 +14,13 @@
                                      "Width"
                                      input-for-width]))
 
+(defn default-pattern []
+  (repeat 17 (repeat (bigint (value input-for-width)) background-pixel)))
+
 (defn ok-function [_]
+  (let [character (first (value input-for-character))]
+    (sav/save-character character (default-pattern) "custom")
+    (ce/open "custom" character))
   (alert "yeay"))
 
 (def ac-window
