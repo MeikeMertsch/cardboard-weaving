@@ -14,8 +14,9 @@
 
 (defn- pixel [column row size]
   (let [width (size :width)
-        height (size :height)]
-  (sg/rect (* (inc width) column) (* (inc height) row) width height)))
+        height (size :height)
+        grid-width 1]
+  (sg/rect (* (+ width grid-width) column) (* (+ height grid-width) row) width height)))
 
 ;;; Preview
 (defn- pixel-style [filling]
