@@ -32,6 +32,7 @@
 (def path-separator "/")
 (def default-font "default")
 (def character-extension ".ch")
+(def add-button-text "+")
 
 (def character-label-text "Character")
 (def width-label-text "Width")

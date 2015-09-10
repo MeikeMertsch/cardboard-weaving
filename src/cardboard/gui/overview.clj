@@ -15,7 +15,7 @@
               :vgap 10
               :hgap 10))
 
-(def add-button (button :text "+"))
+(def add-button (button :text add-button-text))
 
 (defn- font []
   (config overview-window :title))
