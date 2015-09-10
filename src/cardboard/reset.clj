@@ -4,5 +4,5 @@
            [cardboard.constants :refer :all]))
 
 (defn prefill-default-characters []
-    (doseq [character dc/available-chars]
-      (s/save (s/character->location character default-font) (dc/char->pattern character))))
+  (doseq [character dc/available-chars]
+    (s/save (s/character->location character default-font) (dc/char->pattern character))))
