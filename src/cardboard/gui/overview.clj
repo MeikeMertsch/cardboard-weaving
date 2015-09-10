@@ -36,14 +36,14 @@
        (#(conj % add-button))))
 
 (defn- add-interactions []
-  (if (not= (font) default-font)
-    (for [canvas (config overview-panel :items)]
-      (listen canvas :mouse-clicked (fn [_] (che/open (font) (:content (user-data canvas))))))
-    (config! overview-panel :items (characters-and-add))))
+  (config! overview-panel :items (characters-and-add))
+  (doseq [canvas (config overview-panel :items)]
+    (listen canvas :mouse-clicked (fn [_] (che/open (font) (:content (user-data canvas)))))))
 
 (defn- render-overview-panel []
-  (config! overview-panel :items (character-canvases (sort (f/available-chars))))
-  (add-interactions))
+  (if (not= (font) default-font)
+    (add-interactions)
+    (config! overview-panel :items (character-canvases (sort (f/available-chars))))))
 
 (defn- reload [_]
   (render-overview-panel)
