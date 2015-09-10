@@ -10,26 +10,26 @@
 (def input-for-width (text))
 (def this-font (atom default-font))
 (def width-panel (grid-panel :columns 2
-                             :items ["Character"
+                             :items [character-label-text
                                      input-for-character
-                                     "Width"
+                                     width-label-text
                                      input-for-width]))
 
 (defn- current-font []
   (deref this-font))
 
 (defn- default-pattern []
-  (repeat 17 (repeat (bigint (value input-for-width)) background-pixel)))
+  (repeat default-height (repeat (bigint (value input-for-width)) background-pixel)))
 
 (defn- ok-function [_]
   (let [character (first (value input-for-character))]
     (sav/save-character character (default-pattern) (current-font))
-    (ce/open "custom" character))
+    (ce/open (current-font) character))
   (alert "yeay"))
 
 (def ac-window
   (dialog
-    :title "Add character"
+    :title add-character-title
     :content width-panel
     :option-type :ok-cancel
     :success-fn ok-function
