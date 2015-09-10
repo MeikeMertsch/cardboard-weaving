@@ -10,6 +10,11 @@
 (def overview-window
   (frame :title overview-title))
 
+(def overview-panel
+  (grid-panel :columns 10
+              :vgap 10
+              :hgap 10))
+
 (def add-button (button :text "+"))
 
 (defn- font []
@@ -32,14 +37,12 @@
        vec
        (#(conj % add-button))))
 
-(defn- overview-panel []
-  (scrollable (grid-panel :columns 10
-                          :vgap 10
-                          :hgap 10
-                          :items (characters-and-add))))
+(defn- render-overview-panel []
+  (config! overview-panel :items (characters-and-add)))
 
 (defn- reload [_]
-  (config! overview-window :content (overview-panel))
+  (render-overview-panel)
+  (config! overview-window :content (scrollable overview-panel))
   (pack! overview-window))
 
 (defn- add-character [_]
