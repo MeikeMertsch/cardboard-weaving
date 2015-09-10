@@ -23,8 +23,6 @@
 (defn- paint-canvas [character character-canvas]
   (bc/render-from-content character-canvas overview-size character)
   (config! character-canvas :size (s/screen-size overview-size character))
-  (if (not= (font) default-font)
-    (listen character-canvas :mouse-clicked (fn [_] (che/open (font) character))))
   character-canvas)
 
 (defn- character-canvases [characters]
@@ -37,8 +35,15 @@
        vec
        (#(conj % add-button))))
 
+(defn- add-interactions []
+  (if (not= (font) default-font)
+    (for [canvas (config overview-panel :items)]
+      (listen canvas :mouse-clicked (fn [_] (che/open (font) (:content (user-data canvas))))))
+    (config! overview-panel :items (characters-and-add))))
+
 (defn- render-overview-panel []
-  (config! overview-panel :items (characters-and-add)))
+  (config! overview-panel :items (character-canvases (sort (f/available-chars))))
+  (add-interactions))
 
 (defn- reload [_]
   (render-overview-panel)
