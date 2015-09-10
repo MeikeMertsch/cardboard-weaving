@@ -46,9 +46,9 @@
   (ac/open-preferences (font)))
 
 (defn render [font]
-  (reload overview-window)
   (config! overview-window :title font)
+  (reload overview-window)
   (show! overview-window))
 
 (listen add-button :action add-character)
-(listen add-button :focus-gained reload)
+(listen overview-window :focus-gained reload)
