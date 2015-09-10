@@ -51,7 +51,7 @@
   (pack! overview-window))
 
 (defn- add-character [_]
-  (ac/open-preferences (font)))
+  (ac/open (font)))
 
 (defn render [font]
   (config! overview-window :title font)

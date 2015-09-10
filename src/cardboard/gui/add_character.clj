@@ -33,7 +33,7 @@
     :width 240
     :height 150))
 
-(defn open-preferences [font]
+(defn open [font]
   (reset! this-font font)
   (show! ac-window))
 
