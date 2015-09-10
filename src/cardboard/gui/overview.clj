@@ -51,4 +51,4 @@
   (show! overview-window))
 
 (listen add-button :action add-character)
-(listen overview-window :focus-gained reload)
+(listen overview-window :window-activated reload)
