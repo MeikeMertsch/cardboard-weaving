@@ -1,6 +1,5 @@
 (ns cardboard.gui.add-character
   (require [seesaw.core :refer :all]
-           [seesaw.dev :refer :all]
            [cardboard.saving :as sav]
            [cardboard.gui.character-editing :as ce]
            [cardboard.constants :refer :all]))
@@ -28,6 +27,13 @@
   (if (> (count (value input-for-character)) 1)
     (config! input-for-character :text (str (last (value input-for-character))))))
 
+(defn- handle-width-changed [caller]
+  (let [key (.getKeyChar caller)]
+    (if (not (re-matches #"\d+" (str key)))
+      (config! input-for-width :text (re-find #"\d+" (value input-for-width)))
+      (if (= key \newline)
+        (ok-function caller)))))
+
 (def ac-window
   (dialog
     :title add-character-title
@@ -42,3 +48,4 @@
   (show! ac-window))
 
 (listen input-for-character :key handle-character-changed)
+(listen input-for-width :key handle-width-changed)
