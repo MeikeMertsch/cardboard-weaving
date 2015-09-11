@@ -11,7 +11,7 @@
 (def this-font (atom default-font))
 (def width-panel (grid-panel :columns 2
                              :items [character-label-text input-for-character
-                                     width-label-text     input-for-width]))
+                                     width-label-text input-for-width]))
 
 (defn- current-font []
   (deref this-font))
@@ -23,6 +23,10 @@
   (let [character (first (value input-for-character))]
     (sav/save-character character (default-pattern) (current-font))
     (ce/open (current-font) character)))
+
+(defn- handle-character-changed [_]
+  (if (> (count (value input-for-character)) 1)
+    (config! input-for-character :text (str (last (value input-for-character))))))
 
 (def ac-window
   (dialog
@@ -37,4 +41,4 @@
   (reset! this-font font)
   (show! ac-window))
 
-
+(listen input-for-character :key handle-character-changed)
