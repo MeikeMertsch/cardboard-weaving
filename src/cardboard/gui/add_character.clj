@@ -34,18 +34,19 @@
       (if (= key \newline)
         (ok-function caller)))))
 
-(def ac-window
+(defn- ac-window []
   (dialog
     :title add-character-title
     :content width-panel
     :option-type :ok-cancel
     :success-fn ok-function
+    :cancel-fn dispose!
     :width 240
     :height 150))
 
 (defn open [font]
   (reset! this-font font)
-  (show! ac-window))
+  (show! (ac-window)))
 
 (listen input-for-character :key handle-character-changed)
 (listen input-for-width :key handle-width-changed)
