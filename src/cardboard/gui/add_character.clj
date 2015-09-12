@@ -11,6 +11,8 @@
 (def width-panel (grid-panel :columns 2
                              :items [character-label-text input-for-character
                                      width-label-text input-for-width]))
+(defn open [font])
+
 
 (defn- current-font []
   (deref this-font))
@@ -18,10 +20,15 @@
 (defn- default-pattern []
   (repeat default-height (repeat (bigint (value input-for-width)) background-pixel)))
 
-(defn- ok-function [_]
+(defn- add-character []
   (let [character (first (value input-for-character))]
     (sav/save-character character (default-pattern) (current-font))
     (ce/open (current-font) character)))
+
+(defn- ok-function [_]
+  (if (and (not-empty (value input-for-character)) (not-empty (value input-for-width)))
+    (add-character)
+    (open (current-font))))
 
 (defn- handle-character-changed [_]
   (if (> (count (value input-for-character)) 1)
