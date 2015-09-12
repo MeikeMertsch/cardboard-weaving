@@ -28,11 +28,10 @@
     (config! input-for-character :text (str (last (value input-for-character))))))
 
 (defn- handle-width-changed [caller]
-  (let [key (.getKeyChar caller)]
-    (if (not (re-matches #"\d+" (str key)))
-      (config! input-for-width :text (re-find #"\d+" (value input-for-width)))
-      (if (= key \newline)
-        (ok-function caller)))))
+  (if (not (re-matches #"\d+" (value input-for-width)))
+    (config! input-for-width :text (re-find #"\d+" (value input-for-width)))
+    (if (= (.getKeyChar caller) \newline)
+      (ok-function caller))))
 
 (defn- ac-window []
   (dialog
@@ -49,4 +48,6 @@
   (show! (ac-window)))
 
 (listen input-for-character :key handle-character-changed)
+(listen input-for-character :mouse-motion handle-character-changed)
 (listen input-for-width :key handle-width-changed)
+(listen input-for-width :mouse-motion handle-width-changed)
