@@ -35,8 +35,8 @@
     (config! input-for-character :text (str (last (value input-for-character))))))
 
 (defn- handle-width-changed [caller]
-  (if (not (re-matches #"\d+" (value input-for-width)))
-    (config! input-for-width :text (re-find #"\d+" (value input-for-width)))
+  (if (not (re-matches digits (value input-for-width)))
+    (config! input-for-width :text (re-find digits (value input-for-width)))
     (if (= (.getKeyChar caller) \newline)
       (ok-function caller))))
 

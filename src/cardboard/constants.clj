@@ -38,3 +38,5 @@
 (def width-label-text "Width")
 (def default-height 17)
 (def add-character-title "Add character")
+
+(def digits #"\d+")
