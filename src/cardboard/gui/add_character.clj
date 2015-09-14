@@ -11,8 +11,8 @@
 (def width-panel (grid-panel :columns 2
                              :items [character-label-text input-for-character
                                      width-label-text input-for-width]))
-(defn open [font])
 
+(declare open)
 
 (defn- current-font []
   (deref this-font))
