@@ -34,11 +34,14 @@
   (if (> (count (value input-for-character)) 1)
     (config! input-for-character :text (str (last (value input-for-character))))))
 
-(defn- handle-width-changed [caller]
+(defn- handle-width-changed [_]
   (if (not (re-matches digits (value input-for-width)))
-    (config! input-for-width :text (re-find digits (value input-for-width)))
-    (if (= (.getKeyChar caller) \newline)
-      (ok-function caller))))
+    (config! input-for-width :text (re-find digits (value input-for-width)))))
+
+(defn key-pressed-in-width [caller]
+  (if (= (.getKeyChar caller) \newline)
+    (ok-function caller)
+    (handle-width-changed caller)))
 
 (defn- ac-window []
   (dialog
@@ -56,5 +59,5 @@
 
 (listen input-for-character :key handle-character-changed)
 (listen input-for-character :mouse-motion handle-character-changed)
-(listen input-for-width :key handle-width-changed)
+(listen input-for-width :key key-pressed-in-width)
 (listen input-for-width :mouse-motion handle-width-changed)
