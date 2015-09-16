@@ -11,7 +11,7 @@
 (def cancel-button (button :text cancel-button-text))
 (def ok-button (button :text ok-button-text))
 (def this-font (atom default-font))
-(def width-panel (grid-panel :columns 2
+(def dialog-panel (grid-panel :columns 2
                              :items [character-label-text input-for-character
                                      width-label-text input-for-width]))
 
@@ -55,7 +55,7 @@
 (defn- ac-window []
   (dialog
     :title add-character-title
-    :content width-panel
+    :content dialog-panel
     :options [ok-button
               cancel-button]
     :width 240
