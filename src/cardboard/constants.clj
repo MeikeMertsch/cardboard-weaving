@@ -26,6 +26,7 @@
 
 (def save-character-button-text "Save")
 (def cancel-button-text "Cancel")
+(def ok-button-text "OK")
 
 (def default-character-location "resources/default/")
 (def font-location "resources/")

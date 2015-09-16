@@ -7,12 +7,12 @@
 
 (def input-for-character (text))
 (def input-for-width (text))
+(def cancel-button (button :text cancel-button-text))
+(def ok-button (button :text ok-button-text))
 (def this-font (atom default-font))
 (def width-panel (grid-panel :columns 2
                              :items [character-label-text input-for-character
                                      width-label-text input-for-width]))
-
-(declare open)
 
 (defn- current-font []
   (deref this-font))
@@ -20,15 +20,15 @@
 (defn- default-pattern []
   (repeat default-height (repeat (bigint (value input-for-width)) background-pixel)))
 
-(defn- add-character []
+(defn- add-character [dialog]
   (let [character (first (value input-for-character))]
     (sav/save-character character (default-pattern) (current-font))
-    (ce/open (current-font) character)))
+    (ce/open (current-font) character)
+    (dispose! dialog)))
 
-(defn- ok-function [_]
+(defn- ok-function [caller]
   (if (and (not-empty (value input-for-character)) (not-empty (value input-for-width)))
-    (add-character)
-    (open (current-font))))
+    (add-character caller)))
 
 (defn- handle-character-changed [_]
   (if (> (count (value input-for-character)) 1)
@@ -47,9 +47,8 @@
   (dialog
     :title add-character-title
     :content width-panel
-    :option-type :ok-cancel
-    :success-fn ok-function
-    :cancel-fn dispose!
+    :options [ok-button
+              cancel-button]
     :width 240
     :height 150))
 
@@ -61,3 +60,5 @@
 (listen input-for-character :mouse-motion handle-character-changed)
 (listen input-for-width :key key-pressed-in-width)
 (listen input-for-width :mouse-motion handle-width-changed)
+(listen cancel-button :action dispose!)
+(listen ok-button :action ok-function)
