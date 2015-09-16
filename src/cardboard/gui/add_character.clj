@@ -1,6 +1,7 @@
 (ns cardboard.gui.add-character
   (require [seesaw.core :refer :all]
            [cardboard.saving :as sav]
+           [cardboard.font :as f]
            [cardboard.gui.character-editing :as ce]
            [cardboard.constants :refer :all]))
 
@@ -26,9 +27,17 @@
     (ce/open (current-font) character)
     (dispose! dialog)))
 
-(defn- ok-function [caller]
-  (if (and (not-empty (value input-for-character)) (not-empty (value input-for-width)))
-    (add-character caller)))
+(defn- character-is-new? []
+  (not (contains? (f/available-chars) (first (value input-for-character)))))
+
+(defn- both-fields-filled? []
+  (and (not-empty (value input-for-character))
+       (not-empty (value input-for-width))))
+
+(defn- ok-function [window]
+  (if (and (both-fields-filled?)
+           (character-is-new?))
+    (add-character window)))
 
 (defn- handle-character-changed [_]
   (if (> (count (value input-for-character)) 1)
