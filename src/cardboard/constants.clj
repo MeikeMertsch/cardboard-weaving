@@ -40,5 +40,6 @@
 (def width-label-text "Width")
 (def default-height 17)
 (def add-character-title "Add character")
+(def character-exists-error "This character exists already in this font!")
 
 (def digits #"\d+")

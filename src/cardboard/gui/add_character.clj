@@ -11,9 +11,14 @@
 (def cancel-button (button :text cancel-button-text))
 (def ok-button (button :text ok-button-text))
 (def this-font (atom default-font))
-(def dialog-panel (grid-panel :columns 2
+(def error-label (label))
+(def error-panel (horizontal-panel :items [error-label]))
+(def input-panel (grid-panel :columns 2
                              :items [character-label-text input-for-character
                                      width-label-text input-for-width]))
+
+(def dialog-panel (vertical-panel :items [input-panel
+                                          error-panel]))
 
 (defn- current-font []
   (deref this-font))
@@ -39,9 +44,18 @@
            (character-is-new?))
     (add-character window)))
 
-(defn- handle-character-changed [_]
+(defn- ensure-single-character []
   (if (> (count (value input-for-character)) 1)
     (config! input-for-character :text (str (last (value input-for-character))))))
+
+(defn- validate-character []
+  (if (character-is-new?)
+    (config! error-label :text empty-string)
+    (config! error-label :text character-exists-error)))
+
+(defn- handle-character-changed [_]
+  (ensure-single-character)
+  (validate-character))
 
 (defn- handle-width-changed [_]
   (if (not (re-matches digits (value input-for-width)))
@@ -58,8 +72,8 @@
     :content dialog-panel
     :options [ok-button
               cancel-button]
-    :width 240
-    :height 150))
+    :width 320
+    :height 170))
 
 (defn open [font]
   (reset! this-font font)
