@@ -16,6 +16,9 @@
               :hgap 10))
 
 (def add-button (button :text add-button-text))
+(def delete-button (button :text delete-button-text))
+(def interaction-panel (vertical-panel :items [add-button
+                                               delete-button]))
 
 (defn- font []
   (config overview-window :title))
@@ -33,11 +36,11 @@
 (defn- characters-and-add []
   (->> (character-canvases (sort (f/available-chars)))
        vec
-       (#(conj % add-button))))
+       (#(conj % interaction-panel))))
 
 (defn- add-interactions []
   (config! overview-panel :items (characters-and-add))
-  (doseq [canvas (config overview-panel :items)]
+  (doseq [canvas (drop-last (config overview-panel :items))]
     (listen canvas :mouse-clicked (fn [_] (che/open (font) (:content (user-data canvas)))))))
 
 (defn- render-overview-panel []
