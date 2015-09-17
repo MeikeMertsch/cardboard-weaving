@@ -28,6 +28,7 @@
 (def cancel-button-text "Cancel")
 (def ok-button-text "OK")
 
+(def character-editing-title "Edit character")
 (def default-character-location "resources/default/")
 (def font-location "resources/")
 (def path-separator "/")

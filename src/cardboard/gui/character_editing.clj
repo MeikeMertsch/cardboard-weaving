@@ -17,7 +17,7 @@
 
 (def editing-window
   (frame
-    :title overview-title
+    :title character-editing-title
     :content main-panel))
 
 
